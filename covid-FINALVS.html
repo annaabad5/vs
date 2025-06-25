@@ -933,12 +933,39 @@
             filter: blur(8px);
             opacity: 0.3;
         }
+
+        /* VIRUS FLOTANTE ANIMADO */
+        .floating-virus {
+            position: fixed;
+            right: 50px;
+            width: 120px;
+            height: 120px;
+            background: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Captura%20de%20pantalla%202025-06-24%20a%20la%28s%29%203.39.03%E2%80%AFp.%C2%A0m.-1ZnGQti0ZRZA4FbeT3SjbKhZpxIean.png') center center / contain no-repeat;
+            z-index: 999;
+            opacity: 0;
+            transition: all 0.3s ease;
+            animation: virusFloat 3s ease-in-out infinite;
+        }
+
+        .floating-virus.visible {
+            opacity: 0.7;
+        }
+
+        @keyframes virusFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+           .floating-virus {
+                right: 20px;
+                width: 80px;
+                height: 80px;
+            }
     </style>
 </head>
 <body>
     
     <!-- Página de Portada - Nuevo diseño -->
-    <!-- <div class="cover">
+    <div class="cover">
         <div class="cover-content">
             <div class="cover-left">
                 <div class="virus-model"></div>
@@ -950,87 +977,8 @@
             </div>
         </div>
         <div class="cover-scroll-indicator">↓ Desplázate para comenzar el viaje ↓</div>
-    </div> -->
-    <!-- Título principal fijo -->
-        <div class="title-container">
-            <div class="title-content">
-            <h1 class="main-title">
-                <span class="title-gradient">COVID-19</span>
-            </h1>
-            <div class="title-divider"></div>
-            <p class="subtitle">Una Historia Global</p>
-            </div>
-        </div>
-
-        <!-- SVG con virus personalizado -->
-        <svg id="virus-svg" width="100%" height="100%" class="virus-container">
-            <defs>
-            <!-- Gradiente solo para el barbijo -->
-            <linearGradient id="maskGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#F8FBFF" />
-                <stop offset="50%" stop-color="#E8F4FD" />
-                <stop offset="100%" stop-color="#D6EFFF" />
-            </linearGradient>
-
-            <!-- Sombra para el barbijo -->
-            <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
-                <feDropShadow dx="3" dy="6" stdDeviation="8" flood-color="#4A90E2" flood-opacity="0.3" />
-            </filter>
-            </defs>
-
-            <!-- Virus de fondo -->
-            <g id="background-viruses">
-            <image href="virus_transparente_real_hd.png" x="200" y="200" height="120" width="120" class="background-virus" />
-            <image href="virus_transparente_real_hd.png" x="800" y="150" height="100" width="100" class="background-virus" />
-            <image href="virus_transparente_real_hd.png" x="400" y="600" height="130" width="130" class="background-virus" />
-            </g>
-
-            <!-- Virus principal -->
-            <g id="main-virus" transform="translate(50%, 450)">
-            <!-- Imagen PNG personalizada -->
-            <image href="virus_transparente_real_hd.png" x="-175" y="-187" height="380" width="380" />
-            <!-- Espigas del virus principal (necesarias para el barbijo y decoración) -->
-            <g id="main-virus-spikes"></g>
-
-            <!-- Barbijo (inicialmente invisible) -->
-            <g id="virus-mask" style="opacity: 0;">
-                <path d="M -80 -30 Q 0 -50 80 -30 L 80 30 Q 0 50 -80 30 Z"
-                    fill="url(#maskGradient)" stroke="#B8D4EA" stroke-width="3" filter="url(#softShadow)" />
-                <line x1="-60" y1="-10" x2="60" y2="-10" stroke="#B8D4EA" stroke-width="2" opacity="0.6" />
-                <line x1="-70" y1="0" x2="70" y2="0" stroke="#B8D4EA" stroke-width="2" opacity="0.6" />
-                <line x1="-60" y1="10" x2="60" y2="10" stroke="#B8D4EA" stroke-width="2" opacity="0.6" />
-                <path d="M -80 -10 Q -120 -10 -120 0 Q -120 10 -80 10"
-                    fill="none" stroke="#A0C4E0" stroke-width="4" stroke-linecap="round" />
-                <path d="M 80 -10 Q 120 -10 120 0 Q 120 10 80 10"
-                    fill="none" stroke="#A0C4E0" stroke-width="4" stroke-linecap="round" />
-                <path d="M -70 -35 Q 0 -45 70 -35 L 70 -20 Q 0 -30 -70 -20 Z"
-                    fill="white" opacity="0.4" />
-            </g>
-            </g>
-        </svg>
-
-        <!-- Indicador de scroll -->
-        <div id="scroll-indicator" class="scroll-indicator">
-            <div class="scroll-text">Desliza hacia abajo</div>
-            <div class="scroll-mouse">
-            <div class="scroll-wheel"></div>
-            </div>
-        </div>
-
-        <!-- Indicador de progreso del barbijo -->
-        <div class="progress-indicator">
-            <div class="progress-label">Protección</div>
-            <div class="progress-bar">
-            <div id="progress-fill" class="progress-fill"></div>
-            </div>
-            <div id="progress-text" class="progress-text">0%</div>
-        </div>
-
-        <!-- Barra de progreso superior -->
-        <div class="top-progress-bar">
-            <div id="top-progress-fill" class="top-progress-fill"></div>
-        </div>
-
+    </div>
+    
     <!-- Timeline fija en la parte superior -->
     <div class="timeline-container" id="timelineContainer">
         <div class="timeline" id="timeline">
@@ -1075,6 +1023,8 @@
             </div>
         </div>
     </div>
+    <!-- VIRUS FLOTANTE ANIMADO -->
+    <div class="floating-virus" id="floatingVirus"></div>
 
     <!-- Indicador de progreso -->
     <div class="progress-indicator" id="progress">1/7</div>
@@ -1691,15 +1641,24 @@
             // Mostrar timeline después de pasar la portada
             const timelineContainer = document.getElementById('timelineContainer');
             const progressIndicator = document.getElementById('progress');
+            const floatingVirus = document.getElementById('floatingVirus');
             
             if (scrollTop > windowHeight * 0.8) {
                 timelineContainer.classList.add('visible');
                 progressIndicator.classList.add('visible');
+                floatingVirus.classList.add('visible');
             } else {
                 timelineContainer.classList.remove('visible');
                 progressIndicator.classList.remove('visible');
+                floatingVirus.classList.remove('visible');
                 return; // Si no está visible el timeline, no actualizar capítulos
             }
+            
+            // ANIMAR VIRUS FLOTANTE
+            const maxScroll = document.body.scrollHeight - windowHeight;
+            const scrollProgress = (scrollTop - windowHeight) / (maxScroll - windowHeight);
+            const virusTop = 100 + (scrollProgress * (windowHeight - 200));
+            floatingVirus.style.top = virusTop + 'px';
             
             // Detectar capítulo actual basado en scroll
             const contentSections = document.querySelectorAll('.content-section');
