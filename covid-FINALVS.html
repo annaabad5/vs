@@ -938,9 +938,9 @@
         .floating-virus {
             position: fixed;
             right: 50px;
-            width: 120px;
-            height: 120px;
-            background: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Captura%20de%20pantalla%202025-06-24%20a%20la%28s%29%203.39.03%E2%80%AFp.%C2%A0m.-1ZnGQti0ZRZA4FbeT3SjbKhZpxIean.png') center center / contain no-repeat;
+            width: 100vh;
+            height: 100vh;
+            background: url('virus_transparente_real_hd.png') center center / contain no-repeat;
             z-index: 999;
             opacity: 0;
             transition: all 0.3s ease;
@@ -948,7 +948,7 @@
         }
 
         .floating-virus.visible {
-            opacity: 0.7;
+            opacity: 1;
         }
 
         @keyframes virusFloat {
@@ -1653,7 +1653,7 @@
                 floatingVirus.classList.remove('visible');
                 return; // Si no está visible el timeline, no actualizar capítulos
             }
-            
+
             // ANIMAR VIRUS FLOTANTE
             const maxScroll = document.body.scrollHeight - windowHeight;
             const scrollProgress = (scrollTop - windowHeight) / (maxScroll - windowHeight);
