@@ -10,6 +10,159 @@
             color: #000000;
             overflow-x: hidden;
         }
+        .scrolly-container {
+            position: relative;
+        }
+
+        .scrolly-background {
+            position:sticky ;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+        }
+
+        .scrolly-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .scrolly-background img.active {
+            opacity: 1;
+        }
+
+        .scrolly-foreground {
+            position: relative;
+            z-index: 2;
+        }
+
+        .scrolly-step-foto {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .fl-scrolly-step-foto{
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 2.5rem;
+            max-width: 600px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease-out;
+            text-align: center;
+        }
+
+        .fl-scrolly-step-foto.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fl-scrolly-step-foto h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .fl-scrolly-step-foto p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #34495e;
+            margin-bottom: 1rem;
+        }
+
+        .fl-scrolly-step-foto .highlight {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        /* Intro section */
+        .intro-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .intro-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .intro-content p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            font-size: 2rem;
+            opacity: 0.7;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .fl-scrolly-step-foto {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            .fl-scrolly-step-foto h2 {
+                font-size: 1.8rem;
+            }
+
+            .fl-scrolly-step-foto p {
+                font-size: 1.1rem;
+            }
+
+            .intro-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .intro-content p {
+                font-size: 1.2rem;
+            }
+        }
+
 
         /* PORTADA FIJA CON VIRUS SVG AVANZADO */
         .cover {
@@ -123,7 +276,233 @@
             position: relative;
             transition: all 0.8s ease;
         }
+/* grafico sintomas*/
+.grafico-barras-scroll {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: 'Inter', sans-serif;
+}
 
+.grafico-barras-scroll h2 {
+  text-align: left;
+  margin-bottom: 2rem;
+  font-weight: 800;
+}
+
+.barra-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+.barra-item span:first-child {
+  width: 160px;
+  font-weight: 500;
+}
+
+.barra {
+  flex: 1;
+  height: 16px;
+  background: #e4e4e4;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.relleno {
+  height: 100%;
+  width: 0%;
+  background: #1E3A8A;
+  border-radius: 10px;
+  transition: width 1.4s ease-out;
+}
+
+.porcentaje {
+  width: 50px;
+  text-align: right;
+  font-weight: 600;
+}
+.fuente-sintomas {
+  text-align: center;
+  font-size: 0.85rem;
+  margin-top: 1.5rem;
+    color:#666;
+}
+/* vacunas*/
+    :root {
+      --orange: #D87B3D;
+      --light: #f8f9fa;
+      --gray: #e9ecef;
+      --text: #212529;
+      --blue: #6BA0C6;
+    }
+
+    .cards-container {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: nowrap;
+    }
+
+    .card {
+      width: 260px;
+      height: 380px;
+      perspective: 1000px;
+      border-radius: 16px;
+      background-color: #fff;
+      transition: transform 0.4s ease, box-shadow 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .card:hover {
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+      transform: translateY(-4px);
+    }
+
+    .inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.8s ease;
+    }
+
+    .card:hover .inner {
+      transform: rotateY(180deg);
+    }
+
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      box-sizing: border-box;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .front {
+      background-color: #ffffff;
+    }
+
+    .back {
+      background: linear-gradient(145deg, #f6f8f9, #e3e6e8);
+      transform: rotateY(180deg);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .back h3 {
+      font-size: 18px;
+      color: var(--text);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .back .info-block {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .info-item {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      font-size: 13px;
+      color: #343a40;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .info-item strong {
+      font-weight: 600;
+      color: #000;
+      margin-bottom: 4px;
+    }
+
+    .logo {
+      width: 100%;
+      height: 64px;
+      object-fit: contain;
+      margin-bottom: 16px;
+    }
+
+    .efficacy-section {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .efficacy-label {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .efficacy-bar-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .efficacy-bar {
+      flex-grow: 1;
+      background: var(--gray);
+      border-radius: 12px;
+      height: 12px;
+      overflow: hidden;
+    }
+
+    .fill {
+      background: var(--orange);
+      height: 100%;
+    }
+
+    .efficacy-value {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .circle {
+      background: var(--blue);
+      border-radius: 50%;
+      margin: 20px auto 6px;
+    }
+
+    .circle[data-size="large"] {
+      width: 80px;
+      height: 80px;
+    }
+
+    .circle[data-size="medium"] {
+      width: 56px;
+      height: 56px;
+    }
+
+    .circle[data-size="small"] {
+      width: 36px;
+      height: 36px;
+    }
+
+    .production-label {
+      text-align: center;
+      font-size: 13px;
+      color: #6c757d;
+    }
         /* Estados específicos del virus */
         .virus-main.china::after {
             content: '🇨🇳';
