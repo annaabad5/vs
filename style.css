@@ -253,13 +253,13 @@
         /* VIRUS FLOTANTE INTERACTIVO - MÁS GRANDE */
         .floating-virus {
             position: fixed;
-            right: 30px;
-            width: 200px;
-            height: 200px;
+            right: 50px;
+            width: 120px;
+            height: 120px;
             z-index: 999;
             opacity: 0;
-            transition: all 0.8s ease;
-            animation: virusFloat 4s ease-in-out infinite;
+            transition: all 0.3s ease;
+            animation: virusFloat 3s ease-in-out infinite;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -313,7 +313,7 @@
 .relleno {
   height: 100%;
   width: 0%;
-  background: #1E3A8A;
+  background: #D87B3D;
   border-radius: 10px;
   transition: width 1.4s ease-out;
 }
@@ -331,177 +331,169 @@
 }
 /* vacunas*/
     :root {
-      --orange: #D87B3D;
-      --light: #f8f9fa;
-      --gray: #e9ecef;
-      --text: #212529;
-      --blue: #6BA0C6;
+    --celeste: #437BAB;
     }
-
-    .cards-container {
-      display: flex;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 450px);      
+      gap: 30px;
       justify-content: center;
-      gap: 32px;
-      flex-wrap: nowrap;
     }
 
-    .card {
-      width: 260px;
+    .flip-card {
+      background-color: transparent;
+      width: 100%;
       height: 380px;
       perspective: 1000px;
-      border-radius: 16px;
-      background-color: #fff;
-      transition: transform 0.4s ease, box-shadow 0.3s ease;
-      flex-shrink: 0;
     }
 
-    .card:hover {
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-      transform: translateY(-4px);
-    }
-
-    .inner {
+    .flip-card-inner {
+      position: relative;
       width: 100%;
       height: 100%;
-      position: relative;
+      text-align: center;
+      transition: transform 0.8s;
       transform-style: preserve-3d;
-      transition: transform 0.8s ease;
     }
 
-    .card:hover .inner {
+    .flip-card:hover .flip-card-inner {
       transform: rotateY(180deg);
     }
 
-    .front, .back {
+    .flip-card-front, .flip-card-back {
       position: absolute;
       width: 100%;
       height: 100%;
       backface-visibility: hidden;
       border-radius: 16px;
-      box-sizing: border-box;
-      padding: 24px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .front {
-      background-color: #ffffff;
-    }
-
-    .back {
-      background: linear-gradient(145deg, #f6f8f9, #e3e6e8);
-      transform: rotateY(180deg);
-      padding: 24px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      text-align: center;
-    }
-
-    .back h3 {
-      font-size: 18px;
-      color: var(--text);
-      margin-bottom: 16px;
-      font-weight: 600;
-    }
-
-    .back .info-block {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      width: 100%;
-    }
-
-    .info-item {
-      background: #ffffff;
-      border-radius: 10px;
-      padding: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-      font-size: 13px;
-      color: #343a40;
-      display: flex;
+      align-items: center;
       flex-direction: column;
-      align-items: flex-start;
     }
 
-    .info-item strong {
-      font-weight: 600;
-      color: #000;
-      margin-bottom: 4px;
+    .flip-card-front {
+      background-color: #ffffff;
+      border: 0.5px solid #c7e6ff;
+      padding: 20px;
     }
 
-    .logo {
-      width: 100%;
-      height: 64px;
-      object-fit: contain;
-      margin-bottom: 16px;
+    .flip-card-front img {
+      max-width: 65%;
+      max-height: 65%;
     }
 
-    .efficacy-section {
-      display: flex;
-      flex-direction: column;
+    .flip-card-back {
+      background-color: #ffffff;
+      color: #000000;
+      transform: rotateY(180deg);
+      padding: 16px;
+    }
+
+    .vaccine-name {
+      font-size: 1.2em;
+      font-weight: 700;
+      margin-bottom: 10px;
     }
 
     .efficacy-label {
+      font-size: 0.75em;
       font-weight: 600;
-      font-size: 15px;
-      color: var(--text);
+      margin-top: 6px;
+      letter-spacing: 1px;
+    }
+
+ 
+    .circular-bar {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    }
+
+    .circular-bar svg {
+    transform: rotate(-90deg);
+    }
+
+    .circle-bg {
+    fill: none;
+    stroke: #e6eaf0;
+    stroke-width: 10;
+    }
+
+    .circle-progress {
+    fill: none;
+    stroke: #437BAB;
+    stroke-width: 10;
+    stroke-linecap: round;
+    }
+
+    .circle-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #437BAB;
+    }
+    .info-block {
+      width: 100%;
+      text-align: center;
       margin-bottom: 6px;
     }
-
-    .efficacy-bar-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .doses-section {
+    width: 100%;
+    margin-top: 16px;
     }
 
-    .efficacy-bar {
-      flex-grow: 1;
-      background: var(--gray);
-      border-radius: 12px;
-      height: 12px;
-      overflow: hidden;
+    .doses-label {
+    font-size: 0.85em;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
     }
 
-    .fill {
-      background: var(--orange);
-      height: 100%;
+    .doses-bar-container {
+    width: 100%;
+    height: 12px;
+    background-color: #e9ecef;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
     }
 
-    .efficacy-value {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text);
-      white-space: nowrap;
+    .doses-bar {
+    height: 100%;
+    background-color: #6BA0C6;
+    transition: width 0.6s ease;
+    border-radius: 6px 0 0 6px;
     }
 
-    .circle {
-      background: var(--blue);
-      border-radius: 50%;
-      margin: 20px auto 6px;
+    .doses-value {
+    font-size: 0.9em;
+    font-weight: 700;
+    margin-top: 6px;
+    color: #000;
     }
 
-    .circle[data-size="large"] {
-      width: 80px;
-      height: 80px;
+    .info-label {
+      font-size: 0.75em;
+      font-weight: 600;
+      color: #000000;
+      margin-bottom: 3px;
     }
 
-    .circle[data-size="medium"] {
-      width: 56px;
-      height: 56px;
+    .info-value {
+      font-size: 0.9em;
+      font-weight: 700;
     }
 
-    .circle[data-size="small"] {
-      width: 36px;
-      height: 36px;
-    }
-
-    .production-label {
-      text-align: center;
-      font-size: 13px;
-      color: #6c757d;
+    .approval-date {
+      font-size: 0.75em;
+      color: #000000;
+      margin-top: 8px;
     }
         /* Estados específicos del virus */
         .virus-main.china::after {
@@ -1067,81 +1059,105 @@
         transition: opacity 0.5s ease;
     }
 
+
+    .scrolly-background {
+            position:sticky ;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+        }
+
+        .scrolly-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .scrolly-background img.active {
+            opacity: 1;
+        }
+
+        .scrolly-foreground {
+            position: relative;
+            z-index: 2;
+        }
+
+        .scrolly-step-foto {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .fl-scrolly-step-foto{
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 2.5rem;
+            max-width: 600px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease-out;
+            text-align: center;
+        }
+
+        .fl-scrolly-step-foto.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     /* ANTES Y DESPUES */
-    .contenedor-general {
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
-  padding: 40px;
-}
+        .comparador {
+            position: sticky;
+            width: 100%;
+            max-width: 800px;
+            height: 600px;
+            overflow: hidden;
+            cursor: ew-resize;
+            border-radius: 20px;
+            margin: 40px auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
 
-.comparador {
-  position: relative;
-  width: 600px;
-  height: 400px;
-  overflow: hidden;
-  cursor: ew-resize;
-}
+        .imagen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
 
-.imagen {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
+        .imagen-despues {
+            clip-path: inset(0 50% 0 0);
+            z-index: 2;
+        }
 
-.imagen-despues {
-  clip-path: inset(0 50% 0 0); 
-  z-index: 2;
-}
+        .divisor {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(135deg, #6BA0C6, #437BAB);
+            z-index: 3;
+            left: 50%;
+            border-radius: 2px;
+        }
 
-.divisor {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background-color: #1e3a8a;
-  z-index: 3;
-  left: 50%;
-}
-
-.texto {
-  color: #1e3a8a;
-  font-size: 16px;
-}
-.descripcion-antes-desp {
-  background-color: #e0f4ff;
-  padding: 12px 16px;
-  margin-top: 0%;
-  margin-bottom: 50px;
-  border-radius: 6px;
-  font-size: 14px;
-  color: #1e3a8a;
-  width: 600px;
-  box-sizing: border-box;
-}
-
-
-.descripcion-antes-desp strong {
-  display: block;
-  margin-bottom: 4px;
-  font-weight: bold;
-}
-
-.descripcion-antes-desp span {
-  display: block;
-  font-size: 13px;
-  color: #999999;
-}
-
-.layout-scroll {
-  display: flex;
-  gap: 60px;
-  align-items: flex-start;
-  padding: 40px;
-}
+        .descripcion-antes-desp{
+            text-align: center; 
+            color: #64748b; 
+            font-size: 0.9rem; 
+            
+        }
 
 .caja-lateral-fija {
   position: sticky;
@@ -1309,4 +1325,310 @@
             position: absolute;
             left: 0;
             font-size: 0.8rem;
+        }
+
+/* mapa esparcion */
+.map-container {
+            position: relative;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .world-map-bg {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-height: 800px;
+            object-fit: cover;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .flow-line {
+            stroke-width: 0;
+            opacity: 0;
+            transition: all 2s ease;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            pointer-events: none;
+        }
+
+        .flow-line.active {
+            opacity: 0.8;
+            stroke-width: 3;
+            stroke-dashoffset: 0;
+        }
+
+        .city-dot {
+            opacity: 0;
+            transition: all 0.8s ease;
+            cursor: pointer;
+            filter: drop-shadow(0 4px 8px rgba(249, 115, 22, 0.4));
+            pointer-events: all;
+        }
+
+        .city-dot.active {
+            opacity: 1;
+            animation: appear 0.8s ease-out;
+        }
+
+        .city-dot.origin {
+            opacity: 1; /* Wuhan siempre visible y quieto */
+        }
+
+        .city-label {
+            font-size: 12px;
+            font-weight: 700;
+            fill: #ea580c;
+            opacity: 0;
+            transition: all 0.5s ease;
+            pointer-events: none;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .city-label.active {
+            opacity: 1;
+        }
+
+        .timeline-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 30px 0;
+            padding: 25px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .play-button {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(249, 115, 22, 0.5);
+        }
+
+        .timeline-slider {
+            flex: 1;
+            max-width: 500px;
+            height: 10px;
+            background: linear-gradient(to right, #fed7aa 0%, #fdba74 100%);
+            border-radius: 5px;
+            outline: none;
+            cursor: pointer;
+            -webkit-appearance: none;
+        }
+
+        .timeline-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        .timeline-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 6px 16px rgba(249, 115, 22, 0.6);
+        }
+
+        .date-display {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ea580c;
+            min-width: 140px;
+            text-align: center;
+            background: linear-gradient(135deg, #fed7aa, #fdba74);
+            padding: 12px 20px;
+            border-radius: 12px;
+        }
+
+        .info-panel {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            max-width: 350px;
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.6s ease;
+            border: 1px solid rgba(249, 115, 22, 0.2);
+        }
+
+        .info-panel.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .info-panel h3 {
+            color: #ea580c;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .info-panel p {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .stats-panel {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            min-width: 250px;
+            border: 1px solid rgba(249, 115, 22, 0.2);
+        }
+
+        .stats-panel h4 {
+            color: #ea580c;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .stat-number {
+            font-weight: 700;
+            color: #f97316;
+        }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #f97316, #ea580c);
+            transition: width 0.3s ease;
+            border-radius: 0 0 20px 20px;
+        }
+
+        @keyframes appear {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.3);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 5px;
+            margin-top: 5px;
+        }
+
+        .legend-item {
+            background: white;
+            padding: 5px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+            border: 1px solid rgba(249, 115, 22, 0.1);
+        }
+
+        .legend-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .legend-item .country-name {
+            font-weight: 700;
+            color: #ea580c;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .legend-item .date {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 5px;
+        }
+
+        .legend-item .cases {
+            font-size: 0.85rem;
+            color: #f97316;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-controls {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+            
+            .info-panel, .stats-panel {
+                position: relative;
+                top: auto;
+                right: auto;
+                left: auto;
+                bottom: auto;
+                margin: 20px 0;
+                max-width: none;
+            }
+
+            .legend {
+                grid-template-columns: 1fr;
+            }
+
+            .play-button {
+                width: 60px;
+                height: 60px;
+                font-size: 20px;
+            }
         }

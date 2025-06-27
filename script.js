@@ -211,3 +211,364 @@ let currentChapter = 0;
             createVirusPlague();
             updateTimeline();
         });
+
+        //Slider Antes y Despues
+        function activarComparador(comparadorId, imagenId, divisorId) {
+            const comparador = document.getElementById(comparadorId);
+            const imagen = document.getElementById(imagenId);
+            const divisor = document.getElementById(divisorId);
+
+            comparador.addEventListener('mousemove', (e) => {
+                const rect = comparador.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const porcentaje = (x / rect.width) * 100;
+
+                imagen.style.clipPath = `inset(0 ${100 - porcentaje}% 0 0)`;
+                divisor.style.left = `${porcentaje}%`;
+            });
+
+            // Inicial
+            const inicial = comparador.getBoundingClientRect().width / 2;
+            imagen.style.clipPath = `inset(0 50% 0 0)`;
+            divisor.style.left = `50%`;
+            }
+
+            // Activar todos los comparadores
+            window.addEventListener("load", () => {
+            activarComparador("comparador-paris", "imagen-paris", "divisor-paris");
+            activarComparador("comparador-la", "imagen-la", "divisor-la");
+            activarComparador("comparador-granvia", "imagen-granvia", "divisor-granvia");
+            activarComparador("comparador-ny", "imagen-ny", "divisor-ny");
+            activarComparador("comparador-coliseo", "imagen-coliseo", "divisor-coliseo");
+            });
+
+            // mapa esparcion
+            const covidData = [
+            { 
+                day: 0, 
+                date: "31 Dic 2019", 
+                country: "China", 
+                city: "Wuhan", 
+                id: "wuhan", 
+                cases: 27, 
+                description: "Primeros casos reportados de neumonía desconocida en el mercado de mariscos de Huanan. El epicentro de la pandemia global.",
+                flag: "🇨🇳"
+            },
+            { 
+                day: 13, 
+                date: "13 Ene 2020", 
+                country: "Tailandia", 
+                city: "Bangkok", 
+                id: "thailand", 
+                cases: 1, 
+                description: "Primera propagación internacional confirmada. Mujer china de 61 años que viajó desde Wuhan.",
+                flag: "🇹🇭"
+            },
+            { 
+                day: 16, 
+                date: "16 Ene 2020", 
+                country: "Japón", 
+                city: "Tokio", 
+                id: "japan", 
+                cases: 1, 
+                description: "Hombre japonés de 30 años que había viajado a Wuhan por trabajo.",
+                flag: "🇯🇵"
+            },
+            { 
+                day: 20, 
+                date: "20 Ene 2020", 
+                country: "Corea del Sur", 
+                city: "Seúl", 
+                id: "korea", 
+                cases: 1, 
+                description: "Mujer china de 35 años que llegó desde Wuhan vía vuelo comercial.",
+                flag: "🇰🇷"
+            },
+            { 
+                day: 21, 
+                date: "21 Ene 2020", 
+                country: "Estados Unidos", 
+                city: "Seattle", 
+                id: "usa", 
+                cases: 1, 
+                description: "Hombre de 35 años que regresó de Wuhan a Washington State.",
+                flag: "🇺🇸"
+            },
+            { 
+                day: 24, 
+                date: "24 Ene 2020", 
+                country: "Francia", 
+                city: "París", 
+                id: "france", 
+                cases: 2, 
+                description: "Primeros casos confirmados en Europa. Dos pacientes en París y Burdeos.",
+                flag: "🇫🇷"
+            },
+            { 
+                day: 25, 
+                date: "25 Ene 2020", 
+                country: "Australia", 
+                city: "Melbourne", 
+                id: "australia", 
+                cases: 1, 
+                description: "Hombre chino que llegó desde Guangzhou en vuelo internacional.",
+                flag: "🇦🇺"
+            },
+            { 
+                day: 27, 
+                date: "27 Ene 2020", 
+                country: "Canadá", 
+                city: "Toronto", 
+                id: "canada", 
+                cases: 1, 
+                description: "Hombre de 50 años que regresó de Wuhan tras visita familiar.",
+                flag: "🇨🇦"
+            },
+            { 
+                day: 27, 
+                date: "27 Ene 2020", 
+                country: "Alemania", 
+                city: "Múnich", 
+                id: "germany", 
+                cases: 1, 
+                description: "Empleado de empresa alemana con contacto con colega china infectada.",
+                flag: "🇩🇪"
+            },
+            { 
+                day: 30, 
+                date: "30 Ene 2020", 
+                country: "India", 
+                city: "Kerala", 
+                id: "india", 
+                cases: 1, 
+                description: "Estudiante que regresó de la Universidad de Wuhan.",
+                flag: "🇮🇳"
+            },
+            { 
+                day: 31, 
+                date: "31 Ene 2020", 
+                country: "Italia", 
+                city: "Roma", 
+                id: "italy", 
+                cases: 2, 
+                description: "Pareja de turistas chinos que visitaban Roma.",
+                flag: "🇮🇹"
+            },
+            { 
+                day: 31, 
+                date: "31 Ene 2020", 
+                country: "Reino Unido", 
+                city: "Londres", 
+                id: "uk", 
+                cases: 2, 
+                description: "Dos miembros de una familia china en hotel de Yorkshire.",
+                flag: "🇬🇧"
+            },
+            { 
+                day: 31, 
+                date: "31 Ene 2020", 
+                country: "España", 
+                city: "Madrid", 
+                id: "spain", 
+                cases: 1, 
+                description: "Turista alemán en La Gomera, Islas Canarias.",
+                flag: "🇪🇸"
+            },
+            { 
+                day: 57, 
+                date: "26 Feb 2020", 
+                country: "Brasil", 
+                city: "São Paulo", 
+                id: "brazil", 
+                cases: 1, 
+                description: "Hombre de 61 años que viajó a Italia (región de Lombardía).",
+                flag: "🇧🇷"
+            },
+            { 
+                day: 63, 
+                date: "3 Mar 2020", 
+                country: "Argentina", 
+                city: "Buenos Aires", 
+                id: "argentina", 
+                cases: 1, 
+                description: "Hombre de 43 años que regresó de Italia. Primer caso confirmado en Argentina.",
+                flag: "🇦🇷"
+            }
+        ];
+
+        let currentDay = 0;
+        let isPlaying = false;
+        let playInterval;
+        let totalCases = 27;
+        let countriesAffected = 1;
+        let activeConnections = 0;
+
+        const playButton = document.getElementById('playButton');
+        const timelineSlider = document.getElementById('timelineSlider');
+        const dateDisplay = document.getElementById('dateDisplay');
+        const infoPanel = document.getElementById('infoPanel');
+        const infoTitle = document.getElementById('infoTitle');
+        const infoText = document.getElementById('infoText');
+        const countriesCount = document.getElementById('countriesCount');
+        const daysCount = document.getElementById('daysCount');
+        const casesCount = document.getElementById('casesCount');
+        const connectionsCount = document.getElementById('connectionsCount');
+        const progressBar = document.getElementById('progressBar');
+        const legend = document.getElementById('legend');
+
+        // Inicializar
+        function init() {
+            updateVisualization(0);
+            createLegend();
+            infoPanel.classList.add('visible');
+        }
+
+        // Crear leyenda
+        function createLegend() {
+            covidData.forEach((item, index) => {
+                const legendItem = document.createElement('div');
+                legendItem.className = 'legend-item';
+                legendItem.innerHTML = `
+                    <div class="country-name">${item.flag} ${item.country}</div>
+                    <div class="date">${item.date}</div>
+                    <div class="cases">${item.cases} caso${item.cases > 1 ? 's' : ''}</div>
+                `;
+                legend.appendChild(legendItem);
+                
+                // Animar aparición con delay
+                setTimeout(() => {
+                    legendItem.classList.add('visible');
+                }, index * 150);
+            });
+        }
+
+        // Actualizar visualización
+        function updateVisualization(day) {
+            currentDay = day;
+            
+            // Encontrar eventos hasta el día actual
+            const activeEvents = covidData.filter(item => item.day <= day);
+            const latestEvent = activeEvents[activeEvents.length - 1];
+            
+            if (latestEvent) {
+                dateDisplay.textContent = latestEvent.date;
+                infoTitle.textContent = `${latestEvent.flag} ${latestEvent.city}, ${latestEvent.country}`;
+                infoText.textContent = latestEvent.description;
+                
+                // Actualizar estadísticas
+                daysCount.textContent = day;
+                countriesCount.textContent = activeEvents.length;
+                totalCases = activeEvents.reduce((sum, event) => sum + event.cases, 0);
+                casesCount.textContent = totalCases.toLocaleString();
+                activeConnections = activeEvents.length - 1; // -1 porque Wuhan es el origen
+                connectionsCount.textContent = activeConnections;
+            }
+
+            // Actualizar barra de progreso
+            const progress = (day / 67) * 100;
+            progressBar.style.width = `${progress}%`;
+
+            // Activar/desactivar elementos según el día
+            covidData.forEach(event => {
+                const dot = document.getElementById(event.id);
+                const label = document.getElementById(`${event.id}-label`);
+                const flow = document.getElementById(`flow-${event.id}`);
+                
+                if (event.day <= day && event.id !== 'wuhan') {
+                    // Activar línea primero
+                    if (flow && !flow.classList.contains('active')) {
+                        flow.classList.add('active');
+                    }
+                    
+                    // Luego activar punto con delay
+                    if (dot && !dot.classList.contains('active')) {
+                        setTimeout(() => {
+                            dot.classList.add('active');
+                        }, 1000); // Delay para que aparezca después de la línea
+                    }
+                    
+                    // Finalmente activar etiqueta
+                    if (label && !label.classList.contains('active')) {
+                        setTimeout(() => {
+                            label.classList.add('active');
+                        }, 1500);
+                    }
+                } else if (event.id !== 'wuhan') {
+                    // Desactivar elementos futuros
+                    if (dot) dot.classList.remove('active');
+                    if (label) label.classList.remove('active');
+                    if (flow) flow.classList.remove('active');
+                }
+            });
+
+            timelineSlider.value = day;
+        }
+
+        // Reproducir automáticamente
+        function play() {
+            if (isPlaying) {
+                clearInterval(playInterval);
+                playButton.textContent = '▶';
+                isPlaying = false;
+            } else {
+                playButton.textContent = '⏸';
+                isPlaying = true;
+                
+                playInterval = setInterval(() => {
+                    if (currentDay >= 67) {
+                        clearInterval(playInterval);
+                        playButton.textContent = '🔄';
+                        isPlaying = false;
+                        return;
+                    }
+                    
+                    currentDay += 1;
+                    updateVisualization(currentDay);
+                }, 500); // Velocidad más lenta para ver mejor las transiciones
+            }
+        }
+
+        // Event listeners
+        playButton.addEventListener('click', () => {
+            if (playButton.textContent === '🔄') {
+                // Reiniciar
+                currentDay = 0;
+                updateVisualization(0);
+                playButton.textContent = '▶';
+            } else {
+                play();
+            }
+        });
+
+        timelineSlider.addEventListener('input', (e) => {
+            if (isPlaying) {
+                clearInterval(playInterval);
+                playButton.textContent = '▶';
+                isPlaying = false;
+            }
+            updateVisualization(parseInt(e.target.value));
+        });
+
+        // Hover en puntos para mostrar información
+        covidData.forEach(event => {
+            const dot = document.getElementById(event.id);
+            if (dot) {
+                dot.addEventListener('mouseenter', () => {
+                    infoTitle.textContent = `${event.flag} ${event.city}, ${event.country}`;
+                    infoText.textContent = `${event.date} - ${event.description}`;
+                });
+                
+                dot.addEventListener('mouseleave', () => {
+                    const currentEvent = covidData.find(item => item.day <= currentDay);
+                    if (currentEvent) {
+                        infoTitle.textContent = `${currentEvent.flag} ${currentEvent.city}, ${currentEvent.country}`;
+                        infoText.textContent = currentEvent.description;
+                    }
+                });
+            }
+        });
+
+        // Inicializar cuando cargue la página
+        document.addEventListener('DOMContentLoaded', init);
+
+            

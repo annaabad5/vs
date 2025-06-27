@@ -217,41 +217,41 @@
         <div class="scrolly-foreground">
             <div class="scrolly-step-foto" data-step="0">
                 <div class="fl-scrolly-step-foto">
-                    <h2>El inicio de una crisis global</h2>
-                    <p>En enero de 2020, equipos de respuesta médica comenzaron a movilizarse en Wuhan, China, ante la aparición de un nuevo virus.</p>
-                    <p>Nadie imaginaba que esto cambiaría el mundo para siempre.</p>
+                    <h2>texto</h2>
+                    <p>texto textotextotextotextotextotextotextotextotextotexto </p>
+                    <p>textotextotextotextotextotextotextotextotextotextotextotextotexto</p>
                 </div>
             </div>
 
             <div class="scrolly-step-foto" data-step="1">
                 <div class="fl-scrolly-step-foto">
-                    <h2>Una nueva realidad para todos</h2>
-                    <p>Las mascarillas se convirtieron en parte de nuestra vida diaria. <span class="highlight">Niños, adultos, ancianos</span> - todos tuvimos que adaptarnos.</p>
-                    <p>La inocencia en los ojos de los más pequeños contrastaba con la gravedad de la situación.</p>
+                    <h2>texto</h2>
+                    <p>texto textotextotextotextotextotextotextotextotextotexto </p>
+                    <p>textotextotextotextotextotextotextotextotextotextotextotextotexto</p>
                 </div>
             </div>
 
             <div class="scrolly-step-foto" data-step="2">
                 <div class="fl-scrolly-step-foto">
-                    <h2>Los símbolos de protección</h2>
-                    <p>Diferentes tipos de mascarillas colgaban en cada hogar, oficina y hospital.</p>
-                    <p>Estos simples objetos se convirtieron en <span class="highlight">símbolos de esperanza y supervivencia</span>.</p>
+                    <h2>texto</h2>
+                    <p>texto textotextotextotextotextotextotextotextotextotexto </p>
+                    <p>textotextotextotextotextotextotextotextotextotextotextotextotexto</p>
                 </div>
             </div>
 
             <div class="scrolly-step-foto" data-step="3">
                 <div class="fl-scrolly-step-foto">
-                    <h2>Los héroes de primera línea</h2>
-                    <p>Los trabajadores de la salud se convirtieron en nuestros héroes, enfrentando el virus día tras día.</p>
-                    <p>Con equipos de protección completos, <span class="highlight">arriesgaron sus vidas para salvar las nuestras</span>.</p>
+                    <h2>texto</h2>
+                    <p>texto textotextotextotextotextotextotextotextotextotexto </p>
+                    <p>textotextotextotextotextotextotextotextotextotextotextotextotexto</p>
                 </div>
             </div>
 
             <div class="scrolly-step-foto" data-step="4">
                 <div class="fl-scrolly-step-foto">
-                    <h2>La búsqueda de respuestas</h2>
-                    <p>Las pruebas de COVID-19 se volvieron rutinarias. Cada hisopo representaba la esperanza de detectar y controlar la propagación.</p>
-                    <p>La ciencia se convirtió en nuestra <span class="highlight">arma más poderosa</span> contra lo desconocido.</p>
+                    <h2>texto</h2>
+                    <p>texto textotextotextotextotextotextotextotextotextotexto </p>
+                    <p>textotextotextotextotextotextotextotextotextotextotextotextotexto</p>
                 </div>
             </div>
         </div>
@@ -390,6 +390,147 @@
                 <p><strong>25 enero 2020:</strong> Primer caso en Europa (Francia)</p>
                 <p><strong>3 marzo 2020:</strong> Primer caso en Argentina</p>
                 <p><strong>11 marzo 2020:</strong> OMS declara pandemia</p>
+                <div class="map-container">
+                    <!-- Imagen del mapa limpio como fondo -->
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Captura%20de%20pantalla%202025-06-27%20a%20la%28s%29%202.10.51%E2%80%AFa.%C2%A0m.-O9wQUqsER3Ktn753cheoysySnwOhLA.png" alt="Mapa Mundial" class="world-map-bg">
+                    
+                    <!-- Overlay SVG para puntos y líneas -->
+                    <svg class="map-overlay" viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid meet">
+                        <defs>
+                            <!-- Gradiente naranja para las líneas -->
+                            <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#f97316" stop-opacity="1"/>
+                                <stop offset="100%" stop-color="#ea580c" stop-opacity="0.4"/>
+                            </linearGradient>
+                        </defs>
+
+                        <!-- COORDENADAS ANALIZADAS BASADAS EN EL MAPA LIMPIO -->
+                        
+                        <!-- Wuhan, China (EPICENTRO) - Centro-este de Asia -->
+                        <circle cx="1180" cy="280" r="10" fill="#dc2626" class="city-dot origin" id="wuhan"/>
+                        <text x="1195" y="275" class="city-label active" id="wuhan-label">Wuhan</text>
+                        
+                        <!-- Bangkok, Tailandia - Sudeste asiático -->
+                        <circle cx="1120" cy="350" r="7" fill="#f97316" class="city-dot" id="thailand"/>
+                        <text x="1130" y="345" class="city-label" id="thailand-label">Bangkok</text>
+                        
+                        <!-- Tokio, Japón - Islas al este de Asia -->
+                        <circle cx="1300" cy="260" r="7" fill="#f97316" class="city-dot" id="japan"/>
+                        <text x="1310" y="255" class="city-label" id="japan-label">Tokio</text>
+                        
+                        <!-- Seúl, Corea del Sur - Península coreana -->
+                        <circle cx="1230" cy="250" r="7" fill="#f97316" class="city-dot" id="korea"/>
+                        <text x="1240" y="245" class="city-label" id="korea-label">Seúl</text>
+                        
+                        <!-- Seattle, Estados Unidos - Noroeste de América del Norte -->
+                        <circle cx="160" cy="180" r="7" fill="#f97316" class="city-dot" id="usa"/>
+                        <text x="170" y="175" class="city-label" id="usa-label">Seattle</text>
+                        
+                        <!-- París, Francia - Europa occidental -->
+                        <circle cx="500" cy="200" r="7" fill="#f97316" class="city-dot" id="france"/>
+                        <text x="510" y="195" class="city-label" id="france-label">París</text>
+                        
+                        <!-- Melbourne, Australia - Sureste de Australia -->
+                        <circle cx="1320" cy="620" r="7" fill="#f97316" class="city-dot" id="australia"/>
+                        <text x="1330" y="615" class="city-label" id="australia-label">Melbourne</text>
+                        
+                        <!-- Toronto, Canadá - Este de Canadá -->
+                        <circle cx="280" cy="150" r="7" fill="#f97316" class="city-dot" id="canada"/>
+                        <text x="290" y="145" class="city-label" id="canada-label">Toronto</text>
+                        
+                        <!-- Múnich, Alemania - Centro de Europa -->
+                        <circle cx="540" cy="190" r="7" fill="#f97316" class="city-dot" id="germany"/>
+                        <text x="550" y="185" class="city-label" id="germany-label">Múnich</text>
+                        
+                        <!-- Kerala, India - Sur de India -->
+                        <circle cx="1000" cy="380" r="7" fill="#f97316" class="city-dot" id="india"/>
+                        <text x="1010" y="375" class="city-label" id="india-label">Kerala</text>
+                        
+                        <!-- Roma, Italia - Centro de Italia -->
+                        <circle cx="540" cy="240" r="7" fill="#f97316" class="city-dot" id="italy"/>
+                        <text x="550" y="235" class="city-label" id="italy-label">Roma</text>
+                        
+                        <!-- Londres, Reino Unido - Islas británicas -->
+                        <circle cx="460" cy="170" r="7" fill="#f97316" class="city-dot" id="uk"/>
+                        <text x="470" y="165" class="city-label" id="uk-label">Londres</text>
+                        
+                        <!-- Madrid, España - Centro-oeste de España -->
+                        <circle cx="440" cy="240" r="7" fill="#f97316" class="city-dot" id="spain"/>
+                        <text x="450" y="235" class="city-label" id="spain-label">Madrid</text>
+                        
+                        <!-- São Paulo, Brasil - Sureste de Brasil -->
+                        <circle cx="360" cy="500" r="7" fill="#f97316" class="city-dot" id="brazil"/>
+                        <text x="370" y="495" class="city-label" id="brazil-label">São Paulo</text>
+                        
+                        <!-- Buenos Aires, Argentina - Este de Argentina -->
+                        <circle cx="320" cy="600" r="8" fill="#f97316" class="city-dot" id="argentina"/>
+                        <text x="330" y="595" class="city-label" id="argentina-label">Buenos Aires</text>
+
+                        <!-- LÍNEAS DE FLUJO DESDE WUHAN (aparecen progresivamente) -->
+                        
+                        <!-- A Asia -->
+                        <path d="M 1180 280 Q 1150 315 1120 350" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-thailand"/>
+                        <path d="M 1180 280 Q 1240 270 1300 260" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-japan"/>
+                        <path d="M 1180 280 Q 1205 265 1230 250" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-korea"/>
+                        <path d="M 1180 280 Q 1090 330 1000 380" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-india"/>
+                        
+                        <!-- A América del Norte -->
+                        <path d="M 1180 280 Q 670 150 160 180" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-usa"/>
+                        <path d="M 1180 280 Q 730 130 280 150" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-canada"/>
+                        
+                        <!-- A Europa -->
+                        <path d="M 1180 280 Q 840 240 500 200" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-france"/>
+                        <path d="M 1180 280 Q 860 235 540 190" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-germany"/>
+                        <path d="M 1180 280 Q 860 260 540 240" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-italy"/>
+                        <path d="M 1180 280 Q 820 225 460 170" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-uk"/>
+                        <path d="M 1180 280 Q 810 260 440 240" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-spain"/>
+                        
+                        <!-- A Oceanía -->
+                        <path d="M 1180 280 Q 1250 450 1320 620" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-australia"/>
+                        
+                        <!-- Propagación secundaria (desde Italia a Brasil, luego a Argentina) -->
+                        <path d="M 540 240 Q 450 370 360 500" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-brazil"/>
+                        <path d="M 360 500 Q 340 550 320 600" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-argentina"/>
+                    </svg>
+
+                    <div class="info-panel" id="infoPanel">
+                        <h3 id="infoTitle">🇨🇳 Wuhan, China</h3>
+                        <p id="infoText">31 de diciembre de 2019: Se reportan los primeros casos de neumonía de causa desconocida en el mercado de mariscos de Huanan. El epicentro de lo que se convertiría en una pandemia global.</p>
+                    </div>
+
+                    <div class="stats-panel">
+                        <h4>📊 Estadísticas en Tiempo Real</h4>
+                        <div class="stat-item">
+                            <span>🌍 Países afectados:</span>
+                            <span class="stat-number" id="countriesCount">1</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>📅 Días transcurridos:</span>
+                            <span class="stat-number" id="daysCount">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>🦠 Casos confirmados:</span>
+                            <span class="stat-number" id="casesCount">27</span>
+                        </div>
+                        <div class="stat-item">
+                            <span>🔗 Conexiones activas:</span>
+                            <span class="stat-number" id="connectionsCount">0</span>
+                        </div>
+                    </div>
+
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+
+                <div class="timeline-controls">
+                    <button class="play-button" id="playButton">▶</button>
+                    <input type="range" class="timeline-slider" id="timelineSlider" min="0" max="67" value="0">
+                    <div class="date-display" id="dateDisplay">31 Dic 2019</div>
+                </div>
+
+                <div class="legend" id="legend">
+                    <!-- Se llenará dinámicamente -->
+                </div>
+            </div>
             </div>
             <div class="espaciado"></div> 
             <div class="scroll-container">
@@ -412,14 +553,12 @@
                 <p><strong>Antes:</strong> Calles llenas, oficinas ocupadas, restaurantes con clientes, escuelas con estudiantes, aeropuertos congestionados.</p>
                 
                 <p><strong>Durante:</strong> Ciudades fantasma, trabajo remoto, delivery de comida, educación virtual, vuelos cancelados. El 52% de la población mundial (4 mil millones de personas) estuvo bajo algún tipo de confinamiento.</p>
-
                 <!-- ANTES Y DESPUES -->
                 <section class="flourish-texts-section">
                     <div class="layout-scroll">
                         <div class="layout-dos-columnas">
-
                         <!-- Columna de comparadores -->
-                        <div class="columna-fotos">
+                        
 
                             <!-- Ejemplo 1: París -->
                             <div class="contenedor-comparador">
@@ -451,7 +590,7 @@
                             <div class="contenedor-comparador">
                             <div class="comparador" id="comparador-granvia">
                                 <img src="granvia-antes.jpg" alt="Antes" class="imagen imagen-antes">
-                                <img src="granvia-desp.jpg" alt="Después" class="imagen imagen-despues" id="imagen-granvia">
+                                <img src="granvia-despues.jpg" alt="Después" class="imagen imagen-despues" id="imagen-granvia">
                                 <div class="divisor" id="divisor-granvia"></div>
                             </div>
                             <div class="descripcion-antes-desp">
@@ -503,7 +642,6 @@
                         </div>
 
                         </div> <!-- cierre layout-dos-columnas -->
-                    </div> <!-- cierre layout-scroll -->
 
                 <div class="flourish-embed" data-src="visualisation/23937568">
                 <script src="https://public.flourish.studio/resources/embed.js"></script>
@@ -521,136 +659,153 @@
                 <p>Las cuarentenas causaron la mayor recesión económica desde la Gran Depresión de 1929. El PIB mundial se contrajo un 3.1% en 2020, y más de 255 millones de empleos se perdieron.</p>
             </div>
 
-            <!-- Capítulo 5: Vacunas -->
-            <div id="chapter-5" class="content-section">
-                <h2>La Carrera por las Vacunas</h2>
-                
-                <h3>Desarrollo Récord</h3>
-                <p>El 11 de enero de 2020, China publicó la secuencia genética del SARS-CoV-2. En tiempo récord, múltiples vacunas fueron desarrolladas, probadas y aprobadas en menos de un año, cuando normalmente este proceso toma 10-15 años.</p>
 
-                <h3>Principales Vacunas</h3>
-                <ul>
-            <div class="cards-container">
-            <!-- Pfizer -->
-            <div class="card">
-            <div class="inner">
-                <div class="front">
-                <img src="pfizer2.png" class="logo" alt="Pfizer logo">
-                <div class="efficacy-section">
-                    <div class="efficacy-label">Eficacia</div>
-                    <div class="efficacy-bar-wrapper">
-                    <div class="efficacy-bar"><div class="fill" style="width: 95%"></div></div>
-                    <div class="efficacy-value">95%</div>
+        <!-- Capítulo 5: Vacunas -->
+        <div id="chapter-5" class="content-section">
+            <h2>La Carrera por las Vacunas</h2>
+            
+            <h3>Desarrollo Récord</h3>
+            <p>El 11 de enero de 2020, China publicó la secuencia genética del SARS-CoV-2. En tiempo récord, múltiples vacunas fueron desarrolladas, probadas y aprobadas en menos de un año, cuando normalmente este proceso toma 10-15 años.</p>
+
+            <h3>Principales Vacunas</h3>
+            <br>
+            <div class="grid">
+
+                <!-- Pfizer -->
+                <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                    <img src="pfizer2.png" alt="Pfizer logo">
+                    </div>
+                    <div class="flip-card-back">
+                    <div class="vaccine-name">Pfizer</div>
+                    <div class="efficacy-label">EFICACIA</div>
+                    <div class="circular-bar">
+                        <svg width="100" height="100">
+                        <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
+                        <circle class="circle-progress" cx="50" cy="50" r="40"
+                            stroke-dasharray="251"
+                            stroke-dashoffset="25"></circle>
+                        </svg>
+                        <div class="circle-text">90%</div>
+                    </div>
+                     <div class="doses-section">
+                        <p class="doses-label">Dosis aplicadas</p>
+                        <div class="doses-bar-container">
+                        <div class="doses-bar" style="width: 35%"></div>
+                        </div>
+                        <p class="doses-value">+4700 millones</p>
+                    </div>
+                    <div class="approval-date">Aprobada en diciembre de 2020</div>
                     </div>
                 </div>
-                <div class="circle" data-size="large"></div>
-                <div class="production-label">3 mil millones de dosis</div>
                 </div>
-                <div class="back">
-                <h3>Pfizer-BioNTech</h3>
-                <div class="info-block">
-                    <div class="info-item"><strong>Tipo</strong> Vacuna de ARNm</div>
-                    <div class="info-item"><strong>Fecha de aprobación</strong> 2 de diciembre de 2020</div>
-                    <div class="info-item"><strong>Aplicación</strong> 2 dosis con 21 días de diferencia</div>
-                    <div class="info-item"><strong>Almacenamiento</strong> -70 °C</div>
-                </div>
-                </div>
-            </div>
-            </div>
 
-            <!-- Moderna -->
-            <div class="card">
-            <div class="inner">
-                <div class="front">
-                <img src="moderna.png" class="logo" alt="Moderna logo">
-                <div class="efficacy-section">
-                    <div class="efficacy-label">Eficacia</div>
-                    <div class="efficacy-bar-wrapper">
-                    <div class="efficacy-bar"><div class="fill" style="width: 94%"></div></div>
-                    <div class="efficacy-value">94%</div>
+                <!-- Moderna -->
+                <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                    <img src="moderna.png" alt="Moderna logo">
+                    </div>
+                    <div class="flip-card-back">
+                    <div class="vaccine-name">Moderna</div>
+                    <div class="efficacy-label">EFICACIA</div>
+                    <div class="circular-bar">
+                        <svg width="100" height="100">
+                        <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
+                        <circle class="circle-progress" cx="50" cy="50" r="40"
+                            stroke-dasharray="251"
+                            stroke-dashoffset="25"></circle>
+                        </svg>
+                        <div class="circle-text">92%</div>
+                    </div>
+                     <div class="doses-section">
+                        <p class="doses-label">Dosis aplicadas</p>
+                        <div class="doses-bar-container">
+                        <div class="doses-bar" style="width: 11%"></div>
+                        </div>
+                        <p class="doses-value">+1500 millones</p>
+                    </div>
+                    <div class="approval-date">Aprobada en diciembre de 2020</div>
                     </div>
                 </div>
-                <div class="circle" data-size="medium"></div>
-                <div class="production-label">1.5 mil millones de dosis</div>
                 </div>
-                <div class="back">
-                <h3>Moderna</h3>
-                <div class="info-block">
-                    <div class="info-item"><strong>Tipo</strong> Vacuna de ARNm</div>
-                    <div class="info-item"><strong>Fecha de aprobación</strong> 18 de diciembre de 2020</div>
-                    <div class="info-item"><strong>Aplicación</strong> 2 dosis con 28 días de diferencia</div>
-                    <div class="info-item"><strong>Almacenamiento</strong> -20 °C</div>
-                </div>
-                </div>
-            </div>
-            </div>
 
-            <!-- AstraZeneca -->
-            <div class="card">
-            <div class="inner">
-                <div class="front">
-                <img src="astrazeneca.png" class="logo" alt="AstraZeneca logo">
-                <div class="efficacy-section">
-                    <div class="efficacy-label">Eficacia</div>
-                    <div class="efficacy-bar-wrapper">
-                    <div class="efficacy-bar"><div class="fill" style="width: 70%"></div></div>
-                    <div class="efficacy-value">70%</div>
+                <!-- AstraZeneca -->
+                <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                    <img src="astrazeneca.png" alt="AstraZeneca logo">
+                    </div>
+                    <div class="flip-card-back">
+                    <div class="vaccine-name">AstraZeneca</div>
+                    <div class="efficacy-label">EFICACIA</div>
+                    <div class="circular-bar">
+                        <svg width="100" height="100">
+                        <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
+                        <circle class="circle-progress" cx="50" cy="50" r="40"
+                            stroke-dasharray="251"
+                            stroke-dashoffset="25"></circle>
+                        </svg>
+                        <div class="circle-text">70%</div>
+                    </div>
+                     <div class="doses-section">
+                        <p class="doses-label">Dosis aplicadas</p>
+                        <div class="doses-bar-container">
+                        <div class="doses-bar" style="width: 22%"></div>
+                        </div>
+                        <p class="doses-value">+3000 millones</p>
+                    </div>
+                    <div class="approval-date">Aprobada en enero de 2021</div>
                     </div>
                 </div>
-                <div class="circle" data-size="medium"></div>
-                <div class="production-label">2 mil millones de dosis</div>
                 </div>
-                <div class="back">
-                <h3>AstraZeneca</h3>
-                <div class="info-block">
-                    <div class="info-item"><strong>Tipo</strong> Vector viral</div>
-                    <div class="info-item"><strong>Fecha de aprobación</strong> 30 de diciembre de 2020</div>
-                    <div class="info-item"><strong>Aplicación</strong> 2 dosis con 4 a 12 semanas de diferencia</div>
-                    <div class="info-item"><strong>Almacenamiento</strong> 2–8 °C</div>
-                </div>
-                </div>
-            </div>
-            </div>
 
-            <!-- Sputnik V -->
-            <div class="card">
-            <div class="inner">
-                <div class="front">
-                <img src="sputnik.jpg" class="logo" alt="Sputnik logo">
-                <div class="efficacy-section">
-                    <div class="efficacy-label">Eficacia</div>
-                    <div class="efficacy-bar-wrapper">
-                    <div class="efficacy-bar"><div class="fill" style="width: 91%"></div></div>
-                    <div class="efficacy-value">91%</div>
+                <!-- Sputnik V -->
+                <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                    <img src="sputnik.jpg" alt="Sputnik logo">
+                    </div>
+                    <div class="flip-card-back">
+                    <div class="vaccine-name">Sputnik V</div>
+                    <div class="efficacy-label">EFICACIA</div>
+                    <div class="circular-bar">
+                        <svg width="100" height="100">
+                        <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
+                        <circle class="circle-progress" cx="50" cy="50" r="40"
+                            stroke-dasharray="251"
+                            stroke-dashoffset="25"></circle>
+                        </svg>
+                        <div class="circle-text">85%</div>
+                    </div>
+                     <div class="doses-section">
+                        <p class="doses-label">Dosis aplicadas</p>
+                        <div class="doses-bar-container">
+                        <div class="doses-bar" style="width: 9%"></div>
+                        </div>
+                        <p class="doses-value">+1209 millones</p>
+                    </div>
+                    <div class="approval-date">Aprobada en agosto de 2020</div>
                     </div>
                 </div>
-                <div class="circle" data-size="small"></div>
-                <div class="production-label">1 mil millones de dosis</div>
                 </div>
-                <div class="back">
-                <h3>Sputnik V</h3>
-                <div class="info-block">
-                    <div class="info-item"><strong>Tipo</strong> Vector viral</div>
-                    <div class="info-item"><strong>Fecha de aprobación</strong> 11 de agosto de 2020</div>
-                    <div class="info-item"><strong>Aplicación</strong> 2 dosis con 21 días de diferencia</div>
-                    <div class="info-item"><strong>Almacenamiento</strong> 2–8 °C</div>
-                </div>
-                </div>
+
+  </div>
+  <br>
+            <h3>Producción y Distribución Global</h3>
+            <p>Para diciembre de 2023, se habían administrado más de 13.5 mil millones de dosis de vacunas COVID-19 en todo el mundo. Sin embargo, la distribución fue desigual: mientras países ricos alcanzaron coberturas del 80-90%, muchos países pobres apenas llegaron al 10-20%.</p>
+
+            <div class="flourish-embed" data-src="visualisation/23771936">
+                <script src="https://public.flourish.studio/resources/embed.js"></script>
             </div>
+
+            <div class="testimonial">
+                "La vacuna me devolvió la esperanza. Después de un año de miedo, finalmente pude abrazar a mis nietos."
+                <div class="testimonial-author">- Roberto Martínez, jubilado de 72 años</div>
             </div>
         </div>
 
-
-                <h3>Producción y Distribución Global</h3>
-                <p>Para diciembre de 2023, se habían administrado más de 13.5 mil millones de dosis de vacunas COVID-19 en todo el mundo. Sin embargo, la distribución fue desigual: mientras países ricos alcanzaron coberturas del 80-90%, muchos países pobres apenas llegaron al 10-20%.</p>
-                <div class="flourish-embed" data-src="visualisation/23771936">
-                <script src="https://public.flourish.studio/resources/embed.js"></script>
-                </div>
-                <div class="testimonial">
-                    "La vacuna me devolvió la esperanza. Después de un año de miedo, finalmente pude abrazar a mis nietos."
-                    <div class="testimonial-author">- Roberto Martínez, jubilado de 72 años</div>
-                </div>
-            </div>
 
             <!-- Capítulo 6: Consecuencias -->
             <div id="chapter-6" class="content-section">
