@@ -570,5 +570,103 @@ let currentChapter = 0;
 
         // Inicializar cuando cargue la página
         document.addEventListener('DOMContentLoaded', init);
+        document.querySelectorAll('.circular-item').forEach(item => {
+            const valor = item.dataset.valor;
+            const circle = item.querySelector('.circle');
+            const porcentaje = item.querySelector('.circle-percentage');
+            setTimeout(() => {
+              circle.setAttribute('stroke-dasharray', `${valor}, 100`);
+            }, 300);
+          });
+
+          const c = document.getElementById("canvas"), ctx = c.getContext("2d");
+          let w, h;
+          
+          function resize() {
+            w = c.width = innerWidth;
+            h = c.height = innerHeight;
+          }
+          window.addEventListener("resize", resize);
+          resize();
+          
+          const virusImg = new Image();
+          virusImg.src = "virus_transparente_real_hd.png";
+          
+          class Virus {
+            constructor(x, y, inf = false) {
+              this.x = x;
+              this.y = y;
+              this.r = Math.random() * 4 + 2;
+              this.vx = (Math.random() - 0.5) * 2;
+              this.vy = (Math.random() - 0.5) * 2;
+              this.infected = inf;
+              this.growth = inf ? 1.5 : 0.5;
+              this.opacity = 1;
+            }
+          
+            update() {
+              this.x += this.vx;
+              this.y += this.vy;
+          
+              // Rebote en bordes
+              if (this.x < 0 || this.x > w) this.vx *= -1;
+              if (this.y < 0 || this.y > h) this.vy *= -1;
+          
+              if (this.infected && this.r < 90) {
+                this.r += this.growth;
+              }
+            }
+          
+            draw() {
+              ctx.save();
+              ctx.globalAlpha = this.opacity;
+              if (virusImg.complete && virusImg.naturalWidth) {
+                ctx.drawImage(virusImg, this.x - this.r, this.y - this.r, this.r * 2, this.r * 2);
+              } else {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+                ctx.fillStyle = this.infected ? "#E74C3C" : "#7BB3F0";
+                ctx.fill();
+              }
+              ctx.restore();
+            }
+          
+            infect(arr) {
+              if (!this.infected) return;
+              for (const o of arr) {
+                if (!o.infected) {
+                  const dx = this.x - o.x;
+                  const dy = this.y - o.y;
+                  if (Math.hypot(dx, dy) < this.r + o.r + 8) o.infected = true;
+                }
+              }
+            }
+          }
+          
+          const viruses = [];
+          for (let i = 0; i < 100; i++) viruses.push(new Virus(Math.random() * w, Math.random() * h));
+          viruses[0].infected = true;
+          
+          function animate() {
+            ctx.clearRect(0, 0, w, h);
+            for (const v of viruses) {
+              v.update();
+              v.infect(viruses);
+              v.draw();
+            }
+            requestAnimationFrame(animate);
+          }
+          animate();
+          
+          const title = document.getElementById("title");
+          
+          // Mostrar el título a los 9 segundos
+          setTimeout(() => {
+            title.classList.add("show");
+          }, 9000);
+          
+  
+
+         
 
             

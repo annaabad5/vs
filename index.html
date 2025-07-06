@@ -1,47 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COVID-19: Una Historia Global</title>
-     <link rel="stylesheet" href="style.css" />
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COVID-19: Una Historia Global</title>
+
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;800&display=swap" rel="stylesheet">
+
+  <!-- Estilos generales -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Estilos y scripts intro -->
+  <link rel="stylesheet" href="intro.css">
+  <script defer src="intro.js"></script>
+
+  <!-- Leaflet (si lo usás luego) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+  <script defer src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
+
+
 <body>
+    
     <!-- PORTADA FIJA CON VIRUS SVG AVANZADO -->
     <div class="cover">
         <div class="cover-content">
             <div class="cover-left">
-                <div class="virus-svg-container">
-                    <svg class="virus-svg" viewBox="0 0 1000 1000">
-                        <!-- Definiciones de gradientes para efecto 3D -->
+             <!--   <div class="virus-svg-container"> 
+                    <svg class="virus-svg" viewBox="0 0 1000 1000"> -->
+                        <!--  Definiciones de gradientes para efecto 3D -->
                         <defs>
-                            <!-- Gradiente principal del virus -->
-                            <radialGradient id="virusGradient" cx="0.3" cy="0.3" r="0.8">
+                            <!-- Gradiente principal del virus ESTO ES COMEN -->
+                           <radialGradient id="virusGradient" cx="0.3" cy="0.3" r="0.8">
                                 <stop offset="0%" stop-color="#7BB3F0" />
                                 <stop offset="40%" stop-color="#4A90E2" />
                                 <stop offset="80%" stop-color="#2E5F8A" />
                                 <stop offset="100%" stop-color="#1A4B73" />
                             </radialGradient>
 
-                            <!-- Gradiente para las espigas -->
-                            <radialGradient id="spikeGradient" cx="0.3" cy="0.3" r="0.7">
+                            <!-- Gradiente para las espigas  ESTO ES COMEN-->
+                             <radialGradient id="spikeGradient" cx="0.3" cy="0.3" r="0.7">
                                 <stop offset="0%" stop-color="#FF6B6B" />
                                 <stop offset="60%" stop-color="#E74C3C" />
                                 <stop offset="100%" stop-color="#C0392B" />
                             </radialGradient>
 
-                            <!-- Gradiente para el barbijo -->
+                         <!--   Gradiente para el barbijo ESTO ES COMEN -->
                             <linearGradient id="maskGradient" x1="0%" y1="0%" x2="0%" y2="100%">
                                 <stop offset="0%" stop-color="#F0F8FF" />
                                 <stop offset="50%" stop-color="#E1F0FF" />
                                 <stop offset="100%" stop-color="#D1E8FF" />
-                            </linearGradient>
+                            </linearGradient> 
 
-                            <!-- Filtro para efecto de profundidad -->
+                            <!-- Filtro para efecto de profundidad  ESTO ES COMENTARIO-->
+
+
                             <filter id="depth" x="-50%" y="-50%" width="200%" height="200%">
                                 <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
                                 <feOffset dx="2" dy="2" result="offset" />
@@ -54,7 +68,8 @@
                                 </feMerge>
                             </filter>
                         </defs>
-
+                    
+                    
                         <!-- Cuerpo principal del virus -->
                         <circle cx="500" cy="500" r="180" fill="url(#virusGradient)" filter="url(#depth)" />
 
@@ -94,23 +109,39 @@
                     </svg>
                 </div>
             </div>
+
+          
+
+
+
+
+
+
+
+
+
+
+
             <div class="cover-right">
-                <h1 class="main-title">
+                <canvas id="canvas"></canvas>
+                <h1 id="title">LA HISTORIA DEL VIRUS QUE LO CAMBIÓ TODO</h1>
+              
+             <!--   <h1 class="main-title">
                     <span class="title-gradient">COVID-19</span>
                 </h1>
                 <div class="title-divider"></div>
                 <p class="subtitle">Una Historia Global</p>
                 <div class="description">
                     Viaja a través de la pandemia que cambió el mundo para siempre. Desde sus misteriosos orígenes en Wuhan hasta las consecuencias duraderas, explora la historia completa del mayor desafío de la humanidad en tiempos modernos.
-                </div>
+                </div> -->
             </div>
         </div>
-    </div>
-
+    </div> 
+ 
     <!-- VIRUS FLOTANTE INTERACTIVO -->
-    <div class="floating-virus" id="floatingVirus">
+       <div class="floating-virus" id="floatingVirus">
         <div class="virus-main" id="virusMain"></div>
-    </div>
+    </div> 
 
     <!-- PLAGA DE VIRUS PARA PROPAGACIÓN GLOBAL -->
     <div class="virus-plague" id="virusPlague"></div>
@@ -167,39 +198,29 @@
                     >
                         <script src="https://public.flourish.studio/resources/embed.js"></script>
                     </div>
-                    <p class="sacar-caja">
-                        <a href="#story/3150249/slide-1"></a>
-                    </p>
-                    <p class="sacar-caja">
-                        <a href="#story/3150249/slide-2"></a>
-                    </p>
-                    <p>
-                        <span>Wuhan, China</span> 
+                
+                    <!-- Mini etiqueta con ícono -->
+                    <p class="location-tag">
+                        <span class="location-icon">📍</span>
+                        Wuhan, China
                         <a href="#story/3150249/slide-3"></a>
                     </p>
-
-                    <p>
-                        <span class="infoMapa">El 31 de diciembre de 2019, en Wuhan, China, se reportó el primer caso conocido de COVID-19. 
-                        Lo que parecía una infección respiratoria aislada pronto comenzó a propagarse sin fronteras, desplegándose silenciosamente por todo el mundo.</span> 
-                        <a href="#story/3150249/slide-3"></a>
-                    </p>
-
+                
+                    <p class="sacar-caja"><a href="#story/3150249/slide-1"></a></p>
+                    <p class="sacar-caja"><a href="#story/3150249/slide-2"></a></p>
                 </div>
+                
+                <!-- TEXTO RESUMIDO FUERA DEL WRAPPER -->
+                <div class="resumen-recuadro">
+                    <p>A fines de 2019, un brote en Wuhan iniciaría silenciosamente la pandemia que marcaría la historia moderna.</p>
+                </div>
+                
 
                 
-                <h3>Wuhan, China - Diciembre 2019</h3>
-                <p>La historia comienza en Wuhan, una metrópolis de 11 millones de habitantes en la provincia de Hubei, China central. El 31 de diciembre de 2019, las autoridades sanitarias chinas notificaron a la Organización Mundial de la Salud sobre un brote de neumonía de causa desconocida.</p>
-                
-                <p>Los primeros 27 casos estuvieron vinculados al Mercado Mayorista de Mariscos de Huanan, donde se comercializaban animales vivos. Los científicos determinaron que el virus SARS-CoV-2 probablemente saltó de murciélagos a humanos, posiblemente a través de un animal intermediario como el pangolín.</p>
-                
-                <h3>El Primer Caso</h3>
-                <p>El primer caso conocido se remonta al 1 de diciembre de 2019, aunque no fue identificado hasta semanas después. Para el 7 de enero de 2020, los científicos chinos habían aislado y secuenciado el genoma completo del nuevo coronavirus.</p>
-                
-                <div class="testimonial">
-                    "Al principio pensamos que era solo otro brote de neumonía estacional. Nunca imaginamos que cambiaría el mundo entero."
-                    <div class="testimonial-author">- Dr. Li Wenliang, oftalmólogo de Wuhan</div>
-                </div>
-           
+                <blockquote class="testimonial-minimal">
+                    <p>“Al principio pensamos que era solo otro brote de neumonía estacional. Nunca imaginamos que cambiaría el mundo entero.”</p>
+                    <footer>- Dr. Li Wenliang, oftalmólogo de Wuhan</footer>
+                </blockquote>
 
 
     <!-- Scrollytelling Section -->
@@ -217,41 +238,39 @@
         <div class="scrolly-foreground">
             <div class="scrolly-step-foto" data-step="0">
                 <div class="fl-scrolly-step-foto">
-                    <h2>texto</h2>
-                    <p>texto textotextotextotextotextotextotextotextotextotexto </p>
-                    <p>textotextotextotextotextotextotextotextotextotextotextotextotexto</p>
+                    
+                    <p>En los primeros días del brote, hospitales de Wuhan comenzaron a recibir pacientes con síntomas respiratorios inusuales.</p>
+                    <p>El personal médico, aún sin saber la magnitud de lo que enfrentaban, activó protocolos de aislamiento.</p>
                 </div>
             </div>
 
             <div class="scrolly-step-foto" data-step="1">
                 <div class="fl-scrolly-step-foto">
-                    <h2>texto</h2>
-                    <p>texto textotextotextotextotextotextotextotextotextotexto </p>
-                    <p>textotextotextotextotextotextotextotextotextotextotextotextotexto</p>
+                    
+                    <p>La ciudad empezó a vaciarse. Las mascarillas se volvieron esenciales y la incertidumbre dominaba el ambiente.</p>
+                    <p>Las autoridades impusieron restricciones rápidas para contener el avance del virus.</p>
                 </div>
             </div>
 
             <div class="scrolly-step-foto" data-step="2">
                 <div class="fl-scrolly-step-foto">
-                    <h2>texto</h2>
-                    <p>texto textotextotextotextotextotextotextotextotextotexto </p>
-                    <p>textotextotextotextotextotextotextotextotextotextotextotextotexto</p>
+                    
+                    <p>China aceleró la producción de mascarillas, trajes de protección y kits de prueba.</p>
+                    <p>Los centros médicos fueron reforzados con equipamiento y personal adicional en tan solo algunas semanas.</p>
                 </div>
             </div>
 
             <div class="scrolly-step-foto" data-step="3">
                 <div class="fl-scrolly-step-foto">
-                    <h2>texto</h2>
-                    <p>texto textotextotextotextotextotextotextotextotextotexto </p>
-                    <p>textotextotextotextotextotextotextotextotextotextotextotextotexto</p>
+                
+                    <p>Equipos científicos comenzaron a estudiar el virus desde distintos frentes para comprender su origen y evolución.</p>
+                    
                 </div>
             </div>
 
             <div class="scrolly-step-foto" data-step="4">
                 <div class="fl-scrolly-step-foto">
-                    <h2>texto</h2>
-                    <p>texto textotextotextotextotextotextotextotextotextotexto </p>
-                    <p>textotextotextotextotextotextotextotextotextotextotextotextotexto</p>
+                    <p>Las primeras investigaciones genéticas del SARS-CoV-2 se publicaron en tiempo récord.</p>
                 </div>
             </div>
         </div>
@@ -275,7 +294,7 @@
                 <h3>El Virus SARS-CoV-2</h3>
                 <p>COVID-19 (COronaVIrus Disease 2019) es causado por el virus SARS-CoV-2, un coronavirus con una estructura esférica de 100-160 nanómetros de diámetro. Su superficie está cubierta de proteínas en forma de espiga que le dan su apariencia de corona.</p>
                 
-                <h3>Cómo Actúa en el Organismo</h3>
+                <h3>Cómo actúa en el organismo</h3>
                 <!-- <section class="grafico-LN">
                     <div class="persona">
                         <h2><span class="etiqueta-dia">DÍA 0</span></h2>
@@ -371,17 +390,14 @@
                 <span>Diarrea</span>
                 <div class="barra"><div class="relleno"></div></div>
                 <span class="porcentaje">12%</span>
-            </div>
+            </div> 
+              
 
-            <p class="fuente-sintomas">Fuente: Organización Mundial de la Salud (OMS) – Datos de 2020-2021</p>
-            </section>
-            </div>
 
             <!-- Capítulo 3: Propagación Global -->
             <div id="chapter-3" class="content-section">
-                <h2>Cómo se Esparció el Virus</h2>
+                <h2>La espación del virus</h2>
                 
-                <h3>La Velocidad de Propagación</h3>
                 <p>En solo 67 días, el virus pasó de ser un brote local en Wuhan a una pandemia global que afectaba a 114 países. Los viajes internacionales y la alta contagiosidad del virus facilitaron su rápida dispersión.</p>
 
                 <h3>Cronología de la Propagación</h3>
@@ -544,15 +560,12 @@
             </div>
             <!-- Capítulo 4: Cuarentena -->
             <div id="chapter-4" class="content-section">
-                <h2>La Gran Cuarentena</h2>
+                <h2>La gran Cuarentena</h2>
                 
                 <h3>¿Qué es la Cuarentena?</h3>
                 <p>La cuarentena es el aislamiento y restricción de movimiento de personas que pueden haber estado expuestas a una enfermedad contagiosa. Durante COVID-19, se implementaron cuarentenas masivas sin precedentes en la historia moderna.</p>
 
-                <h3>El Mundo Antes y Durante la Cuarentena</h3>
-                <p><strong>Antes:</strong> Calles llenas, oficinas ocupadas, restaurantes con clientes, escuelas con estudiantes, aeropuertos congestionados.</p>
-                
-                <p><strong>Durante:</strong> Ciudades fantasma, trabajo remoto, delivery de comida, educación virtual, vuelos cancelados. El 52% de la población mundial (4 mil millones de personas) estuvo bajo algún tipo de confinamiento.</p>
+                <h3>El mundo antes y durante la cuarentena</h3>
                 <!-- ANTES Y DESPUES -->
                 <section class="flourish-texts-section">
                     <div class="layout-scroll">
@@ -628,18 +641,16 @@
                         </div> <!-- cierre columna-fotos -->
 
                         <!-- Caja lateral fija -->
-                        <div class="caja-lateral-fija">
-                            <h3>La pandemia en las ciudades</h3>
+                        <section class="intro-grafico">
+                            <h2>¿Cuánto duró la cuarentena en el mundo?</h2>
                             <p>
-                            Durante los primeros meses de la pandemia por COVID-19, muchas de las ciudades más concurridas del mundo quedaron vacías. Las cuarentenas estrictas y el cierre de fronteras transformaron radicalmente el paisaje urbano.
+                                La respuesta a la pandemia varió enormemente entre países. Mientras algunos impusieron estrictas cuarentenas de meses, otros optaron por medidas más breves o flexibles.
                             </p>
                             <p>
-                            Lugares emblemáticos como Times Square, la Torre Eiffel o la Gran Vía se vieron completamente desiertos. Estas imágenes no solo muestran el cambio físico, sino también el impacto emocional de una pausa global sin precedentes.
+                                Este gráfico muestra la cantidad de días de confinamiento que se implementaron en distintas partes del mundo durante el primer año de la pandemia.
                             </p>
-                            <p>
-                            La ausencia de movimiento, el silencio y la quietud en espacios usualmente abarrotados nos permiten dimensionar la magnitud de lo vivido y reflexionar sobre nuestra relación con el espacio público.
-                            </p>
-                        </div>
+                        </section>
+                        
 
                         </div> <!-- cierre layout-dos-columnas -->
 
@@ -655,19 +666,19 @@
                     <div class="testimonial-author">- María González, enfermera del Hospital Italiano</div>
                 </div>
 
-                <h3>Impacto Económico</h3>
+                <h3>Impacto económico</h3>
                 <p>Las cuarentenas causaron la mayor recesión económica desde la Gran Depresión de 1929. El PIB mundial se contrajo un 3.1% en 2020, y más de 255 millones de empleos se perdieron.</p>
             </div>
 
 
         <!-- Capítulo 5: Vacunas -->
         <div id="chapter-5" class="content-section">
-            <h2>La Carrera por las Vacunas</h2>
+            <h2>La carrera por las vacunas</h2>
             
-            <h3>Desarrollo Récord</h3>
+            <h3>Desarrollo récord</h3>
             <p>El 11 de enero de 2020, China publicó la secuencia genética del SARS-CoV-2. En tiempo récord, múltiples vacunas fueron desarrolladas, probadas y aprobadas en menos de un año, cuando normalmente este proceso toma 10-15 años.</p>
 
-            <h3>Principales Vacunas</h3>
+            <h3>Principales vacunas</h3>
             <br>
             <div class="grid">
 
@@ -793,8 +804,8 @@
 
   </div>
   <br>
-            <h3>Producción y Distribución Global</h3>
-            <p>Para diciembre de 2023, se habían administrado más de 13.5 mil millones de dosis de vacunas COVID-19 en todo el mundo. Sin embargo, la distribución fue desigual: mientras países ricos alcanzaron coberturas del 80-90%, muchos países pobres apenas llegaron al 10-20%.</p>
+            <h3>Producción y distribución global</h3>
+            <p>Para diciembre de 2023, se habían administrado más de 13.5 mil millones de dosis de vacunas COVID-19 en todo el mundo.</p>
 
             <div class="flourish-embed" data-src="visualisation/23771936">
                 <script src="https://public.flourish.studio/resources/embed.js"></script>
@@ -809,10 +820,10 @@
 
             <!-- Capítulo 6: Consecuencias -->
             <div id="chapter-6" class="content-section">
-                <h2>Las Consecuencias Duraderas</h2>
+                <h2>Las consecuencias duraderas</h2>
                 
-                <h3>El Costo en Vidas Humanas</h3>
-                <p>Al 31 de diciembre de 2023, COVID-19 había causado más de 7 millones de muertes confirmadas en todo el mundo, aunque la OMS estima que el número real podría ser 2-3 veces mayor.</p>
+                <h3>El costo en vidas humanas</h3>
+                <p>Al 31 de diciembre de 2023, COVID-19 había causado más de 7 millones de muertes confirmadas en todo el mundo.</p>
 <div class="flourish-embed" data-src="visualisation/23697804">
   <script src="https://public.flourish.studio/resources/embed.js"></script>
 </div>

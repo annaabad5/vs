@@ -278,57 +278,68 @@
         }
 /* grafico sintomas*/
 .grafico-barras-scroll {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  font-family: 'Inter', sans-serif;
-}
-
-.grafico-barras-scroll h2 {
-  text-align: left;
-  margin-bottom: 2rem;
-  font-weight: 800;
-}
-
-.barra-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  gap: 1rem;
-}
-.barra-item span:first-child {
-  width: 160px;
-  font-weight: 500;
-}
-
-.barra {
-  flex: 1;
-  height: 16px;
-  background: #e4e4e4;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-}
-
-.relleno {
-  height: 100%;
-  width: 0%;
-  background: #D87B3D;
-  border-radius: 10px;
-  transition: width 1.4s ease-out;
-}
-
-.porcentaje {
-  width: 50px;
-  text-align: right;
-  font-weight: 600;
-}
-.fuente-sintomas {
-  text-align: center;
-  font-size: 0.85rem;
-  margin-top: 1.5rem;
-    color:#666;
-}
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 3rem 2rem;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .grafico-barras-scroll h2 {
+    text-align: left;
+    margin-bottom: 2.5rem;
+    font-weight: 800;
+    font-size: 2rem;
+    color: #1e293b;
+  }
+  
+  .barra-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 1.5rem;
+  }
+  
+  .barra-item span:first-child {
+    width: 200px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #111827;
+  }
+  
+  .barra {
+    flex: 1;
+    height: 20px;
+    background: linear-gradient(90deg, #f0f0f0, #e4e4e4);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .relleno {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #ff9845, #D87B3D);
+    border-radius: 12px;
+    transition: width 1.4s ease-in-out;
+  }
+  
+  .porcentaje {
+    width: 60px;
+    text-align: right;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .fuente-sintomas {
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+    color: #666;
+    font-style: italic;
+  }
+  
 /* vacunas*/
     :root {
     --celeste: #437BAB;
@@ -753,20 +764,37 @@
 
         /* Estilos adicionales */
         .testimonial {
-            background: rgba(240, 248, 255, 0.6);
-            border-left: 4px solid #2196f3;
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 8px;
-            font-style: italic;
-        }
-
-        .testimonial-author {
+            background: #f0f4ff;
+            padding: 1.5em 2em;
+            margin: 40px auto;
+            border-radius: 14px;
+            font-family: 'Segoe UI', sans-serif;
+            font-style: normal;
+            position: relative;
+            color: #1e293b;
+            max-width: 800px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+          }
+          
+          .testimonial::before {
+            content: "“";
+            font-size: 4em;
+            color: #93c5fd;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-family: Georgia, serif;
+            line-height: 1;
+          }
+          
+          .testimonial-author {
+            margin-top: 1em;
             text-align: right;
-            font-weight: bold;
-            color: #0d47a1;
-            margin-top: 10px;
-        }
+            font-weight: 600;
+            font-size: 0.95em;
+            color: #2563eb;
+          }
+          
 
         .sources {
             background: rgba(240, 248, 255, 0.4);
@@ -1632,3 +1660,181 @@
                 font-size: 20px;
             }
         }
+        .location-tag {
+            display: inline-block;
+            background: rgba(15, 23, 42, 0.85);
+            color: white;
+            padding: 0.6em 1em;
+            font-size: 1em;
+            border-radius: 8px;
+            font-weight: 600;
+            max-width: fit-content;
+            margin: 1em 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-family: 'Segoe UI', sans-serif;
+          }
+          
+          .location-tag .location-icon {
+            margin-right: 8px;
+          }
+          
+          .resumen-externo {
+            background-color: white;
+            color: #1f2937; /* gris oscuro legible */
+            font-family: 'Segoe UI', sans-serif; /* misma tipografía */
+            font-size: 1.6em; /* más grande */
+            font-weight: 500;
+            line-height: 1.6;
+            max-width: 780px;
+            margin: 2.5em auto 1.5em auto;
+            padding: 0.5em 1.2em;
+            text-align: center;
+          }
+          .resumen-recuadro {
+            background-color: #fff;
+            padding: 40px;
+            margin: 100px auto 100px 0;
+            border-left: 6px solid #4A90E2;
+            max-width: 600px;
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 1.6;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+        .testimonial-minimal {
+            margin: 80px 0;
+            padding-left: 30px;
+            border-left: 4px solid #1A4B73;
+            color: #222;
+            max-width: 600px;
+            font-size: 1.2rem;
+            line-height: 1.7;
+        }
+        
+        .testimonial-minimal footer {
+            margin-top: 10px;
+            font-size: 0.95rem;
+            color: #555;
+            font-style: italic;
+        }
+                         
+        .grafico-circular-contenedor {
+            max-width: 100%;
+            padding: 3rem 1rem;
+            font-family: 'Inter', sans-serif;
+            text-align: center;
+          }
+          
+          .grafico-circular-contenedor h2 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: #1f2937;
+          }
+          
+          .circular-row {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+          }
+          
+          .circular-item {
+            min-width: 140px;
+            height: 140px;
+            position: relative;
+            text-align: center;
+            flex: 0 0 auto;
+          }
+          
+          .circle-chart {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+          }
+          
+          .circle-bg {
+            fill: none;
+            stroke: #e4e4e4;
+            stroke-width: 3.5;
+          }
+          
+          .circle {
+            fill: none;
+            stroke: #D87B3D;
+            stroke-width: 3.5;
+            stroke-linecap: round;
+            stroke-dasharray: 0, 100;
+            transition: stroke-dasharray 1.5s ease-out;
+          }
+          
+          .circle-percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -60%);
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #1e293b;
+          }
+          
+          .circle-label {
+            margin-top: 0.6rem;
+            font-size: 1rem;
+            color: #333;
+          }
+          html, body {
+            margin:0;
+            padding:0;
+            overflow:hidden;
+            background:#fff !important;
+            font-family:'Inter',sans-serif;
+          }
+          canvas {
+            position:fixed;
+            top:0;
+            left:0;
+            z-index:1;
+          }
+          html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #fff !important;
+            font-family: 'Inter', sans-serif;
+          }
+          
+          canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+          }
+          
+          h1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.5);
+            font-size: 3.2rem;
+            color: #1e2b47;
+            opacity: 0;
+            text-align: center;
+            transition: transform 1s ease, opacity 1s ease;
+            animation: float 4s ease-in-out infinite;
+            z-index: 2;
+          }
+          
+          h1.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.8);
+          }
+          
+          @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%) scale(1.8) translateY(0); }
+            50% { transform: translate(-50%, -50%) scale(1.8) translateY(-8px); }
+          }
+          
+          
+          
+                    
