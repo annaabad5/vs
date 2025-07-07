@@ -87,7 +87,7 @@ let currentChapter = 0;
                     virusMain.classList.add('china');
                     break;
                 case 2: // ¿Qué es COVID? - Normal
-                    // Sin clases adicionales, virus normal
+                    virusMain.classList.add('c0vid');
                     break;
                 case 3: // Propagación Global - Plaga de virus
                     virusPlague.classList.add('active');

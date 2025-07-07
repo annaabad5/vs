@@ -250,7 +250,7 @@
             max-width: 600px;
         }
 
-        /* VIRUS FLOTANTE INTERACTIVO - MÁS GRANDE */
+        /* VIRUS FLOTANTE INTERACTIVO */
         .floating-virus {
             position: fixed;
             right: 50px;
@@ -514,6 +514,9 @@
             right: -20px;
             font-size: 40px;
             animation: bounce 2s infinite;
+        }
+        .virus-main.c0vid {
+            background-image: url('virus-naranja-transparente.png');
         }
 
         .virus-main.house {
@@ -1834,7 +1837,14 @@
             0%, 100% { transform: translate(-50%, -50%) scale(1.8) translateY(0); }
             50% { transform: translate(-50%, -50%) scale(1.8) translateY(-8px); }
           }
+
+/* highlitear naranja */
+.highlight-orange {
+  color: #D87B3D;
+  font-weight: 600;
+}
           
+
           
           
                     
