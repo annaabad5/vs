@@ -666,6 +666,63 @@ let currentChapter = 0;
           }, 9000);
           
   
+// probando lo de imagenes
+function ajustarScrollyOffset() {
+  const timeline = document.getElementById('timelineContainer');
+  const scrollyBlocks = document.querySelectorAll('.scrolly-background');
+
+  if (timeline) {
+    const timelineHeight = timeline.offsetHeight;
+
+    scrollyBlocks.forEach(bg => {
+      bg.style.top = `${timelineHeight}px`;
+      bg.style.height = `calc(100vh - ${timelineHeight}px)`;
+    });
+  }
+}
+
+window.addEventListener('load', ajustarScrollyOffset);
+window.addEventListener('resize', ajustarScrollyOffset);
+
+function setupScrollytelling() {
+  const steps = document.querySelectorAll('.scrolly-step-foto');
+  const images = document.querySelectorAll('.scrolly-background img');
+
+  // Mostrar imagen inicial (data-step="0")
+  images.forEach(img => {
+    if (img.dataset.step === "0") {
+      img.classList.add("active");
+    } else {
+      img.classList.remove("active");
+    }
+  });
+
+  // Crear observer
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const step = entry.target.dataset.step;
+          images.forEach(img => {
+            img.classList.toggle("active", img.dataset.step === step);
+          });
+        }
+      });
+    },
+    {
+      root: null,
+      threshold: 0.5
+    }
+  );
+
+  // Observar cada step
+  steps.forEach(step => observer.observe(step));
+}
+
+// Activar al cargar la página
+document.addEventListener("DOMContentLoaded", setupScrollytelling);
+
+
 
          
 

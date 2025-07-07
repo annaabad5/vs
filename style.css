@@ -10,8 +10,12 @@
             color: #000000;
             overflow-x: hidden;
         }
+
         .scrolly-container {
             position: relative;
+            width: 100vw; /* Ocupa todo el ancho de la pantalla */
+            margin-left: calc(-1 * ((100vw - 100%) / 2)); /* Compensa el padding/margen del main-content */
+            padding-top: 80px;
         }
 
         .scrolly-background {
@@ -21,21 +25,32 @@
             width: 100%;
             height: 100vh;
             z-index: 1;
+            overflow: hidden;
         }
 
         .scrolly-background img {
-            width: 100%;
-            height: 100%;
+            /* width: 100%;
+            height: auto;
             object-fit: cover;
+            object-position: top;
+            transition: opacity 0.8s ease-in-out;
             position: absolute;
             top: 0;
             left: 0;
             opacity: 0;
-            transition: opacity 0.8s ease-in-out;
+            z-index: 0; */
+              position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                opacity: 0;
+                transition: opacity 0.5s ease;
+                z-index: 0;
         }
 
         .scrolly-background img.active {
             opacity: 1;
+             z-index: 1;
         }
 
         .scrolly-foreground {
@@ -521,14 +536,13 @@
 
         .virus-main.house {
             background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/virus_transparente_real_hd-V4hjqq9l5Mqf5IC9mDQFS6VzvTWWas.png');
-            filter: sepia(0.3) hue-rotate(200deg);
         }
 
         .virus-main.house::before {
             content: '🏠';
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top:-15px;
+            left: -15px;
             transform: translate(-50%, -50%);
             font-size: 60px;
             z-index: 2;
