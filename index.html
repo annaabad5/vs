@@ -586,14 +586,26 @@
             </div>
             <div class="espaciado"></div> 
             <div class="scroll-container">
-                <div class="sticky-image" style="--img:url('noticia1.png');  --x:-200px; --y:-20px; --angle:-5deg;"></div>
-                <div class="sticky-image" style="--img:url('noticia2.png');  --x:250px;  --y:-15px; --angle:4deg;"></div>
-                <div class="sticky-image" style="--img:url('noticia4.png');  --x:150px;  --y:0px;   --angle:3deg;"></div>
-                <div class="sticky-image" style="--img:url('noticia5.png');  --x:-100px; --y:80px;  --angle:-1deg;"></div>
-                <div class="sticky-image" style="--img:url('noticia7.png');  --x:-250px; --y:10px;  --angle:1deg;"></div>
-                <div class="sticky-image" style="--img:url('noticia8.png');  --x:300px;  --y:20px;  --angle:-3deg;"></div>
-                <div class="sticky-image" style="--img:url('noticia9.png');  --x:-300px; --y:-15px; --angle:2deg;"></div>
+                <div class="sticky-image" style="--x:-200px; --y:-20px; --angle:-5deg;">
+                    <img src="noticia1.png" alt="Noticia 1">
+                </div>
+                <div class="sticky-image" style="--x:250px; --y:-15px; --angle:4deg;">
+                    <img src="noticia9.png" alt="Noticia 2">
+                </div>
+                <div class="sticky-image" style="--x:150px; --y:0px; --angle:3deg;">
+                    <img src="noticia4.png" alt="Noticia 4">
+                </div>
+                <div class="sticky-image" style="--x:-100px; --y:80px; --angle:-1deg;">
+                    <img src="noticia5.png" alt="Noticia 5">
+                </div>
+                <div class="sticky-image" style="--x:-250px; --y:10px; --angle:1deg;">
+                    <img src="noticia8.png" alt="Noticia 7">
+                </div>
+                <div class="sticky-message">
+                    <h2>Primeras noticias que pausaron al mundo</h2>
+                </div>
             </div>
+
             <!-- Capítulo 4: Cuarentena -->
             <div id="chapter-4" class="content-section">
                 <h2>La gran Cuarentena</h2>
@@ -604,78 +616,153 @@
                 <h3>El mundo antes y durante la cuarentena</h3>
                 <!-- ANTES Y DESPUES -->
                 <section class="flourish-texts-section">
-                    <div class="layout-scroll">
-                        <div class="layout-dos-columnas">
-                        <!-- Columna de comparadores -->
-                        
-
-                            <!-- Ejemplo 1: París -->
-                            <div class="contenedor-comparador">
-                            <div class="comparador" id="comparador-paris">
-                                <img src="paris-desp.jpg" alt="Antes" class="imagen imagen-antes">
-                                <img src="paris-antes.jpg" alt="Después" class="imagen imagen-despues" id="imagen-paris">
-                                <div class="divisor" id="divisor-paris"></div>
+                    <div class="scrolly-container-comparador">
+                        <!-- Ejemplo 1: París -->
+                        <!-- Fixed Background Images -->
+                            <div class="scrolly-background-comparador">
+                                    <div class="comparador" id="comparador-paris">
+                                        <img src="paris-desp.jpg" alt="Antes" class="imagen imagen-antes">
+                                        <img src="paris-antes.jpg" alt="Después" class="imagen imagen-despues" id="imagen-paris">
+                                        <div class="divisor" id="divisor-paris"></div>
+                                    </div>
                             </div>
-                            <div class="descripcion-antes-desp">
-                                <strong>Torre Eiffel, París.</strong>
-                                <span>Junio 2018 y marzo 2020 (Fotos: Getty Images)</span>
+                                <div class="scrolly-foreground">
+                                    <div class="scrolly-step-foto-comparador" data-step="0">
+                                    <div class="fl-scrolly-step-foto-comparador">
+                                        <h2>
+                                        <span class="highlight-location">Torre Eiffel, París.</span> <br> Junio 2018 y marzo 2020 <br>(Fotos: Getty Images)
+                                        </h2>
+                                    </div>
+                                    </div>
+                                    <div class="scrolly-step-grafico-comparador" data-step="1">
+                                    <div class="fl-scrolly-step-grafico-comparador">
+                                        <div class="flourish-embed-container">
+                                        <div class="flourish-embed" data-src="visualisation/24189431">
+                                            <script src="https://public.flourish.studio/resources/embed.js"></script>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
                             </div>
-                            </div>
-
+                        </div>
+ 
                             <!-- Ejemplo 2: Los Ángeles -->
-                            <div class="contenedor-comparador">
-                            <div class="comparador" id="comparador-la">
-                                <img src="losangeles-desp.jpg" alt="Antes" class="imagen imagen-antes">
-                                <img src="losangeles-antes.jpg" alt="Después" class="imagen imagen-despues" id="imagen-la">
-                                <div class="divisor" id="divisor-la"></div>
+                        <div class="scrolly-container-comparador">
+                            <div class="scrolly-background-comparador">
+                                    <div class="comparador" id="comparador-la">
+                                        <img src="losangeles-desp.jpg" alt="Antes" class="imagen imagen-antes">
+                                        <img src="losangeles-antes.jpg" alt="Después" class="imagen imagen-despues" id="imagen-la">
+                                        <div class="divisor" id="divisor-la"></div>
+                                    </div>
                             </div>
-                            <div class="descripcion-antes-desp">
-                                <strong>Los Ángeles, California.</strong>
-                                <span>Septiembre 2019 y marzo 2020 (Fotos: Getty Images y AP)</span>
+                                <div class="scrolly-foreground">
+                                    <div class="scrolly-step-foto-comparador" data-step="0">
+                                    <div class="fl-scrolly-step-foto-comparador">
+                                        <h2>
+                                        <span class="highlight-location">Los Ángeles, California.</span> <br> Septiembre 2019 y marzo 2020 <br>(Fotos: Getty Images y AP)
+                                        </h2>
+                                    </div>
+                                    </div>
+                                    <div class="scrolly-step-grafico-comparador" data-step="1">
+                                    <div class="fl-scrolly-step-grafico-comparador">
+                                        <div class="flourish-embed-container">
+                                        <div class="flourish-embed" data-src="visualisation/24190152">
+                                            <script src="https://public.flourish.studio/resources/embed.js"></script>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    </div>
                             </div>
-                            </div>
-
+      
                             <!-- Ejemplo 3: Gran Vía -->
-                            <div class="contenedor-comparador">
-                            <div class="comparador" id="comparador-granvia">
-                                <img src="granvia-antes.jpg" alt="Antes" class="imagen imagen-antes">
-                                <img src="granvia-despues.jpg" alt="Después" class="imagen imagen-despues" id="imagen-granvia">
-                                <div class="divisor" id="divisor-granvia"></div>
+                        <div class="scrolly-container-comparador">
+                            <div class="scrolly-background-comparador">
+                                    <div class="comparador" id="comparador-granvia">
+                                        <img src="granvia-antes.jpg" alt="Antes" class="imagen imagen-antes">
+                                        <img src="granvia-despues.jpg" alt="Después" class="imagen imagen-despues" id="imagen-granvia">
+                                        <div class="divisor" id="divisor-granvia"></div>
+                                    </div>
                             </div>
-                            <div class="descripcion-antes-desp">
-                                <strong>Gran vía, Madrid, España.</strong>
-                                <span>Octubre 2015 y marzo 2020 (Fotos: Getty Images)</span>
-                            </div>
-                            </div>
-
+                                <div class="scrolly-foreground">
+                                    <div class="scrolly-step-foto-comparador" data-step="0">
+                                    <div class="fl-scrolly-step-foto-comparador">
+                                        <h2>
+                                        <span class="highlight-location">Gran vía, Madrid, España.</span> <br> Octubre 2015 y marzo 2020 <br>(Fotos: Getty Images)
+                                        </h2>
+                                    </div>
+                                    </div>
+                                    <div class="scrolly-step-grafico-comparador" data-step="1">
+                                    <div class="fl-scrolly-step-grafico-comparador">
+                                        <div class="flourish-embed-container">
+                                        <div class="flourish-embed" data-src="visualisation/24190139">
+                                            <script src="https://public.flourish.studio/resources/embed.js"></script>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                        </div>
                             <!-- Ejemplo 4: Nueva York -->
-                            <div class="contenedor-comparador">
-                            <div class="comparador" id="comparador-ny">
-                                <img src="ny-desp.jpg" alt="Antes" class="imagen imagen-antes">
-                                <img src="ny-antes.jpg" alt="Después" class="imagen imagen-despues" id="imagen-ny">
-                                <div class="divisor" id="divisor-ny"></div>
+                        <div class="scrolly-container-comparador">
+                            <div class="scrolly-background-comparador">
+                                    <div class="comparador" id="comparador-ny">
+                                        <img src="ny-desp.jpg" alt="Antes" class="imagen imagen-antes">
+                                        <img src="ny-antes.jpg" alt="Después" class="imagen imagen-despues" id="imagen-ny">
+                                        <div class="divisor" id="divisor-ny"></div>
+                                    </div>
                             </div>
-                            <div class="descripcion-antes-desp">
-                                <strong>Times Square, Nueva York.</strong>
-                                <span>Diciembre 2016 y marzo 2020 (Fotos: AP)</span>
-                            </div>
-                            </div>
+                                <div class="scrolly-foreground">
+                                    <div class="scrolly-step-foto-comparador" data-step="0">
+                                    <div class="fl-scrolly-step-foto-comparador">
+                                        <h2>
+                                        <span class="highlight-location">Times Square, Nueva York.</span> <br> Diciembre 2016 y marzo 2020<br>(Fotos: AP)
+                                        </h2>
+                                    </div>
+                                    </div>
+                                    <div class="scrolly-step-grafico-comparador" data-step="1">
+                                    <div class="fl-scrolly-step-grafico-comparador">
+                                        <div class="flourish-embed-container">
+                                        <div class="flourish-embed" data-src="visualisation/24190152">
+                                            <script src="https://public.flourish.studio/resources/embed.js"></script>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                        </div>
 
                             <!-- Ejemplo 5: Coliseo -->
-                            <div class="contenedor-comparador">
-                            <div class="comparador" id="comparador-coliseo">
-                                <img src="coliseo-desp.jpg" alt="Antes" class="imagen imagen-antes">
-                                <img src="coliseo-antes.jpg" alt="Después" class="imagen imagen-despues" id="imagen-coliseo">
-                                <div class="divisor" id="divisor-coliseo"></div>
+                        <div class="scrolly-container-comparador">
+                            <div class="scrolly-background-comparador">
+                                <div class="comparador" id="comparador-coliseo">
+                                    <img src="coliseo-desp.jpg" alt="Antes" class="imagen imagen-antes">
+                                    <img src="coliseo-antes.jpg" alt="Después" class="imagen imagen-despues" id="imagen-coliseo">
+                                    <div class="divisor" id="divisor-coliseo"></div>
+                                </div>
                             </div>
-                            <div class="descripcion-antes-desp">
-                                <strong>Coliseo, Roma.</strong>
-                                <span>Abril 2018 y marzo 2020 (Fotos: AP)</span>
-                            </div>
-                            </div>
-
-                        </div> <!-- cierre columna-fotos -->
-
+                                <div class="scrolly-foreground">
+                                    <div class="scrolly-step-foto-comparador" data-step="0">
+                                    <div class="fl-scrolly-step-foto-comparador">
+                                        <h2>
+                                        <span class="highlight-location">Coliseo, Roma.</span> <br>Abril 2018 y marzo 2020<br>(Fotos: AP)
+                                        </h2>
+                                    </div>
+                                    </div>
+                                    <div class="scrolly-step-grafico-comparador" data-step="1">
+                                    <div class="fl-scrolly-step-grafico-comparador">
+                                        <div class="flourish-embed-container">
+                                        <div class="flourish-embed" data-src="visualisation/24190170">
+                                            <script src="https://public.flourish.studio/resources/embed.js"></script>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
                         <!-- Caja lateral fija -->
                         <section class="intro-grafico">
                             <h2>¿Cuánto duró la cuarentena en el mundo?</h2>
@@ -686,14 +773,33 @@
                                 Este gráfico muestra la cantidad de días de confinamiento que se implementaron en distintas partes del mundo durante el primer año de la pandemia.
                             </p>
                         </section>
-                        
+                    <div id="my-wrapper">
+                    <!-- Cuarentenas -->
+                    <div
+                        class="flourish-embed"
+                        data-src="story/3221611"
+                        data-url="https://flo.uri.sh/story/3221611/embed"
+                        data-height="100vh"
+                    >
+                        <script src="https://public.flourish.studio/resources/embed.js"></script>
+                    </div>
+                    <p class="sacar-caja"><a href="#story/3221611/slide-1"></a></p>
+                    <p class="sacar-caja"><a href="#story/3221611/slide-2"></a></p>
+                    <button id="show-video">Ver video explicativo</button>
+                    <div id="video-overlay">
+                    <div class="video-content">
+                        <iframe
+                        src="https://www.youtube.com/embed/yM8_MBEvgaQ?autoplay=1&mute=1&rel=0"
+                        frameborder="0"
+                        allow="autoplay; encrypted-media"
+                        allowfullscreen
+                        ></iframe>
+                        <button id="close-video">✖</button>
+                    </div>
+                    </div>
 
-                        </div> <!-- cierre layout-dos-columnas -->
 
-                <div class="flourish-embed" data-src="visualisation/23937568">
-                <script src="https://public.flourish.studio/resources/embed.js"></script>
-                </div>
-                    </section>
+                </section>
 
 
 
@@ -878,13 +984,18 @@
                     "Han pasado dos años desde que tuve COVID y aún no puedo subir escaleras sin quedarme sin aire. Mi vida cambió para siempre."
                     <div class="testimonial-author">- Ana Rodríguez, profesora de 45 años</div>
                 </div>
-
-                <h3>Impacto en la Salud Mental</h3>
-                <p>La pandemia causó un aumento del 25% en la ansiedad y depresión a nivel mundial. Los grupos más afectados fueron jóvenes, mujeres y personas con condiciones preexistentes.</p>
-
-                <h3>Transformación del Trabajo</h3>
-                <p>El trabajo remoto pasó de ser una excepción a la norma para millones de personas. Muchas empresas adoptaron modelos híbridos permanentemente, cambiando para siempre la cultura laboral.</p>
+                <div class="two-columns">
+                    <div>
+                        <h3>Impacto en la Salud Mental</h3>
+                        <p>La pandemia causó un aumento del 25% en la ansiedad y depresión a nivel mundial. Los grupos más afectados fueron jóvenes, mujeres y personas con condiciones preexistentes.</p>
+                    </div>
+                    <div>
+                        <h3>Transformación del Trabajo</h3>
+                        <p>El trabajo remoto pasó de ser una excepción a la norma para millones de personas. Muchas empresas adoptaron modelos híbridos permanentemente, cambiando para siempre la cultura laboral.</p>
+                    </div>
+                </div>
             </div>
+
 
             <!-- Capítulo 7: Fuentes -->
             <div id="chapter-7" class="content-section">
@@ -929,7 +1040,7 @@
                     </div>
 
                     <p style="margin-top: 30px; font-style: italic; color: #666;">
-                        <strong>Nota:</strong> Esta visualización fue creada con fines educativos. Todos los datos han sido verificados con múltiples fuentes oficiales. Última actualización: Diciembre 2023.
+                        <strong>Autoras:</strong> Lara Kesler, Anna Abad y Paloma Raijman
                     </p>
                 </div>
             </div>
@@ -957,80 +1068,86 @@
     <script src="interaccion.js"></script>
     <script src="https://unpkg.com/scrollama"></script>
 <script src="script.js"></script>
-    <script>
-        // Intersection Observer for text animations
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.5
-        };
+   <script>
+  // Intersection Observer for text animations
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5
+  };
 
-        const textObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const textBox = entry.target.querySelector('.fl-scrolly-step-foto');
-                if (entry.isIntersecting) {
-                    textBox.classList.add('visible');
-                } else {
-                    textBox.classList.remove('visible');
-                }
-            });
-        }, observerOptions);
+  const textObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      // Detecta si es un paso normal o un comparador
+      const textBox =
+        entry.target.querySelector('.fl-scrolly-step-foto') ||
+        entry.target.querySelector('.fl-scrolly-step-foto-comparador');
 
-        // Background image observer
-        const backgroundObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const step = entry.target.dataset.step;
-                    updateBackgroundImage(step);
-                }
-            });
-        }, {
-            root: null,
-            rootMargin: '-20% 0px -20% 0px',
-            threshold: 0
-        });
-
-        // Initialize observers
-        document.querySelectorAll('.scrolly-step-foto').forEach(step => {
-            textObserver.observe(step);
-            backgroundObserver.observe(step);
-        });
-
-        // Update background image
-        function updateBackgroundImage(activeStep) {
-            const images = document.querySelectorAll('.scrolly-background img');
-            images.forEach(img => {
-                if (img.dataset.step === activeStep) {
-                    img.classList.add('active');
-                } else {
-                    img.classList.remove('active');
-                }
-            });
+      if (textBox) {
+        if (entry.isIntersecting) {
+          textBox.classList.add('visible');
+        } else {
+          textBox.classList.remove('visible');
         }
+      }
+    });
+  }, observerOptions);
 
-        // Initialize first image
-        document.addEventListener('DOMContentLoaded', () => {
-            const firstImage = document.querySelector('.scrolly-background img[data-step="0"]');
-            if (firstImage) {
-                firstImage.classList.add('active');
-            }
-        });
+  // Background image observer
+  const backgroundObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const step = entry.target.dataset.step;
+        updateBackgroundImage(step);
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: '-20% 0px -20% 0px',
+    threshold: 0
+  });
 
-        // Smooth scrolling for better performance
-        let ticking = false;
+  // Initialize observers para ambos tipos
+  document.querySelectorAll('.scrolly-step-foto, .scrolly-step-foto-comparador').forEach(step => {
+    textObserver.observe(step);
+    backgroundObserver.observe(step);
+  });
 
-        function updateOnScroll() {
-            // Additional scroll-based animations can be added here
-            ticking = false;
-        }
+  // Update background image
+  function updateBackgroundImage(activeStep) {
+    const images = document.querySelectorAll('.scrolly-background img');
+    images.forEach(img => {
+      if (img.dataset.step === activeStep) {
+        img.classList.add('active');
+      } else {
+        img.classList.remove('active');
+      }
+    });
+  }
 
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                requestAnimationFrame(updateOnScroll);
-                ticking = true;
-            }
-        });
-    </script>
+  // Initialize first image
+  document.addEventListener('DOMContentLoaded', () => {
+    const firstImage = document.querySelector('.scrolly-background img[data-step="0"]');
+    if (firstImage) {
+      firstImage.classList.add('active');
+    }
+  });
+
+  // Smooth scrolling for better performance
+  let ticking = false;
+
+  function updateOnScroll() {
+    // Additional scroll-based animations can be added here
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateOnScroll);
+      ticking = true;
+    }
+  });
+</script>
 
 <script>
   function updateBarsOnScroll() {
@@ -1056,6 +1173,23 @@
   window.addEventListener('scroll', updateBarsOnScroll);
   window.addEventListener('load', updateBarsOnScroll);
 </script>
+<script>
+  const btnShow = document.getElementById('show-video');
+  const overlay = document.getElementById('video-overlay');
+  const btnClose = document.getElementById('close-video');
+
+  btnShow.addEventListener('click', () => {
+    overlay.style.display = 'flex';
+  });
+
+  btnClose.addEventListener('click', () => {
+    overlay.style.display = 'none';
+    // Pausar el video si es necesario:
+    const iframe = overlay.querySelector('iframe');
+    iframe.src = iframe.src; // Reinicia el video
+  });
+</script>
+
 
 </body>
 </html>

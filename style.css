@@ -269,8 +269,8 @@
         .floating-virus {
             position: fixed;
             right: 50px;
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             z-index: 999;
             opacity: 0;
             transition: all 0.3s ease;
@@ -523,7 +523,7 @@
     }
         /* Estados específicos del virus */
         .virus-main.china::after {
-            content: '🇨🇳';
+            content: 'Origen';
             position: absolute;
             top: -20px;
             right: -20px;
@@ -541,19 +541,19 @@
         .virus-main.house::before {
             content: '🏠';
             position: absolute;
-            top:-15px;
-            left: -15px;
+            top:-10px;
+            left: -10px;
             transform: translate(-50%, -50%);
-            font-size: 60px;
+            font-size: 40px;
             z-index: 2;
         }
 
         .virus-main.vaccine::after {
             content: '💉';
             position: absolute;
-            top: -15px;
-            right: -15px;
-            font-size: 50px;
+            top: -10px;
+            right: -10px;
+            font-size: 40px;
             animation: vaccineStab 1.5s ease-in-out infinite;
         }
 
@@ -568,7 +568,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%) rotate(180deg);
-            font-size: 40px;
+            font-size: 30px;
         }
 
         .virus-main.book::after {
@@ -576,7 +576,7 @@
             position: absolute;
             top: -20px;
             right: -20px;
-            font-size: 40px;
+            font-size: 30px;
             animation: bookFlip 2s ease-in-out infinite;
         }
 
@@ -748,7 +748,7 @@
             font-size: 1.1rem;
             line-height: 1.8;
             margin-bottom: 20px;
-            text-align: justify;
+            text-align: left;
             color: #333;
         }
 
@@ -777,6 +777,17 @@
         .progress-indicator.visible {
             opacity: 1;
             transform: translateX(0);
+        }
+        /*two columns*/
+        .two-columns {
+            display: flex;
+            gap: 40px; /* Espacio entre columnas */
+            justify-content: space-between;
+            flex-wrap: wrap; /* Para que en pantallas pequeñas se acomode en una sola columna */
+        }
+
+        .two-columns > div {
+            flex: 1 1 45%; /* Cada columna ocupa hasta 45% del ancho disponible */
         }
 
         /* Estilos adicionales */
@@ -1077,32 +1088,58 @@
         background-color: transparent !important
     }
 
-    /* NOTICIAS */
+    /*NOTICIAS*/
     .espaciado {
         height: 3rem; /* o 30px, o lo que quieras */
     }
     .scroll-container {
-        height: 400vh; /* espacio para scrollear */
+        height: 500vh; /* espacio para scrollear */
         position: relative;
         margin-top: 200px;   /* espacio arriba */
         margin-bottom: 200px; /* espacio abajo */
     }
 
     .sticky-image {
-        position: sticky;
-        top: 20vh;
-        width: 300px;
-        height: auto;
-        margin: 0 auto;
-        background-image: var(--img);
-        background-size: cover;
-        background-position: center;
-        aspect-ratio: 4 / 5;
-        transform: translate(var(--x, 0px), var(--y, 0px)) rotate(var(--angle, 0deg));
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        z-index: var(--z, 1);
-        transition: opacity 0.5s ease;
+    position: sticky;
+    top: 20vh;
+    display: flex;
+    justify-content: center;
+    z-index: var(--z, 1);
     }
+    .sticky-message {
+    position: sticky;
+    top: 20vh; /* punto donde se queda fijo */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    }
+
+    .sticky-message h2 {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    font-size: 3rem;
+    line-height: 1.2;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 1500px;
+    font-family: 'Inter', sans-serif;
+    color: #437BAB;
+    }
+
+    .sticky-image img {
+    max-width: 90%;      /* ajusta al contenedor sin salirse */
+    max-height: 80vh;    /* que no tape todo si es alta */
+    object-fit: contain; /* SIN recortar la imagen */
+    transform: translate(var(--x, 0px), var(--y, 0px)) rotate(var(--angle, 0deg));
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: opacity 0.5s ease;
+    }
+
 
 
     .scrolly-background {
@@ -1160,16 +1197,133 @@
             transform: translateY(0);
         }
     /* ANTES Y DESPUES */
+
+      .scrolly-step-foto-comparador {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .fl-scrolly-step-foto-comparador{
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 2.5rem;
+            max-width: 600px;
+            max-height: 170px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease-out;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .fl-scrolly-step-foto-comparador.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fl-scrolly-step-foto-comparador h2 {
+
+            font-size: 1.2rem;  /* más chico */
+            font-weight: 400;   /* regular para todo */
+            color: #64748b;     /* gris oscuro elegante */
+            line-height: 1.4;
+            text-align: center;
+        }
+        .highlight-location {
+        font-weight: 700;   /* negrita */
+        color: #34495e;     /* puedes elegir un azul/gris */
+        font-size: 1.4rem;
+        }
+
+        .fl-scrolly-step-foto-comparador p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #34495e;
+            margin-bottom: 1rem;
+        }
+
+        .fl-scrolly-step-foto-comparador .highlight {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+
+        .scrolly-container-comparador {
+            position: relative;
+            width: 100vw; /* Ocupa todo el ancho de la pantalla */
+            margin-left: calc(-1 * ((100vw - 100%) / 2)); /* Compensa el padding/margen del main-content */
+            padding-top: 0;
+        }
+        .scrolly-background-comparador {
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: 1;
+        overflow: hidden;
+        max-width: 1070px; /* o el valor que necesites */
+        margin: 0 auto;
+        }
+
+        .scrolly-background-comparador .comparador {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        }
+
+       /* Paso del gráfico, igual altura y centrado */
+        .scrolly-step-grafico-comparador {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        }
+
+        /* Caja flotante del gráfico */
+        .fl-scrolly-step-grafico-comparador {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        padding: 1rem;
+        max-width: 700px;    /* Ajusta ancho máximo */
+        width: 90%;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Contenedor que mantiene proporción del gráfico */
+        .flourish-embed-container {
+        width: 100%;
+        aspect-ratio: 16/9; /* O 4/3 si te gusta más cuadrado */
+        overflow: hidden;
+        border-radius: 12px;
+        }
+
+        /* Forzar Flourish a ocupar todo el contenedor */
+        .flourish-embed {
+        width: 100% !important;
+        height: 100% !important;
+        }
+
+
         .comparador {
             position: sticky;
             width: 100%;
-            max-width: 800px;
-            height: 600px;
+            max-width: none;
+            height: 100vh;
             overflow: hidden;
             cursor: ew-resize;
-            border-radius: 20px;
+            border-radius: 0px;
             margin: 40px auto;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        .layout-scroll {
+        position: relative;
+        min-height: 400vh; /* ejemplo: sticky + 3 pasos */
         }
 
         .imagen {
@@ -1197,74 +1351,105 @@
             border-radius: 2px;
         }
 
-        .descripcion-antes-desp{
-            text-align: center; 
-            color: #64748b; 
-            font-size: 0.9rem; 
-            
+        /*video cuarentena*/
+        #video-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.7);
+        display: none; /* Oculto por defecto */
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
         }
 
-.caja-lateral-fija {
-  position: sticky;
-  top: 100px;
-  width: 90%;         /* ancho relativo para no pasar el margen */
-  max-width: 450px;   /* ancho máximo fijo */
-  padding: 20px;
-  height: 650px;
-  max-height: calc(100vh - 120px);
-  overflow-y: auto; 
-  flex-shrink: 0;
-  margin-left: 0;     /* sin margen negativo para que no se salga */
-  background-color: #e0f4ff;
-  box-shadow: none;
-  text-align: left;
-  border-radius: 15px;
-  box-sizing: border-box; /* importante para que padding no expanda ancho */
-  
-}
+        #video-overlay .video-content {
+        position: relative;
+        width: 90%;
+        max-width: 800px;
+        aspect-ratio: 16 / 9;
+        }
 
-.caja-lateral-fija h3 {
-  text-align: left;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  color: #1e3a8a;
-  font-size: 1.7rem;
-  margin-bottom: 1rem;
-  line-height: 1.4;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
-  line-height: 2;
-}
-.caja-lateral-fija p {
-  font-size: 1rem;
-  text-align: left;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  color: #000000;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
-  line-height: 2;
-}
+        #video-overlay iframe {
+        width: 100%;
+        height: 100%;
+        }
 
-/* GRAFICO LA NACION */
-.persona {
-  background-size: contain;
-  background-position: right center;
-  background-repeat: no-repeat;
-  height: 97vh;
-}
-.etiqueta-dia {
-  font-size: 2.5rem;
-  font-weight: bold;
-  border-bottom: 4px solid #D87B3D; /* línea naranja */
-  padding-bottom: 5px;
-  display: inline-block;
-  color: #111;
-}
-.persona h3 {
-  font-size: 1.5rem;
-  color: #000000;
-}
+        #close-video {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        background: #fff;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        }
+
+
+        /* no se que es esto */
+        .caja-lateral-fija {
+        position: sticky;
+        top: 100px;
+        width: 90%;         /* ancho relativo para no pasar el margen */
+        max-width: 450px;   /* ancho máximo fijo */
+        padding: 20px;
+        height: 650px;
+        max-height: calc(100vh - 120px);
+        overflow-y: auto; 
+        flex-shrink: 0;
+        margin-left: 0;     /* sin margen negativo para que no se salga */
+        background-color: #e0f4ff;
+        box-shadow: none;
+        text-align: left;
+        border-radius: 15px;
+        box-sizing: border-box; /* importante para que padding no expanda ancho */
+        
+        }
+
+        .caja-lateral-fija h3 {
+        text-align: left;
+        font-family: 'Inter', sans-serif;
+        font-weight: 600;
+        color: #1e3a8a;
+        font-size: 1.7rem;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        line-height: 2;
+        }
+        .caja-lateral-fija p {
+        font-size: 1rem;
+        text-align: left;
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        color: #000000;
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        line-height: 2;
+        }
+
+        /* GRAFICO LA NACION */
+        .persona {
+        background-size: contain;
+        background-position: right center;
+        background-repeat: no-repeat;
+        height: 97vh;
+        }
+        .etiqueta-dia {
+        font-size: 2.5rem;
+        font-weight: bold;
+        border-bottom: 4px solid #D87B3D; /* línea naranja */
+        padding-bottom: 5px;
+        display: inline-block;
+        color: #111;
+        }
+        .persona h3 {
+        font-size: 1.5rem;
+        color: #000000;
+        }
 
 /* CONTENEDOR DE IMÁGENES */
         .images-container {
