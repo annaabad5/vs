@@ -2161,7 +2161,14 @@
   color: #D87B3D;
   font-weight: 600;
 }
-          
+#canvas-ciudad canvas {
+    display: block;
+    position: static !important;
+    width: 100% !important;
+    height: auto;
+    margin: 0 auto;
+    z-index: 1;
+  }
 
           
           

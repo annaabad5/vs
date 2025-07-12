@@ -806,8 +806,13 @@
 
                 <h3>Impacto económico</h3>
                 <p>Las cuarentenas causaron la mayor recesión económica desde la Gran Depresión de 1929. <br>El PIB mundial se contrajo un 3.1% en 2020, y más de 255 millones de empleos se perdieron.</p>
-            </div>
+                <!-- ✅ Solo el contenedor del canvas -->
+                <div id="canvas-ciudad" style="width:100%; text-align:center; margin: 40px 0;"></div>
 
+<!-- ✅ Los scripts van fuera, al final del body preferentemente -->
+                
+            </div>
+            
 
         <!-- Capítulo 5: Vacunas -->
         <div id="chapter-5" class="content-section">
@@ -1324,7 +1329,14 @@
 </script>
 
 
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.min.js"></script>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const script = document.createElement("script");
+    script.src = "ciudad.js";
+    document.body.appendChild(script);
+  });
+</script>
 </body>
+
 </html>
