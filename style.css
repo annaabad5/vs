@@ -43,13 +43,13 @@
                 top: 0;
                 left: 0;
                 width: 100%;
-                opacity: 0;
+                opacity: 0!important;
                 transition: opacity 0.5s ease;
                 z-index: 0;
         }
 
         .scrolly-background img.active {
-            opacity: 1;
+            opacity: 1!important;
              z-index: 1;
         }
 
