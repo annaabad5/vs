@@ -18,6 +18,12 @@
   <!-- Leaflet (si lo usás luego) -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
   <script defer src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+</script>
+
 </head>
 
 
@@ -278,7 +284,7 @@
                 <div class="scrolly-container"> 
                     <!-- Fixed Background Images -->
                     <div class="scrolly-background">
-                        <img src="LN1.png" alt="Dia 0" data-step="0">
+                        <img src="LN1.png" alt="" data-step="0">
                         <img src="LN2.png" alt="" data-step="1">
                         <img src="LN3.png" alt="" data-step="2">
                         <img src="LN4.png" alt="" data-step="3">
@@ -336,8 +342,8 @@
                             </div>
                         </div>
 
-                        </div>
                     </div>
+            </div>
             
 <br>
 <br>
@@ -759,8 +765,17 @@
                     </div>
                     <p class="sacar-caja"><a href="#story/3221611/slide-1"></a></p>
                     <p class="sacar-caja"><a href="#story/3221611/slide-2"></a></p>
-                    <div class="video-container">
-                    <iframe
+
+                    <p class="Nosacar-caja">
+                            Comenzó el 20 de marzo y se extendió hasta noviembre de 2020.                        
+                    <a href="#story/3221611/slide-3"></a>
+                    </p>
+                    <p class="Nosacar-caja">
+                        Afectó a más de 45 millones de personas con restricciones de circulación, cierres de escuelas y negocios.                    
+                        <a href="#story/3221611/slide-4"></a>
+                    </p>
+                    <div class="Nosacar-caja-video">
+                        <iframe
                         width="560"
                         height="315"
                         src="https://www.youtube.com/embed/yM8_MBEvgaQ?autoplay=1&mute=1&rel=0"
@@ -769,6 +784,7 @@
                         allow="autoplay; encrypted-media"
                         allowfullscreen
                     ></iframe>
+                        <a href="#story/3221611/slide-4"></a>
                     </div>
 
 
@@ -797,8 +813,7 @@
             <h2>La carrera por las vacunas</h2>
             
             <h3>Desarrollo récord</h3>
-            <p>El 11 de enero de 2020, China publicó la secuencia genética del SARS-CoV-2. En tiempo récord, <br>múltiples vacunas fueron desarrolladas, probadas y aprobadas en menos de un año, <br>cuando normalmente este proceso toma 10-15 años.</p>
-            <div id="my-wrapper">
+            <div id="my-wrapper-vacunas">
                     <!-- Cuarentenas -->
                     <div
                         class="flourish-embed"
@@ -808,9 +823,27 @@
                     >
                         <script src="https://public.flourish.studio/resources/embed.js"></script>
                     </div>
-                    <p class="sacar-caja"><a href="#story/3191821/slide-1"></a></p>
-                    <p class="sacar-caja"><a href="#story/3191821/slide-2"></a></p>
-    
+                    <p class="Nosacar-caja">
+                        El 11 de enero de 2020, China publicó la secuencia genética del SARS-CoV-2. 
+                        <a href="#story/3191821/slide-1"></a>
+                    </p>
+
+                    <p class="Nosacar-caja">
+                        En tiempo récord, múltiples vacunas fueron desarrolladas, probadas y aprobadas en menos de un año, cuando normalmente este proceso toma 10-15 años.
+                        <a href="#story/3191821/slide-2"></a>
+                    </p>
+
+                    <p class="Nosacar-caja-vacunas">
+                    La distribución de las vacunas no fue igual para todas las regiones del mundo.
+                    <a href="#story/3191821/slide-3"></a>
+                    </p>
+                    
+                    <p class="Nosacar-caja-vacunas">
+                    Mientras América, Europa y Oceanía alcanzaron altos niveles de vacunación, África quedó muy rezagada, evidenciando una brecha de acceso y distribución.                  
+                      <a href="#story/3191821/slide-4"></a>
+                    </p>
+                </div>
+
             <h3>Principales vacunas</h3>
             <br>
             <div class="grid">
@@ -949,7 +982,6 @@
                 <div class="testimonial-author">- Roberto Martínez, jubilado de 72 años</div>
             </div>
         </div>
-    </div>
 
 
 
@@ -1196,14 +1228,6 @@ function updateBackgroundImage(activeStep) {
 }
 
 
-  // Initialize first image
-  document.addEventListener('DOMContentLoaded', () => {
-    const firstImage = document.querySelector('.scrolly-background img[data-step="0"]');
-    if (firstImage) {
-      firstImage.classList.add('active');
-    }
-  });
-
   // Smooth scrolling for better performance
   let ticking = false;
 
@@ -1220,6 +1244,8 @@ function updateBackgroundImage(activeStep) {
 
     
   });
+
+
 </script>
 
 <script>
@@ -1245,6 +1271,7 @@ function updateBackgroundImage(activeStep) {
 
   window.addEventListener('scroll', updateBarsOnScroll);
   window.addEventListener('load', updateBarsOnScroll);
+
 </script>
 <script>
   const btnShow = document.getElementById('show-video');
@@ -1328,6 +1355,25 @@ function updateBackgroundImage(activeStep) {
     document.body.appendChild(script);
   });
 </script>
+<script>
+window.onload = () => {
+  // Forzar scroll arriba sin smooth para evitar salto visual
+  window.scrollTo({ top: 0, behavior: "auto" });
+
+  // Activar imagen y texto del paso 0 correctamente
+  const firstImage = document.querySelector('.scrolly-background img[data-step="0"]');
+  const firstStep = document.querySelector('.scrolly-step-foto[data-step="0"]');
+
+  if (firstImage) firstImage.classList.add('active');
+  if (firstStep) firstStep.classList.add('visible');
+
+  console.log("✅ Primer paso activado correctamente");
+};
+
+</script>
+
+
+
 </body>
 
 </html>
