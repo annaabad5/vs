@@ -726,6 +726,22 @@ function setupScrollytelling() {
 document.addEventListener("DOMContentLoaded", setupScrollytelling);
 
 
+const cards = document.querySelectorAll(".card");
+
+cards.forEach(card => {
+  card.addEventListener("click", () => {
+    cards.forEach(c => {
+      if (c !== card) c.classList.remove("expanded");
+    });
+    card.classList.toggle("expanded");
+  });
+});
+
+document.body.addEventListener("click", e => {
+  if (!e.target.closest(".card")) {
+    cards.forEach(c => c.classList.remove("expanded"));
+  }
+});
 
          
 
