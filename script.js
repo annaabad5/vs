@@ -1,5 +1,5 @@
 let currentChapter = 0;
-        const totalChapters = 7;
+        const totalChapters = 8;
         let scrollY = 0;
         let maskOpacity = 0;
 
@@ -104,6 +104,9 @@ let currentChapter = 0;
                 case 7: // Fuentes - Virus con libro
                     virusMain.classList.add('book');
                     break;
+                case 8: // Fuentes - Virus 
+                    virusMain.classList.add('china');
+                    break;
             }
         }
 
@@ -168,7 +171,7 @@ let currentChapter = 0;
                 currentChapter = newChapter;
                 updateChapterDisplay();
                 updateVirusState(currentChapter);
-                document.getElementById('progress').textContent = `${currentChapter}/7`;
+                document.getElementById('progress').textContent = `${currentChapter}/8`;
             }
         }
 
