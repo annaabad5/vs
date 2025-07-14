@@ -404,11 +404,16 @@
                         class="flourish-embed"
                         data-src="story/3213213"
                         data-url="https://flo.uri.sh/story/3213213/embed"
-                        data-height="200vh"
+                        data-height="100vh"
                     >
                         <script src="https://public.flourish.studio/resources/embed.js"></script>
                     </div>
 
+                    <p class="location-tag">
+                        <span class="location-icon"></span>
+                        🇨🇳 Wuhan, China
+                        <a href="#story/3213213/slide-2"></a>
+                    </p>
                     <p class="sacar-caja"><a href="#story/3213213/slide-1"></a></p>
                     <p class="sacar-caja"><a href="#story/3213213/slide-2"></a></p>
 
@@ -433,105 +438,84 @@
                 </div>
 
 
-                <div class="map-container">
-                    <!-- Imagen del mapa limpio como fondo -->
+                <!-- <div class="map-container">
                     <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Captura%20de%20pantalla%202025-06-27%20a%20la%28s%29%202.10.51%E2%80%AFa.%C2%A0m.-O9wQUqsER3Ktn753cheoysySnwOhLA.png" alt="Mapa Mundial" class="world-map-bg">
                     
-                    <!-- Overlay SVG para puntos y líneas -->
                     <svg class="map-overlay" viewBox="0 0 1600 800" preserveAspectRatio="xMidYMid meet">
                         <defs>
-                            <!-- Gradiente naranja para las líneas -->
                             <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                                 <stop offset="0%" stop-color="#f97316" stop-opacity="1"/>
                                 <stop offset="100%" stop-color="#ea580c" stop-opacity="0.4"/>
                             </linearGradient>
                         </defs>
 
-                        <!-- COORDENADAS ANALIZADAS BASADAS EN EL MAPA LIMPIO -->
                         
-                        <!-- Wuhan, China (EPICENTRO) - Centro-este de Asia -->
                         <circle cx="1180" cy="280" r="10" fill="#dc2626" class="city-dot origin" id="wuhan"/>
                         <text x="1195" y="275" class="city-label active" id="wuhan-label">Wuhan</text>
                         
-                        <!-- Bangkok, Tailandia - Sudeste asiático -->
                         <circle cx="1120" cy="350" r="7" fill="#f97316" class="city-dot" id="thailand"/>
                         <text x="1130" y="345" class="city-label" id="thailand-label">Bangkok</text>
                         
-                        <!-- Tokio, Japón - Islas al este de Asia -->
                         <circle cx="1300" cy="260" r="7" fill="#f97316" class="city-dot" id="japan"/>
                         <text x="1310" y="255" class="city-label" id="japan-label">Tokio</text>
                         
-                        <!-- Seúl, Corea del Sur - Península coreana -->
                         <circle cx="1230" cy="250" r="7" fill="#f97316" class="city-dot" id="korea"/>
                         <text x="1240" y="245" class="city-label" id="korea-label">Seúl</text>
                         
-                        <!-- Seattle, Estados Unidos - Noroeste de América del Norte -->
                         <circle cx="160" cy="180" r="7" fill="#f97316" class="city-dot" id="usa"/>
                         <text x="170" y="175" class="city-label" id="usa-label">Seattle</text>
                         
-                        <!-- París, Francia - Europa occidental -->
                         <circle cx="500" cy="200" r="7" fill="#f97316" class="city-dot" id="france"/>
                         <text x="510" y="195" class="city-label" id="france-label">París</text>
                         
-                        <!-- Melbourne, Australia - Sureste de Australia -->
                         <circle cx="1320" cy="620" r="7" fill="#f97316" class="city-dot" id="australia"/>
                         <text x="1330" y="615" class="city-label" id="australia-label">Melbourne</text>
                         
-                        <!-- Toronto, Canadá - Este de Canadá -->
                         <circle cx="280" cy="150" r="7" fill="#f97316" class="city-dot" id="canada"/>
                         <text x="290" y="145" class="city-label" id="canada-label">Toronto</text>
                         
-                        <!-- Múnich, Alemania - Centro de Europa -->
                         <circle cx="540" cy="190" r="7" fill="#f97316" class="city-dot" id="germany"/>
                         <text x="550" y="185" class="city-label" id="germany-label">Múnich</text>
                         
-                        <!-- Kerala, India - Sur de India -->
                         <circle cx="1000" cy="380" r="7" fill="#f97316" class="city-dot" id="india"/>
                         <text x="1010" y="375" class="city-label" id="india-label">Kerala</text>
                         
-                        <!-- Roma, Italia - Centro de Italia -->
                         <circle cx="540" cy="240" r="7" fill="#f97316" class="city-dot" id="italy"/>
                         <text x="550" y="235" class="city-label" id="italy-label">Roma</text>
                         
-                        <!-- Londres, Reino Unido - Islas británicas -->
                         <circle cx="460" cy="170" r="7" fill="#f97316" class="city-dot" id="uk"/>
                         <text x="470" y="165" class="city-label" id="uk-label">Londres</text>
                         
-                        <!-- Madrid, España - Centro-oeste de España -->
                         <circle cx="440" cy="240" r="7" fill="#f97316" class="city-dot" id="spain"/>
                         <text x="450" y="235" class="city-label" id="spain-label">Madrid</text>
                         
-                        <!-- São Paulo, Brasil - Sureste de Brasil -->
                         <circle cx="360" cy="500" r="7" fill="#f97316" class="city-dot" id="brazil"/>
                         <text x="370" y="495" class="city-label" id="brazil-label">São Paulo</text>
                         
-                        <!-- Buenos Aires, Argentina - Este de Argentina -->
                         <circle cx="320" cy="600" r="8" fill="#f97316" class="city-dot" id="argentina"/>
                         <text x="330" y="595" class="city-label" id="argentina-label">Buenos Aires</text>
 
-                        <!-- LÍNEAS DE FLUJO DESDE WUHAN (aparecen progresivamente) -->
                         
-                        <!-- A Asia -->
                         <path d="M 1180 280 Q 1150 315 1120 350" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-thailand"/>
                         <path d="M 1180 280 Q 1240 270 1300 260" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-japan"/>
                         <path d="M 1180 280 Q 1205 265 1230 250" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-korea"/>
                         <path d="M 1180 280 Q 1090 330 1000 380" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-india"/>
                         
-                        <!-- A América del Norte -->
+                        
                         <path d="M 1180 280 Q 670 150 160 180" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-usa"/>
                         <path d="M 1180 280 Q 730 130 280 150" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-canada"/>
                         
-                        <!-- A Europa -->
+                       
                         <path d="M 1180 280 Q 840 240 500 200" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-france"/>
                         <path d="M 1180 280 Q 860 235 540 190" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-germany"/>
                         <path d="M 1180 280 Q 860 260 540 240" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-italy"/>
                         <path d="M 1180 280 Q 820 225 460 170" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-uk"/>
                         <path d="M 1180 280 Q 810 260 440 240" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-spain"/>
                         
-                        <!-- A Oceanía -->
+                       
                         <path d="M 1180 280 Q 1250 450 1320 620" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-australia"/>
                         
-                        <!-- Propagación secundaria (desde Italia a Brasil, luego a Argentina) -->
+                        
                         <path d="M 540 240 Q 450 370 360 500" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-brazil"/>
                         <path d="M 360 500 Q 340 550 320 600" stroke="url(#flowGradient)" fill="none" class="flow-line" id="flow-argentina"/>
                     </svg>
@@ -562,12 +546,12 @@
                     </div>
 
                     <div class="progress-bar" id="progressBar"></div>
-                </div>
+                </div> -->
 
                 <div class="timeline-controls">
                     <button class="play-button" id="playButton">▶</button>
                     <input type="range" class="timeline-slider" id="timelineSlider" min="0" max="67" value="0">
-                    <div class="date-display" id="dateDisplay">31 Dic 2019</div>
+
                 </div>
 
                 <div class="legend" id="legend">
