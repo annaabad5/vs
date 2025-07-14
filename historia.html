@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contanos tu historia - COVID-19</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #6BA0C6 0%, rgba(107, 160, 198, 0.8) 100%);
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Background decorative elements */
+        .bg-decoration {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(216, 123, 61, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .bg-decoration:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 0s;
+        }
+
+        .bg-decoration:nth-child(2) {
+            top: 20%;
+            right: 15%;
+            width: 15px;
+            height: 15px;
+            animation-delay: 2s;
+        }
+
+        .bg-decoration:nth-child(3) {
+            bottom: 30%;
+            left: 20%;
+            width: 12px;
+            height: 12px;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.3; }
+            50% { transform: translateY(-10px) scale(1.1); opacity: 0.6; }
+        }
+
+        /* Main container */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .main-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #437BAB;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
+        }
+
+        .intro-text {
+            font-size: 1.125rem;
+            color: #437BAB;
+            line-height: 1.6;
+            font-weight: 500;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Form section */
+        .form-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        /* Checklist */
+        .checklist {
+            margin-bottom: 30px;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            background: rgba(107, 160, 198, 0.05);
+        }
+
+        .checklist-item:hover {
+            background: rgba(107, 160, 198, 0.1);
+            transform: translateX(4px);
+        }
+
+        .checklist-item.selected {
+            background: rgba(67, 123, 171, 0.1);
+            border-color: #437BAB;
+            box-shadow: 0 4px 12px rgba(67, 123, 171, 0.2);
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #437BAB;
+            border-radius: 6px;
+            margin-right: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .checklist-item.selected .checkbox {
+            background: #437BAB;
+            color: white;
+        }
+
+        .item-icon {
+            font-size: 1.5rem;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .item-text {
+            font-size: 1rem;
+            color: #437BAB;
+            font-weight: 500;
+            flex-grow: 1;
+        }
+
+        /* Text input */
+        .text-input {
+            width: 100%;
+            min-height: 120px;
+            padding: 20px;
+            border: 2px solid rgba(67, 123, 171, 0.2);
+            border-radius: 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: #437BAB;
+            background: rgba(255, 255, 255, 0.8);
+            resize: vertical;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .text-input:focus {
+            outline: none;
+            border-color: #437BAB;
+            box-shadow: 0 0 0 4px rgba(67, 123, 171, 0.1);
+            background: white;
+        }
+
+        .text-input::placeholder {
+            color: rgba(67, 123, 171, 0.6);
+        }
+
+        /* Buttons */
+        .submit-button, .share-button {
+            width: 100%;
+            padding: 16px 32px;
+            background: #437BAB;
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(67, 123, 171, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .submit-button:hover, .share-button:hover {
+            background: rgba(67, 123, 171, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(67, 123, 171, 0.4);
+        }
+
+        .submit-button:active, .share-button:active {
+            transform: translateY(0);
+        }
+
+        /* Success message */
+        .success-section {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .success-section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .success-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.1) rotate(5deg); }
+            75% { transform: scale(1.1) rotate(-5deg); }
+        }
+
+        .success-message {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #437BAB;
+            margin-bottom: 30px;
+            line-height: 1.4;
+        }
+
+        /* Sparkle effects */
+        .sparkle-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .sparkle {
+            position: absolute;
+            color: #D87B3D;
+            font-size: 1rem;
+            animation: sparkle-float 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .sparkle:nth-child(1) {
+            top: -10px;
+            left: -20px;
+            animation-delay: 0s;
+        }
+
+        .sparkle:nth-child(2) {
+            top: -15px;
+            right: -25px;
+            animation-delay: 1s;
+        }
+
+        .sparkle:nth-child(3) {
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation-delay: 2s;
+        }
+
+        @keyframes sparkle-float {
+            0%, 100% { opacity: 0; transform: translateY(0) scale(0.8); }
+            50% { opacity: 1; transform: translateY(-5px) scale(1); }
+        }
+
+        /* Hidden class */
+        .hidden {
+            display: none;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2rem;
+            }
+            
+            .form-section {
+                padding: 30px 20px;
+            }
+            
+            .checklist-item {
+                padding: 12px;
+            }
+            
+            .item-icon {
+                font-size: 1.25rem;
+            }
+            
+            .success-message {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background decorations -->
+    <div class="bg-decoration"></div>
+    <div class="bg-decoration"></div>
+    <div class="bg-decoration"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="main-title">Contanos tu historia</h1>
+            <p class="intro-text">
+                Cada persona vivió la pandemia de forma distinta. Marcá lo que te representó y ayudanos a recordar.
+            </p>
+        </div>
+
+        <!-- Form Section -->
+        <div class="form-section" id="formSection">
+            <!-- Checklist -->
+            <div class="checklist">
+                <div class="checklist-item" data-value="cuarentena">
+                    <div class="checkbox"></div>
+                    <div class="item-icon">🏠</div>
+                    <div class="item-text">Cuarentena estricta</div>
+                </div>
+                
+                <div class="checklist-item" data-value="teletrabajo">
+                    <div class="checkbox"></div>
+                    <div class="item-icon">💻</div>
+                    <div class="item-text">Teletrabajo/escuela virtual</div>
+                </div>
+                
+                <div class="checklist-item" data-value="vacunacion">
+                    <div class="checkbox"></div>
+                    <div class="item-icon">💉</div>
+                    <div class="item-text">Vacunación</div>
+                </div>
+                
+                <div class="checklist-item" data-value="perdida">
+                    <div class="checkbox"></div>
+                    <div class="item-icon">😔</div>
+                    <div class="item-text">Pérdida de alguien querido</div>
+                </div>
+                
+                <div class="checklist-item" data-value="reencuentros">
+                    <div class="checkbox"></div>
+                    <div class="item-icon">🤝</div>
+                    <div class="item-text">Reencuentros</div>
+                </div>
+                
+                <div class="checklist-item" data-value="cambios">
+                    <div class="checkbox"></div>
+                    <div class="item-icon">✨</div>
+                    <div class="item-text">Cambios personales / aprendizajes</div>
+                </div>
+            </div>
+
+            <!-- Text Input -->
+            <textarea 
+                class="text-input" 
+                id="storyText"
+                placeholder="¿Querés contarnos algo más?"
+                rows="4"
+            ></textarea>
+
+            <!-- Submit Button -->
+            <button class="submit-button" id="submitButton">
+                Enviar historia
+            </button>
+        </div>
+
+        <!-- Success Section -->
+        <div class="success-section hidden" id="successSection">
+            <div class="sparkle-container">
+                <div class="success-icon">💝</div>
+                <div class="sparkle">✨</div>
+                <div class="sparkle">✨</div>
+                <div class="sparkle">✨</div>
+            </div>
+            
+            <div class="success-message">
+                Cada historia cuenta. Gracias por compartir la tuya.
+            </div>
+            
+            <button class="share-button" id="shareButton">
+                Compartir con amigos
+            </button>
+        </div>
+    <a href="index.html#chapter-8" class="cta-button volver">← Volver</a>
+
+    </div>
+
+    <script>
+        // State
+        let selectedItems = [];
+        
+        // DOM elements
+        const checklistItems = document.querySelectorAll('.checklist-item');
+        const submitButton = document.getElementById('submitButton');
+        const formSection = document.getElementById('formSection');
+        const successSection = document.getElementById('successSection');
+        const shareButton = document.getElementById('shareButton');
+        const storyText = document.getElementById('storyText');
+
+        // Initialize
+        function init() {
+            // Add click listeners to checklist items
+            checklistItems.forEach(item => {
+                item.addEventListener('click', () => toggleChecklistItem(item));
+            });
+
+            // Add submit button listener
+            submitButton.addEventListener('click', handleSubmit);
+            
+            // Add share button listener
+            shareButton.addEventListener('click', handleShare);
+        }
+
+        // Toggle checklist item
+        function toggleChecklistItem(item) {
+            const value = item.dataset.value;
+            const checkbox = item.querySelector('.checkbox');
+            
+            if (selectedItems.includes(value)) {
+                // Remove from selection
+                selectedItems = selectedItems.filter(v => v !== value);
+                item.classList.remove('selected');
+                checkbox.innerHTML = '';
+            } else {
+                // Add to selection
+                selectedItems.push(value);
+                item.classList.add('selected');
+                checkbox.innerHTML = '✓';
+            }
+        }
+
+        // Handle form submission
+        function handleSubmit() {
+            // Add loading state
+            submitButton.innerHTML = 'Enviando...';
+            submitButton.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Hide form and show success message
+                formSection.style.transform = 'translateY(-20px)';
+                formSection.style.opacity = '0';
+                
+                setTimeout(() => {
+                    formSection.classList.add('hidden');
+                    successSection.classList.remove('hidden');
+                    successSection.classList.add('show');
+                }, 300);
+                
+                // Reset button
+                submitButton.innerHTML = 'Enviar historia';
+                submitButton.disabled = false;
+            }, 1500);
+        }
+
+        // Handle share functionality
+        function handleShare() {
+            // Create share text
+            const selectedLabels = [];
+            checklistItems.forEach(item => {
+                if (selectedItems.includes(item.dataset.value)) {
+                    selectedLabels.push(item.querySelector('.item-text').textContent);
+                }
+            });
+            
+            const shareText = `Compartí mi historia de la pandemia: ${selectedLabels.join(', ')}. ${storyText.value ? storyText.value : ''} #MiHistoriaCOVID`;
+            
+            // Try to use Web Share API if available
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Mi historia de la pandemia',
+                    text: shareText,
+                    url: window.location.href
+                }).catch(err => console.log('Error sharing:', err));
+            } else {
+                // Fallback: copy to clipboard
+                navigator.clipboard.writeText(shareText).then(() => {
+                    // Show feedback
+                    const originalText = shareButton.innerHTML;
+                    shareButton.innerHTML = '¡Copiado al portapapeles!';
+                    shareButton.style.background = '#10b981';
+                    
+                    setTimeout(() => {
+                        shareButton.innerHTML = originalText;
+                        shareButton.style.background = '#437BAB';
+                    }, 2000);
+                }).catch(err => {
+                    console.log('Error copying to clipboard:', err);
+                    alert('No se pudo compartir automáticamente. Copia este texto: ' + shareText);
+                });
+            }
+        }
+
+        // Initialize the app
+        init();
+    </script>
+</body>
+</html>
