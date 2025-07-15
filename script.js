@@ -101,11 +101,11 @@ let currentChapter = 0;
                 case 6: // Consecuencias - Virus muerto
                     virusMain.classList.add('dead');
                     break;
-                case 7: // Fuentes - Virus con libro
-                    virusMain.classList.add('book');
-                    break;
-                case 8: // Fuentes - Virus 
+                case 7: // Tu turno - Virus 
                     virusMain.classList.add('china');
+                    break;
+                case 8: // Fuentes - Virus con libro
+                    virusMain.classList.add('book');
                     break;
             }
         }

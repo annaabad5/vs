@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiencia Interactiva: Kit y Recuerdos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos globales para la página principal */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5; /* Fondo claro para la página principal */
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .main-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .main-content h1 {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .main-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-button-main {
+            display: inline-block;
+            background-color: #437BAB; /* Azul principal */
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+        }
+
+        .cta-button-main:hover {
+            background-color: #366a92;
+            transform: translateY(-2px);
+        }
+
+        .scrollytelling-section {
+            height: 800px; /* Altura de ejemplo para secciones de scrollytelling */
+            background-color: #e0e5eb;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #666;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Estilos de la Sección de Armado de Kit --- */
+        .kit-builder-section {
+            background: linear-gradient(135deg, #6BA0C6 0%, rgba(107, 160, 198, 0.8) 50%, rgba(107, 160, 198, 0.6) 100%);
+            border-radius: 24px;
+            padding: 15px; /* Reducido para más espacio vertical */
+            max-width: 1000px;
+            margin: 50px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly; /* Distribuye el espacio de manera más uniforme */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            
+            height: 100vh; 
+            min-height: 600px; /* Altura mínima para evitar aplastamiento */
+            /* overflow-y: auto; ELIMINADO para que no haya scroll */
+        }
+
+        /* Elementos decorativos de fondo para la sección del kit */
+        .kit-builder-section .bg-decoration {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(216, 123, 61, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .kit-builder-section .bg-decoration:nth-child(1) {
+            top: 40px;
+            left: 40px;
+            width: 16px;
+            height: 16px;
+        }
+
+        .kit-builder-section .bg-decoration:nth-child(2) {
+            top: 128px;
+            right: 64px;
+            width: 12px;
+            height: 12px;
+            animation-delay: 0.3s;
+        }
+
+        .kit-builder-section .bg-decoration:nth-child(3) {
+            bottom: 80px;
+            left: 80px;
+            width: 8px;
+            height: 8px;
+            animation-delay: 0.7s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+
+        /* Encabezado del Kit */
+        .kit-header {
+            text-align: center;
+            margin-bottom: 15px; /* Reducido */
+            flex-shrink: 0;
+        }
+
+        .kit-main-title {
+            font-size: 2.8rem; /* Ligeramente reducido */
+            font-weight: 700;
+            color: white;
+            margin-bottom: 12px; /* Reducido */
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .kit-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem; /* Reducido */
+            font-weight: 500;
+        }
+
+        /* Bolsa del Kit de Prevención */
+        .kit-container {
+            position: relative;
+            margin-bottom: 15px; /* Reducido */
+            flex-shrink: 0;
+        }
+
+        .kit-bag {
+            width: 250px; /* Reducido */
+            height: 160px; /* Reducido */
+            background: linear-gradient(to bottom, white, #f9fafb);
+            border-radius: 24px;
+            padding: 15px; /* Reducido */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 4px solid rgba(67, 123, 171, 0.3);
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .kit-bag.sparkle {
+            animation: sparkle-pulse 1s ease-in-out;
+            box-shadow: 0 25px 50px -12px rgba(67, 123, 171, 0.5);
+        }
+
+        @keyframes sparkle-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        /* Cremallera de la bolsa */
+        .zipper {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 64px;
+            height: 8px;
+            background: #437BAB;
+            border-radius: 4px;
+        }
+
+        /* Destellos */
+        .kit-sparkle {
+            position: absolute;
+            color: #D87B3D;
+            animation: spin 2s linear infinite;
+        }
+
+        .kit-sparkle:nth-child(1) {
+            top: -16px;
+            left: -16px;
+            font-size: 32px;
+        }
+
+        .kit-sparkle:nth-child(2) {
+            top: -16px;
+            right: -16px;
+            font-size: 24px;
+            animation-delay: 0.2s;
+            color: #437BAB;
+        }
+
+        .kit-sparkle:nth-child(3) {
+            bottom: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 28px;
+            animation-delay: 0.4s;
+            color: #6BA0C6;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Ranuras de elementos seleccionados */
+        .slots-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px; /* Reducido */
+            height: 100%;
+            align-items: center;
+            padding-top: 10px; /* Reducido */
+        }
+
+        .slot {
+            width: 55px; /* Reducido */
+            height: 55px; /* Reducido */
+            border-radius: 16px;
+            border: 3px dashed rgba(67, 123, 171, 0.4);
+            background: rgba(67, 123, 171, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem; /* Reducido */
+            transition: all 0.3s ease;
+        }
+
+        .slot.filled {
+            border-color: #437BAB;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+        }
+
+        /* Indicador de progreso */
+        .progress-indicator {
+            position: absolute;
+            bottom: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .progress-dot.active {
+            background: #437BAB;
+        }
+
+        /* Cuadrícula de elementos disponibles */
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px; /* Reducido */
+            max-width: 600px; /* Ajustado */
+            flex-grow: 1; /* Permite que la cuadrícula de ítems crezca */
+            /* overflow-y: auto; ELIMINADO */
+            padding-bottom: 0; /* ELIMINADO */
+        }
+
+        @media (min-width: 768px) {
+            .items-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .kit-main-title {
+                font-size: 4rem;
+            }
+        }
+
+        .item-card {
+            position: relative;
+            padding: 8px; /* Reducido */
+            background: white;
+            border-radius: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card:hover:not(.disabled) {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+        }
+
+        .item-card.selected {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: scale(1.05);
+            border: 4px solid rgba(67, 123, 171, 0.5);
+        }
+
+        .item-card.disabled {
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .check-mark {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 20px; /* Reducido */
+            height: 20px; /* Reducido */
+            background: #437BAB;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px; /* Reducido */
+        }
+
+        .item-icon {
+            font-size: 1.8rem; /* Reducido */
+            margin-bottom: 4px; /* Reducido */
+        }
+
+        .item-name {
+            font-weight: 600;
+            color: #437BAB;
+            font-size: 0.75rem; /* Reducido */
+            margin-bottom: 2px; /* Reducido */
+        }
+
+        .item-description {
+            font-size: 0.65rem; /* Reducido */
+            color: #6b7280;
+        }
+
+        /* Modal de Completado (anidado dentro de kit-builder-section) */
+        .completion-modal {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            z-index: 50;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .completion-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .completion-modal-inner {
+            background: white;
+            border-radius: 24px;
+            padding: 32px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .completion-modal.show .completion-modal-inner {
+            transform: scale(1);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 8px;
+            background: none;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .close-button:hover {
+            background: #f3f4f6;
+        }
+
+        .modal-icon {
+            width: 64px;
+            height: 64px;
+            background: #437BAB;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            color: white;
+            font-size: 32px;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #437BAB;
+            margin-bottom: 16px;
+        }
+
+        .modal-message {
+            font-size: 1.125rem;
+            color: #374151;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .selected-items-summary {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .summary-item {
+            text-align: center;
+        }
+
+        .summary-icon {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+        }
+
+        .summary-name {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        .reset-button {
+            background: #437BAB;
+            color: white;
+            font-weight: 600;
+            padding: 12px 32px;
+            border-radius: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+        }
+
+        .reset-button:hover {
+            background: rgba(67, 123, 171, 0.9);
+            transform: scale(1.05);
+        }
+
+        .volver-button-modal {
+            background: #e0e0e0;
+            color: #333;
+            font-weight: 600;
+            padding: 12px 32px;
+            border-radius: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        .volver-button-modal:hover {
+            background: #d0d0d0;
+            transform: scale(1.05);
+        }
+
+        /* --- Estilos del Muro de Recuerdos Colectivo (Inspirado en La Nación) --- */
+        .collective-memory-section {
+            background-color: #f0f2f5; /* Fondo claro */
+            padding: 80px 20px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0; /* Separador sutil */
+            margin-top: 50px; /* Espacio de la sección anterior */
+        }
+
+        .collective-memory-section .section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 3.5rem; /* Más grande, más impactante */
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .collective-memory-section .section-intro {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 1.6;
+        }
+
+        .memory-form-container {
+            max-width: 700px; /* Área de entrada más ancha */
+            margin: 0 auto 60px;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .memory-form-container textarea {
+            width: 100%;
+            min-height: 180px; /* Textarea más alto */
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            color: #333;
+            resize: vertical;
+            margin-bottom: 25px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .memory-form-container textarea:focus {
+            outline: none;
+            border-color: #437BAB;
+            box-shadow: 0 0 0 4px rgba(67, 123, 171, 0.2);
+        }
+
+        .memory-form-container button {
+            background-color: #D87B3D; /* Color naranja de acento */
+            color: white;
+            padding: 18px 40px; /* Botón más grande */
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .memory-form-container button:hover {
+            background-color: #c26a30;
+            transform: translateY(-3px);
+        }
+
+        .thank-you-message {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: #10b981; /* Verde para éxito */
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .thank-you-message.show {
+            opacity: 1;
+        }
+
+        .memory-list-container {
+            max-width: 700px; /* Coincide con el ancho del formulario */
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px dashed #ccc; /* Separador para recuerdos */
+        }
+
+        .memory-card-item {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px; /* Espaciado entre tarjetas */
+            text-align: left;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .memory-card-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .memory-card-item .memory-text {
+            font-size: 1.05rem;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .memory-card-item .memory-timestamp {
+            font-size: 0.8rem;
+            color: #777;
+            text-align: right;
+            font-style: italic;
+        }
+
+        /* Ajustes responsivos */
+        @media (max-width: 768px) {
+            .kit-main-title {
+                font-size: 2.2rem; /* Más pequeño para móviles */
+            }
+            .kit-subtitle {
+                font-size: 0.9rem; /* Más pequeño para móviles */
+            }
+            .kit-builder-section {
+                padding: 10px; /* Reducir padding en móviles */
+                margin: 20px auto;
+                min-height: 500px; /* Ajustar min-height para móviles */
+            }
+            .kit-bag {
+                width: 220px; /* Más pequeño para móviles */
+                height: 140px; /* Más pequeño para móviles */
+                padding: 10px; /* Más pequeño para móviles */
+            }
+            .slots-grid {
+                gap: 8px; /* Más pequeño para móviles */
+                padding-top: 5px; /* Más pequeño para móviles */
+            }
+            .slot {
+                width: 50px; /* Más pequeño para móviles */
+                height: 50px; /* Más pequeño para móviles */
+                font-size: 1.3rem; /* Más pequeño para móviles */
+            }
+            .items-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px; /* Más pequeño para móviles */
+            }
+            .item-card {
+                padding: 6px; /* Más pequeño para móviles */
+            }
+            .item-icon {
+                font-size: 1.5rem; /* Más pequeño para móviles */
+            }
+            .item-name {
+                font-size: 0.7rem; /* Más pequeño para móviles */
+            }
+            .item-description {
+                font-size: 0.6rem; /* Más pequeño para móviles */
+            }
+            .check-mark {
+                width: 18px; /* Más pequeño para móviles */
+                height: 18px; /* Más pequeño para móviles */
+                font-size: 12px; /* Más pequeño para móviles */
+            }
+            .collective-memory-section {
+                padding: 60px 15px;
+            }
+            .collective-memory-section .section-title {
+                font-size: 2.5rem;
+            }
+            .memory-form-container {
+                padding: 30px 20px;
+            }
+            .memory-form-container textarea {
+                min-height: 120px;
+            }
+            .memory-form-container button {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            .memory-card-item {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Contenido principal de Scrollytelling -->
+    <div class="main-content">
+        <h1>Bienvenido a nuestra narrativa interactiva</h1>
+        <p>Explore los diferentes capítulos de nuestra historia. Al finalizar, podrá armar su kit esencial de prevención o compartir su recuerdo personal.</p>
+        
+        <button id="scrollToKitButton" class="cta-button-main">Armar mi kit esencial</button>
+        <button id="scrollToMemoryWallButton" class="cta-button-main">Ver Muro de Recuerdos</button>
+
+        <div class="scrollytelling-section" id="chapter-1">
+            <h2>Capítulo 1: Introducción</h2>
+            <p>Contenido del primer capítulo...</p>
+        </div>
+        <div class="scrollytelling-section" id="chapter-2">
+            <h2>Capítulo 2: Desarrollo</h2>
+            <p>Contenido del segundo capítulo...</p>
+        </div>
+        <div class="scrollytelling-section" id="chapter-3">
+            <h2>Capítulo 3: Conclusión</h2>
+            <p>Contenido del tercer capítulo...</p>
+        </div>
+        <div class="scrollytelling-section" id="chapter-8">
+            <h2>Capítulo 8: ¡Listo para su kit o historia!</h2>
+            <p>Ha llegado al final de la narrativa. ¡Es momento de interactuar!</p>
+        </div>
+    </div>
+
+    <!-- Sección de Armado de Kit -->
+    <div class="kit-builder-section" id="kitBuilderSection">
+        <!-- Elementos decorativos de fondo -->
+        <div class="bg-decoration"></div>
+        <div class="bg-decoration"></div>
+        <div class="bg-decoration"></div>
+
+        <!-- Encabezado -->
+        <div class="kit-header">
+            <h1 class="kit-main-title">Elija sus 3 esenciales</h1>
+            <p class="kit-subtitle">Seleccione los elementos más importantes para su kit de prevención</p>
+        </div>
+
+        <!-- Bolsa del Kit de Prevención -->
+        <div class="kit-container">
+            <div class="kit-bag" id="kitBag">
+                <div class="zipper"></div>
+                
+                <!-- Destellos (ocultos por defecto) -->
+                <div class="kit-sparkle hidden" id="kitSparkle1">✨</div>
+                <div class="kit-sparkle hidden" id="kitSparkle2">✨</div>
+                <div class="kit-sparkle hidden" id="kitSparkle3">✨</div>
+
+                <!-- Ranuras de elementos seleccionados -->
+                <div class="slots-grid">
+                    <div class="slot" id="slot0">?</div>
+                    <div class="slot" id="slot1">?</div>
+                    <div class="slot" id="slot2">?</div>
+                </div>
+
+                <!-- Indicador de progreso -->
+                <div class="progress-indicator">
+                    <div class="progress-dot" id="dot0"></div>
+                    <div class="progress-dot" id="dot1"></div>
+                    <div class="progress-dot" id="dot2"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Elementos disponibles -->
+        <div class="items-grid" id="itemsGrid">
+            <!-- Los elementos serán generados por JavaScript -->
+        </div>
+
+        <!-- Modal de Completado (anidado dentro de kit-builder-section) -->
+        <div class="completion-modal" id="completionModal">
+            <div class="completion-modal-inner">
+                <button class="close-button" id="closeCompletionModalButton">✕</button>
+                
+                <div class="modal-icon">✓</div>
+                <h2 class="modal-title">¡Kit completo!</h2>
+                <p class="modal-message">Cada cuidado cuenta. Juntos construimos la mejor defensa.</p>
+                
+                <div class="selected-items-summary" id="selectedSummary">
+                    <!-- Los elementos seleccionados se mostrarán aquí -->
+                </div>
+                
+                <button class="reset-button" id="resetButton">Crear nuevo kit</button>
+                <button class="volver-button-modal" id="volverButtonKitModal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección del Muro de Recuerdos Colectivo -->
+    <div class="collective-memory-section" id="collectiveMemorySection">
+        <h2 class="section-title">El día que el mundo se detuvo: ¿Dónde estaba usted?</h2>
+        <p class="section-intro">La pandemia de COVID-19 marcó un antes y un después. Comparta su recuerdo personal de cómo vivió el inicio de esta nueva era. Su historia se sumará a un muro de recuerdos colectivo.</p>
+        
+        <div class="memory-form-container">
+            <textarea id="personalMemoryText" placeholder="Escriba su recuerdo personal del inicio de la pandemia..."></textarea>
+            <button id="submitMemoryButton">Compartir mi recuerdo</button>
+            <span id="thankYouMessage" class="thank-you-message">¡Gracias por compartir su historia!</span>
+        </div>
+
+        <div class="memory-list-container" id="memoryListContainer">
+            <!-- Los recuerdos se cargarán y añadirán aquí mediante JavaScript -->
+        </div>
+    </div>
+
+<script>
+    // --- Lógica del Armado de Kit ---
+    const preventionItems = [
+        { id: "mask", name: "Mascarilla", icon: "😷", description: "Protección facial" },
+        { id: "sanitizer", name: "Alcohol en gel", icon: "🧴", description: "Higiene de manos" },
+        { id: "tissues", name: "Pañuelos", icon: "🧻", description: "Higiene respiratoria" },
+        { id: "gloves", name: "Guantes", icon: "🧤", description: "Protección adicional" },
+        { id: "medicine", name: "Medicamentos", icon: "💊", description: "Cuidado básico" },
+        { id: "notebook", name: "Libreta de apoyo", icon: "📝", description: "Bienestar mental" },
+        { id: "test", name: "Test rápido", icon: "🧪", description: "Detección temprana" },
+    ];
+
+    let selectedKitItems = [];
+    
+    const kitBag = document.getElementById('kitBag');
+    const itemsGrid = document.getElementById('itemsGrid');
+    const completionModal = document.getElementById('completionModal');
+    const closeCompletionModalButton = document.getElementById('closeCompletionModalButton');
+    const resetButton = document.getElementById('resetButton');
+    const volverButtonKitModal = document.getElementById('volverButtonKitModal');
+    const selectedSummary = document.getElementById('selectedSummary');
+
+    function initKitBuilder() {
+        renderKitItems();
+        updateKitUI();
+    }
+
+    function renderKitItems() {
+        itemsGrid.innerHTML = '';
+        preventionItems.forEach(item => {
+            const isSelected = selectedKitItems.includes(item.id);
+            const isDisabled = !isSelected && selectedKitItems.length >= 3;
+
+            const itemCard = document.createElement('button');
+            itemCard.className = `item-card ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`;
+            itemCard.onclick = () => handleKitItemSelect(item.id);
+
+            itemCard.innerHTML = `
+                ${isSelected ? '<div class="check-mark">✓</div>' : ''}
+                <div class="item-icon">${item.icon}</div>
+                <h3 class="item-name">${item.name}</h3>
+                <p class="item-description">${item.description}</p>
+            `;
+
+            itemsGrid.appendChild(itemCard);
+        });
+    }
+
+    function handleKitItemSelect(itemId) {
+        if (selectedKitItems.includes(itemId)) {
+            selectedKitItems = selectedKitItems.filter(id => id !== itemId);
+        } else if (selectedKitItems.length < 3) {
+            selectedKitItems.push(itemId);
+        }
+
+        updateKitUI();
+
+        if (selectedKitItems.length === 3) {
+            showCompletionModal();
+        }
+    }
+
+    function updateKitUI() {
+        for (let i = 0; i < 3; i++) {
+            const slot = document.getElementById(`slot${i}`);
+            const dot = document.getElementById(`dot${i}`);
+
+            if (selectedKitItems[i]) {
+                const item = preventionItems.find(item => item.id === selectedKitItems[i]);
+                slot.textContent = item.icon;
+                slot.className = 'slot filled';
+                dot.className = 'progress-dot active';
+            } else {
+                slot.textContent = '?';
+                slot.className = 'slot';
+                dot.className = 'progress-dot';
+            }
+        }
+
+        renderKitItems();
+    }
+
+    function showCompletionModal() {
+        selectedSummary.innerHTML = '';
+        selectedKitItems.forEach(itemId => {
+            const item = preventionItems.find(i => i.id === itemId);
+            if (item) {
+                const summaryItem = document.createElement('div');
+                summaryItem.className = 'summary-item';
+                summaryItem.innerHTML = `
+                    <div class="summary-icon">${item.icon}</div>
+                    <p class="summary-name">${item.name}</p>
+                `;
+                selectedSummary.appendChild(summaryItem);
+            }
+        });
+
+        completionModal.classList.add('show');
+    }
+
+    function resetKitSelection() {
+        selectedKitItems = [];
+        completionModal.classList.remove('show');
+        updateKitUI();
+    }
+
+    // Event Listeners del Kit
+    closeCompletionModalButton.addEventListener('click', () => completionModal.classList.remove('show'));
+    resetButton.addEventListener('click', resetKitSelection);
+    volverButtonKitModal.addEventListener('click', () => completionModal.classList.remove('show'));
+
+    // --- Lógica del Muro de Recuerdos Colectivo ---
+    const personalMemoryText = document.getElementById('personalMemoryText');
+    const submitMemoryButton = document.getElementById('submitMemoryButton');
+    const memoryListContainer = document.getElementById('memoryListContainer');
+    const thankYouMessage = document.getElementById('thankYouMessage');
+
+    const MEMORIES_STORAGE_KEY = 'covid_memories';
+
+    // Función para cargar recuerdos de localStorage
+    function loadMemories() {
+        const memoriesJson = localStorage.getItem(MEMORIES_STORAGE_KEY);
+        return memoriesJson ? JSON.parse(memoriesJson) : [];
+    }
+
+    // Función para guardar recuerdos en localStorage
+    function saveMemories(memories) {
+        localStorage.setItem(MEMORIES_STORAGE_KEY, JSON.stringify(memories));
+    }
+
+    // Función para renderizar una sola tarjeta de recuerdo
+    function renderMemoryCard(memory) {
+        const memoryCard = document.createElement('div');
+        memoryCard.className = 'memory-card-item';
+
+        const date = new Date(memory.timestamp);
+        const formattedDate = date.toLocaleDateString('es-ES', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+
+        memoryCard.innerHTML = `
+            <p class="memory-text">${escapeHtml(memory.text)}</p>
+            <p class="memory-timestamp">${formattedDate}</p>
+        `;
+        return memoryCard;
+    }
+
+    // Función para mostrar todos los recuerdos
+    function displayMemories() {
+        memoryListContainer.innerHTML = ''; // Limpiar recuerdos existentes
+        const memories = loadMemories();
+        // Mostrar en orden cronológico inverso (los más nuevos primero)
+        memories.slice().reverse().forEach(memory => {
+            memoryListContainer.appendChild(renderMemoryCard(memory));
+        });
+    }
+
+    // Función para manejar el envío de recuerdos
+    function handleSubmitMemory() {
+        const memoryText = personalMemoryText.value.trim();
+        if (memoryText) {
+            const newMemory = {
+                text: memoryText,
+                timestamp: new Date().toISOString() // Cadena ISO para fácil almacenamiento y análisis
+            };
+
+            const memories = loadMemories();
+            memories.push(newMemory);
+            saveMemories(memories);
+
+            personalMemoryText.value = ''; // Limpiar textarea
+
+            displayMemories(); // Volver a renderizar el muro para mostrar el nuevo recuerdo
+
+            // Mostrar mensaje de agradecimiento
+            thankYouMessage.classList.add('show');
+            setTimeout(() => {
+                thankYouMessage.classList.remove('show');
+            }, 3000); // Ocultar después de 3 segundos
+
+        } else {
+            alert('Por favor, escriba su recuerdo antes de compartirlo.');
+        }
+    }
+
+    // Función auxiliar para prevenir XSS (Cross-Site Scripting)
+    function escapeHtml(text) {
+        const map = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#039;'
+        };
+        return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+    }
+
+    // --- Lógica de Desplazamiento a Sección ---
+    const scrollToKitButton = document.getElementById('scrollToKitButton');
+    const scrollToMemoryWallButton = document.getElementById('scrollToMemoryWallButton');
+    const kitBuilderSection = document.getElementById('kitBuilderSection');
+    const collectiveMemorySection = document.getElementById('collectiveMemorySection');
+
+    scrollToKitButton.addEventListener('click', () => {
+        kitBuilderSection.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    scrollToMemoryWallButton.addEventListener('click', () => {
+        collectiveMemorySection.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Inicializar ambas secciones al cargar la página
+    document.addEventListener('DOMContentLoaded', () => {
+        initKitBuilder();
+        displayMemories();
+    });
+    submitMemoryButton.addEventListener('click', handleSubmitMemory);
+
+</script>
+
+</body>
+</html>

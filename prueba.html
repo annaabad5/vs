@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrollytelling con Kit Esencial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global styles for the main scrollytelling page */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5; /* Light background for the main page */
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .main-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .main-content h1 {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .main-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-button-main {
+            display: inline-block;
+            background-color: #437BAB; /* Kit's main blue */
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button-main:hover {
+            background-color: #366a92;
+            transform: translateY(-2px);
+        }
+
+        .scrollytelling-section {
+            height: 800px; /* Example height for scrollytelling sections */
+            background-color: #e0e5eb;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #666;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Kit Builder Modal Styles (copied and adapted from kit.html) */
+        /* The modal-overlay is now the main container for the kit */
+        .kit-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7); /* Darker overlay for full screen */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            z-index: 1000; /* High z-index to cover everything */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            /* Initial state: hidden */
+            display: none; /* Controlled by JS to show/hide */
+        }
+
+        .kit-modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+            display: flex; /* Ensure it's flex when shown */
+        }
+
+        .kit-modal-content {
+            background: linear-gradient(135deg, #6BA0C6 0%, rgba(107, 160, 198, 0.8) 50%, rgba(107, 160, 198, 0.6) 100%);
+            border-radius: 24px;
+            padding: 32px;
+            max-width: 1000px; /* Adjusted for larger modal */
+            width: 100%;
+            height: 90vh; /* Occupy almost full screen height */
+            max-height: 700px; /* Max height to prevent overflow on very tall screens */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            overflow-y: auto; /* Allow scrolling within the modal if content overflows */
+        }
+
+        .kit-modal-overlay.show .kit-modal-content {
+            transform: scale(1);
+        }
+
+        /* Background decorative elements for the kit modal */
+        .kit-modal-content .bg-decoration {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(216, 123, 61, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .kit-modal-content .bg-decoration:nth-child(1) {
+            top: 40px;
+            left: 40px;
+            width: 16px;
+            height: 16px;
+        }
+
+        .kit-modal-content .bg-decoration:nth-child(2) {
+            top: 128px;
+            right: 64px;
+            width: 12px;
+            height: 12px;
+            animation-delay: 0.3s;
+        }
+
+        .kit-modal-content .bg-decoration:nth-child(3) {
+            bottom: 80px;
+            left: 80px;
+            width: 8px;
+            height: 8px;
+            animation-delay: 0.7s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+
+        /* Header */
+        .kit-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .kit-main-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .kit-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.125rem;
+            font-weight: 500;
+        }
+
+        /* Prevention Kit Bag */
+        .kit-container {
+            position: relative;
+            margin-bottom: 32px;
+        }
+
+        .kit-bag {
+            width: 320px;
+            height: 200px;
+            background: linear-gradient(to bottom, white, #f9fafb);
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 4px solid rgba(67, 123, 171, 0.3);
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .kit-bag.sparkle {
+            animation: sparkle-pulse 1s ease-in-out;
+            box-shadow: 0 25px 50px -12px rgba(67, 123, 171, 0.5);
+        }
+
+        @keyframes sparkle-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        /* Bag zipper */
+        .zipper {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 64px;
+            height: 8px;
+            background: #437BAB;
+            border-radius: 4px;
+        }
+
+        /* Sparkles */
+        .sparkle {
+            position: absolute;
+            color: #D87B3D;
+            animation: spin 2s linear infinite;
+        }
+
+        .sparkle:nth-child(1) {
+            top: -16px;
+            left: -16px;
+            font-size: 32px;
+        }
+
+        .sparkle:nth-child(2) {
+            top: -16px;
+            right: -16px;
+            font-size: 24px;
+            animation-delay: 0.2s;
+            color: #437BAB;
+        }
+
+        .sparkle:nth-child(3) {
+            bottom: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 28px;
+            animation-delay: 0.4s;
+            color: #6BA0C6;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Selected items slots */
+        .slots-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            height: 100%;
+            align-items: center;
+            padding-top: 16px;
+        }
+
+        .slot {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            border: 3px dashed rgba(67, 123, 171, 0.4);
+            background: rgba(67, 123, 171, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .slot.filled {
+            border-color: #437BAB;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+        }
+
+        /* Progress indicator */
+        .progress-indicator {
+            position: absolute;
+            bottom: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .progress-dot.active {
+            background: #437BAB;
+        }
+
+        /* Available Items Grid */
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            max-width: 600px;
+        }
+
+        @media (min-width: 768px) {
+            .items-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .kit-main-title {
+                font-size: 4rem;
+            }
+        }
+
+        .item-card {
+            position: relative;
+            padding: 16px;
+            background: white;
+            border-radius: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .item-card:hover:not(.disabled) {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+        }
+
+        .item-card.selected {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: scale(1.05);
+            border: 4px solid rgba(67, 123, 171, 0.5); /* Changed from ring to border */
+        }
+
+        .item-card.disabled {
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .check-mark {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 24px;
+            height: 24px;
+            background: #437BAB;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+
+        .item-icon {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+        }
+
+        .item-name {
+            font-weight: 600;
+            color: #437BAB;
+            font-size: 0.875rem;
+            margin-bottom: 4px;
+        }
+
+        .item-description {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        /* Completion Modal (inside the kit-modal-content) */
+        .completion-modal {
+            position: absolute; /* Positioned within kit-modal-content */
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            z-index: 50; /* Above kit content, below kit-modal-overlay */
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .completion-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .completion-modal-inner {
+            background: white;
+            border-radius: 24px;
+            padding: 32px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .completion-modal.show .completion-modal-inner {
+            transform: scale(1);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 8px;
+            background: none;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .close-button:hover {
+            background: #f3f4f6;
+        }
+
+        .modal-icon {
+            width: 64px;
+            height: 64px;
+            background: #437BAB;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            color: white;
+            font-size: 32px;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #437BAB;
+            margin-bottom: 16px;
+        }
+
+        .modal-message {
+            font-size: 1.125rem;
+            color: #374151;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .selected-items-summary {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .summary-item {
+            text-align: center;
+        }
+
+        .summary-icon {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+        }
+
+        .summary-name {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        .reset-button {
+            background: #437BAB;
+            color: white;
+            font-weight: 600;
+            padding: 12px 32px;
+            border-radius: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+        }
+
+        .reset-button:hover {
+            background: rgba(67, 123, 171, 0.9);
+            transform: scale(1.05);
+        }
+
+        .volver-button-modal {
+            background: #e0e0e0;
+            color: #333;
+            font-weight: 600;
+            padding: 12px 32px;
+            border-radius: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        .volver-button-modal:hover {
+            background: #d0d0d0;
+            transform: scale(1.05);
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Scrollytelling Content -->
+    <div class="main-content">
+        <h1>Bienvenido a nuestra narrativa interactiva</h1>
+        <p>Explora los diferentes capítulos de nuestra historia. Cuando llegues al final, podrás armar tu kit esencial de prevención.</p>
+        
+        <button id="openKitButton" class="cta-button-main">Armar mi kit esencial</button>
+
+        <div class="scrollytelling-section" id="chapter-1">
+            <h2>Capítulo 1: Introducción</h2>
+            <p>Contenido del primer capítulo...</p>
+        </div>
+        <div class="scrollytelling-section" id="chapter-2">
+            <h2>Capítulo 2: Desarrollo</h2>
+            <p>Contenido del segundo capítulo...</p>
+        </div>
+        <div class="scrollytelling-section" id="chapter-3">
+            <h2>Capítulo 3: Conclusión</h2>
+            <p>Contenido del tercer capítulo...</p>
+        </div>
+        <div class="scrollytelling-section" id="chapter-8">
+            <h2>Capítulo 8: ¡Listo para tu kit!</h2>
+            <p>Has llegado al final de la narrativa. ¡Es hora de armar tu kit!</p>
+        </div>
+    </div>
+
+    <!-- Kit Builder Modal Overlay -->
+    <div class="kit-modal-overlay" id="kitModalOverlay">
+        <div class="kit-modal-content">
+            <!-- Background decorations for the kit modal -->
+            <div class="bg-decoration"></div>
+            <div class="bg-decoration"></div>
+            <div class="bg-decoration"></div>
+
+            <!-- Header -->
+            <div class="kit-header">
+                <h1 class="kit-main-title">Elegí tus 3 esenciales</h1>
+                <p class="kit-subtitle">Selecciona los elementos más importantes para tu kit de prevención</p>
+            </div>
+
+            <!-- Prevention Kit Bag -->
+            <div class="kit-container">
+                <div class="kit-bag" id="kitBag">
+                    <div class="zipper"></div>
+                    
+                    <!-- Sparkles (hidden by default) -->
+                    <div class="sparkle hidden" id="sparkle1">✨</div>
+                    <div class="sparkle hidden" id="sparkle2">✨</div>
+                    <div class="sparkle hidden" id="sparkle3">✨</div>
+
+                    <!-- Selected items slots -->
+                    <div class="slots-grid">
+                        <div class="slot" id="slot0">?</div>
+                        <div class="slot" id="slot1">?</div>
+                        <div class="slot" id="slot2">?</div>
+                    </div>
+
+                    <!-- Progress indicator -->
+                    <div class="progress-indicator">
+                        <div class="progress-dot" id="dot0"></div>
+                        <div class="progress-dot" id="dot1"></div>
+                        <div class="progress-dot" id="dot2"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Available Items -->
+            <div class="items-grid" id="itemsGrid">
+                <!-- Items will be generated by JavaScript -->
+            </div>
+
+            <!-- Completion Modal (nested inside kit-modal-content) -->
+            <div class="completion-modal" id="completionModal">
+                <div class="completion-modal-inner">
+                    <button class="close-button" id="closeCompletionModalButton">✕</button>
+                    
+                    <div class="modal-icon">✓</div>
+                    <h2 class="modal-title">¡Kit completo!</h2>
+                    <p class="modal-message">Cada cuidado cuenta. Juntos construimos la mejor defensa.</p>
+                    
+                    <div class="selected-items-summary" id="selectedSummary">
+                        <!-- Selected items will be shown here -->
+                    </div>
+                    
+                    <button class="reset-button" id="resetButton">Crear nuevo kit</button>
+                    <button class="volver-button-modal" id="volverButtonModal">← Volver a la narrativa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    const preventionItems = [
+        { id: "mask", name: "Mascarilla", icon: "😷", description: "Protección facial" },
+        { id: "sanitizer", name: "Alcohol en gel", icon: "🧴", description: "Higiene de manos" },
+        { id: "tissues", name: "Pañuelos", icon: "🧻", description: "Higiene respiratoria" },
+        { id: "gloves", name: "Guantes", icon: "🧤", description: "Protección adicional" },
+        { id: "medicine", name: "Medicamentos", icon: "💊", description: "Cuidado básico" },
+        { id: "notebook", name: "Libreta de apoyo", icon: "📝", description: "Bienestar mental" },
+        { id: "test", name: "Test rápido", icon: "🧪", description: "Detección temprana" },
+    ];
+
+    let selectedItems = [];
+    let isKitInitialized = false; // Flag to ensure init() runs only once
+
+    const openKitButton = document.getElementById('openKitButton');
+    const kitModalOverlay = document.getElementById('kitModalOverlay');
+    const kitBag = document.getElementById('kitBag');
+    const itemsGrid = document.getElementById('itemsGrid');
+    const completionModal = document.getElementById('completionModal');
+    const closeCompletionModalButton = document.getElementById('closeCompletionModalButton');
+    const resetButton = document.getElementById('resetButton');
+    const volverButtonModal = document.getElementById('volverButtonModal');
+    const selectedSummary = document.getElementById('selectedSummary');
+
+    function initKitBuilder() {
+        renderItems();
+        updateUI();
+    }
+
+    function renderItems() {
+        itemsGrid.innerHTML = '';
+        preventionItems.forEach(item => {
+            const isSelected = selectedItems.includes(item.id);
+            const isDisabled = !isSelected && selectedItems.length >= 3;
+
+            const itemCard = document.createElement('button');
+            itemCard.className = `item-card ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}`;
+            itemCard.onclick = () => handleItemSelect(item.id);
+
+            itemCard.innerHTML = `
+                ${isSelected ? '<div class="check-mark">✓</div>' : ''}
+                <div class="item-icon">${item.icon}</div>
+                <h3 class="item-name">${item.name}</h3>
+                <p class="item-description">${item.description}</p>
+            `;
+
+            itemsGrid.appendChild(itemCard);
+        });
+    }
+
+    function handleItemSelect(itemId) {
+        if (selectedItems.includes(itemId)) {
+            selectedItems = selectedItems.filter(id => id !== itemId);
+        } else if (selectedItems.length < 3) {
+            selectedItems.push(itemId);
+        }
+
+        updateUI();
+
+        if (selectedItems.length === 3) {
+            showCompletionModal();
+        }
+    }
+
+    function updateUI() {
+        for (let i = 0; i < 3; i++) {
+            const slot = document.getElementById(`slot${i}`);
+            const dot = document.getElementById(`dot${i}`);
+
+            if (selectedItems[i]) {
+                const item = preventionItems.find(item => item.id === selectedItems[i]);
+                slot.textContent = item.icon;
+                slot.className = 'slot filled';
+                dot.className = 'progress-dot active';
+            } else {
+                slot.textContent = '?';
+                slot.className = 'slot';
+                dot.className = 'progress-dot';
+            }
+        }
+
+        renderItems();
+    }
+
+    function showCompletionModal() {
+        selectedSummary.innerHTML = '';
+        selectedItems.forEach(itemId => {
+            const item = preventionItems.find(i => i.id === itemId);
+            if (item) {
+                const summaryItem = document.createElement('div');
+                summaryItem.className = 'summary-item';
+                summaryItem.innerHTML = `
+                    <div class="summary-icon">${item.icon}</div>
+                    <p class="summary-name">${item.name}</p>
+                `;
+                selectedSummary.appendChild(summaryItem);
+            }
+        });
+
+        completionModal.classList.add('show');
+    }
+
+    function resetSelection() {
+        selectedItems = [];
+        completionModal.classList.remove('show');
+        updateUI();
+    }
+
+    function openKitModal(event) {
+        event.preventDefault(); // Prevent default link/button behavior
+        kitModalOverlay.classList.add('show');
+        document.body.style.overflow = 'hidden'; // Disable background scroll
+
+        if (!isKitInitialized) {
+            initKitBuilder();
+            isKitInitialized = true;
+        }
+    }
+
+    function closeKitModal() {
+        kitModalOverlay.classList.remove('show');
+        document.body.style.overflow = ''; // Re-enable background scroll
+        resetSelection(); // Also reset the kit state when closing
+    }
+
+    // Event Listeners
+    openKitButton.addEventListener('click', openKitModal);
+    closeCompletionModalButton.addEventListener('click', closeKitModal);
+    resetButton.addEventListener('click', resetSelection); // Reset button in completion modal
+    volverButtonModal.addEventListener('click', closeKitModal); // New "Volver" button in completion modal
+
+    // Close modal if clicking outside the kit-modal-content
+    kitModalOverlay.addEventListener('click', (e) => {
+        if (e.target === kitModalOverlay) {
+            closeKitModal();
+        }
+    });
+
+</script>
+
+</body>
+</html>

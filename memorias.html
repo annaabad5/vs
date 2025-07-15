@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muro de Recuerdos Colectivo de la Pandemia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5; /* Light background */
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Collective Memory Wall Styles (Inspired by La Nación) --- */
+        .collective-memory-section {
+            background-color: #f0f2f5; /* Light background */
+            padding: 80px 20px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0; /* Subtle separator */
+        }
+
+        .collective-memory-section .section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 3.5rem; /* Larger, more impactful */
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .collective-memory-section .section-intro {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 1.6;
+        }
+
+        .memory-form-container {
+            max-width: 700px; /* Wider input area */
+            margin: 0 auto 60px;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .memory-form-container textarea {
+            width: 100%;
+            min-height: 180px; /* Taller textarea */
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            color: #333;
+            resize: vertical;
+            margin-bottom: 25px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .memory-form-container textarea:focus {
+            outline: none;
+            border-color: #437BAB;
+            box-shadow: 0 0 0 4px rgba(67, 123, 171, 0.2);
+        }
+
+        .memory-form-container button {
+            background-color: #D87B3D; /* Orange accent color */
+            color: white;
+            padding: 18px 40px; /* Larger button */
+            border-radius: 12px;
+            border: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .memory-form-container button:hover {
+            background-color: #c26a30;
+            transform: translateY(-3px);
+        }
+
+        .thank-you-message {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: #10b981; /* Green for success */
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .thank-you-message.show {
+            opacity: 1;
+        }
+
+        .memory-list-container {
+            max-width: 700px; /* Matches form width */
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px dashed #ccc; /* Separator for memories */
+        }
+
+        .memory-card-item {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px; /* Spacing between cards */
+            text-align: left;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .memory-card-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .memory-card-item .memory-text {
+            font-size: 1.05rem;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .memory-card-item .memory-timestamp {
+            font-size: 0.8rem;
+            color: #777;
+            text-align: right;
+            font-style: italic;
+        }
+
+        /* Responsive adjustments for collective memory wall */
+        @media (max-width: 768px) {
+            .collective-memory-section {
+                padding: 60px 15px;
+            }
+            .collective-memory-section .section-title {
+                font-size: 2.5rem;
+            }
+            .memory-form-container {
+                padding: 30px 20px;
+            }
+            .memory-form-container textarea {
+                min-height: 120px;
+            }
+            .memory-form-container button {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            .memory-card-item {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Collective Memory Wall Section -->
+    <div class="collective-memory-section">
+        <h2 class="section-title">El día que el mundo se detuvo: ¿Dónde estabas?</h2>
+        <p class="section-intro">La pandemia de COVID-19 marcó un antes y un después. Compartí tu recuerdo personal de cómo viviste el inicio de esta nueva era. Tu historia se sumará a un muro de recuerdos colectivo.</p>
+        
+        <div class="memory-form-container">
+            <textarea id="personalMemoryText" placeholder="Escribí tu recuerdo personal del inicio de la pandemia..."></textarea>
+            <button id="submitMemoryButton">Compartir mi recuerdo</button>
+            <span id="thankYouMessage" class="thank-you-message">¡Gracias por compartir tu historia!</span>
+        </div>
+
+        <div class="memory-list-container" id="memoryListContainer">
+            <!-- Memories will be loaded and added here by JavaScript -->
+        </div>
+    </div>
+
+<script>
+    // --- Collective Memory Wall Logic ---
+    const personalMemoryText = document.getElementById('personalMemoryText');
+    const submitMemoryButton = document.getElementById('submitMemoryButton');
+    const memoryListContainer = document.getElementById('memoryListContainer');
+    const thankYouMessage = document.getElementById('thankYouMessage');
+
+    const MEMORIES_STORAGE_KEY = 'covid_memories';
+
+    // Function to load memories from localStorage
+    function loadMemories() {
+        const memoriesJson = localStorage.getItem(MEMORIES_STORAGE_KEY);
+        return memoriesJson ? JSON.parse(memoriesJson) : [];
+    }
+
+    // Function to save memories to localStorage
+    function saveMemories(memories) {
+        localStorage.setItem(MEMORIES_STORAGE_KEY, JSON.stringify(memories));
+    }
+
+    // Function to render a single memory card
+    function renderMemoryCard(memory) {
+        const memoryCard = document.createElement('div');
+        memoryCard.className = 'memory-card-item';
+
+        const date = new Date(memory.timestamp);
+        const formattedDate = date.toLocaleDateString('es-ES', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+
+        memoryCard.innerHTML = `
+            <p class="memory-text">${escapeHtml(memory.text)}</p>
+            <p class="memory-timestamp">${formattedDate}</p>
+        `;
+        return memoryCard;
+    }
+
+    // Function to display all memories
+    function displayMemories() {
+        memoryListContainer.innerHTML = ''; // Clear existing memories
+        const memories = loadMemories();
+        // Display in reverse chronological order (newest first)
+        memories.slice().reverse().forEach(memory => {
+            memoryListContainer.appendChild(renderMemoryCard(memory));
+        });
+    }
+
+    // Function to handle memory submission
+    function handleSubmitMemory() {
+        const memoryText = personalMemoryText.value.trim();
+        if (memoryText) {
+            const newMemory = {
+                text: memoryText,
+                timestamp: new Date().toISOString() // ISO string for easy storage and parsing
+            };
+
+            const memories = loadMemories();
+            memories.push(newMemory);
+            saveMemories(memories);
+
+            personalMemoryText.value = ''; // Clear textarea
+
+            displayMemories(); // Re-render the wall to show the new memory
+
+            // Show thank you message
+            thankYouMessage.classList.add('show');
+            setTimeout(() => {
+                thankYouMessage.classList.remove('show');
+            }, 3000); // Hide after 3 seconds
+
+        } else {
+            alert('Por favor, escribe tu recuerdo antes de compartirlo.');
+        }
+    }
+
+    // Helper function to prevent XSS (Cross-Site Scripting)
+    function escapeHtml(text) {
+        const map = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#039;'
+        };
+        return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+    }
+
+    // Initialize the memory wall on page load
+    document.addEventListener('DOMContentLoaded', displayMemories);
+    submitMemoryButton.addEventListener('click', handleSubmitMemory);
+
+</script>
+
+</body>
+</html>
