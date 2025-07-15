@@ -2346,11 +2346,14 @@
       
           .carousel-wrapper {
             display: flex;
+            flex-direction: row;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
-            gap: 16px;
+            gap: 48px;
             padding: 30px 20px;
+            justify-content: flex-start;
+            align-items: stretch; /* importante para mantener altura uniforme */
           }
 
           .carousel-wrapper::-webkit-scrollbar {
@@ -2372,15 +2375,15 @@
             overflow: hidden;
             scroll-snap-align: center;
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-            transition: height 0.4s ease, box-shadow 0.3s ease;
+            transition: height 0.4s ease, transform 0.3s ease;
             cursor: pointer;
-            scroll-snap-align: start;
-            animation: pulse 2s infinite;
+            animation: pulse 3s infinite;
           }
       
           .card.expanded {
             height: 420px;
             animation: none;
+            z-index: 2;
           }
       
           @keyframes pulse {
