@@ -3061,12 +3061,6 @@ background-position: center 10%;
 /* impacto economico */
 
         /* Elementos decorativos */
-        .decorative-circle {
-            position: absolute;
-            border-radius: 50%;
-            background-color: #ff9845;
-            opacity: 0.1;
-        }
 
         .circle-1 {
             top: 40px;
