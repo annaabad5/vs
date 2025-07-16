@@ -9,6 +9,16 @@
             background-color: rgb(255, 255, 255);
             color: #000000;
             overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        .main-content {
+            position: relative;
+            background: #fff;          /* asegura fondo blanco para que no se vea lo de atrás */
+            z-index: 0;                /* que quede detrás de la portada cuando esta está activa */
+            min-height: 100vh;         /* empieza llenando toda la ventana */
+            margin: 0;
+            padding: 0;
         }
 
         .scrolly-container {
@@ -207,6 +217,10 @@
             justify-content: center;
             align-items: center;
         }
+        .cover.hidden {
+            display: none; /* ya no se ve y la main-content queda arriba */
+        }
+
 
         /* VIRUS SVG AVANZADO */
         .virus-svg-container {
@@ -2658,20 +2672,6 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .nombre-kit-completed-kits {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            max-height: 120px;
-            overflow-x: auto;
-            display: flex;
-            gap: 15px;
-            padding: 10px;
-            background: rgba(107, 160, 198, 0.1);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-        }
 
         .nombre-kit-mini-kit {
             min-width: 150px;

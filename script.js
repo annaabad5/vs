@@ -1008,3 +1008,17 @@ let nombreKitSelectedItems = [];
 
         // Inicializar
         tituloMuroRenderMemories();
+
+        const kitsSection = document.querySelector('.nombre-kit-container');
+const kitsBar = document.querySelector('.nombre-kit-completed-kits');
+
+window.addEventListener('scroll', () => {
+  const rect = kitsSection.getBoundingClientRect();
+  const inView = rect.top < window.innerHeight && rect.bottom > 0;
+
+  if (inView) {
+    kitsBar.classList.add('visible');
+  } else {
+    kitsBar.classList.remove('visible');
+  }
+});
