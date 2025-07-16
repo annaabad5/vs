@@ -3060,40 +3060,6 @@ background-position: center 10%;
 
 /* impacto economico */
 
-        /* Elementos decorativos */
-
-        .circle-1 {
-            top: 40px;
-            left: 40px;
-            width: 80px;
-            height: 80px;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        .circle-2 {
-            top: 80px;
-            right: 80px;
-            width: 64px;
-            height: 64px;
-            animation: float 3s ease-in-out infinite 1s;
-        }
-
-        .circle-3 {
-            bottom: 80px;
-            left: 80px;
-            width: 48px;
-            height: 48px;
-            animation: float 3s ease-in-out infinite 2s;
-        }
-
-        .circle-4 {
-            bottom: 40px;
-            right: 40px;
-            width: 96px;
-            height: 96px;
-            animation: float 3s ease-in-out infinite 0.5s;
-        }
-
         /* Header */
         .header {
             text-align: center;
@@ -3115,6 +3081,7 @@ background-position: center 10%;
             font-size: 1.125rem;
             color: #666;
         }
+        
 
         /* Estadística principal */
         .main-stat {
