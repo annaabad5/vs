@@ -745,4 +745,4 @@ document.body.addEventListener("click", e => {
 
          
 
-            
+// impacto economico
