@@ -1846,6 +1846,11 @@
             cursor: pointer;
             -webkit-appearance: none;
         }
+        .timeline-controls {
+            visibility: hidden; /* o */
+            opacity: 0;         /* visualmente invisible */
+        }
+
 
         .timeline-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
@@ -3038,3 +3043,12 @@ background-position: center 10%;
   text-align: right;
   font-style: italic;
 }
+
+
+/* cuerpo */
+.cuerpo_pagina {
+            position: relative;
+            width: 100vw; /* Ocupa todo el ancho de la pantalla */
+            margin-left: calc(-1 * ((100vw - 100%) / 2)); /* Compensa el padding/margen del main-content */
+            padding-top: 80px;
+        }
