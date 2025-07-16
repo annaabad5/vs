@@ -745,4 +745,266 @@ document.body.addEventListener("click", e => {
 
          
 
-// impacto economico
+// KIT
+let nombreKitSelectedItems = [];
+        let nombreKitCompletedKits = [];
+        let nombreKitCurrentSlot = 1;
+
+        const nombreKitItems = document.querySelectorAll('.nombre-kit-item-card');
+        const nombreKitSlots = document.querySelectorAll('.nombre-kit-slot');
+        const nombreKitOverlay = document.getElementById('nombreKitOverlay');
+        const nombreKitSuccessMessage = document.getElementById('nombreKitSuccessMessage');
+        const nombreKitCompletedKitsContainer = document.getElementById('nombreKitCompletedKits');
+        const nombreKitProgressFill = document.getElementById('nombreKitProgressFill');
+
+        nombreKitItems.forEach(item => {
+            item.addEventListener('click', () => nombreKitSelectItem(item));
+        });
+
+        function nombreKitSelectItem(item) {
+            if (item.classList.contains('selected') || item.classList.contains('disabled')) {
+                return;
+            }
+
+            if (nombreKitSelectedItems.length >= 3) {
+                return;
+            }
+
+            // Add item to selection
+            nombreKitSelectedItems.push({
+                emoji: item.dataset.emoji,
+                title: item.dataset.title,
+                description: item.dataset.description
+            });
+
+            // Update UI
+            item.classList.add('selected');
+            nombreKitUpdateSlot(nombreKitCurrentSlot, item.dataset.emoji);
+            nombreKitCurrentSlot++;
+
+            // Update progress
+            nombreKitUpdateProgress();
+
+            // Disable other items if we have 3 selected
+            if (nombreKitSelectedItems.length === 3) {
+                nombreKitItems.forEach(i => {
+                    if (!i.classList.contains('selected')) {
+                        i.classList.add('disabled');
+                    }
+                });
+                
+                // Show success message after a short delay
+                setTimeout(() => {
+                    nombreKitShowSuccess();
+                }, 500);
+            }
+        }
+
+        function nombreKitUpdateSlot(slotNumber, emoji) {
+            const slot = document.getElementById(`nombreKitSlot${slotNumber}`);
+            slot.textContent = emoji;
+            slot.classList.add('filled');
+        }
+
+        function nombreKitUpdateProgress() {
+            const progress = (nombreKitSelectedItems.length / 3) * 100;
+            nombreKitProgressFill.style.width = progress + '%';
+        }
+
+        function nombreKitShowSuccess() {
+            nombreKitOverlay.style.display = 'block';
+            nombreKitSuccessMessage.style.display = 'block';
+        }
+
+        function nombreKitCloseSuccess() {
+            nombreKitOverlay.style.display = 'none';
+            nombreKitSuccessMessage.style.display = 'none';
+            
+            // Save current kit
+            nombreKitCompletedKits.push([...nombreKitSelectedItems]);
+            nombreKitUpdateCompletedKits();
+            
+            // Reset for next kit
+            nombreKitReset();
+        }
+
+        function nombreKitCreateAnother() {
+            nombreKitCloseSuccess();
+        }
+
+        function nombreKitReset() {
+            nombreKitSelectedItems = [];
+            nombreKitCurrentSlot = 1;
+            
+            // Reset slots
+            nombreKitSlots.forEach(slot => {
+                slot.textContent = '?';
+                slot.classList.remove('filled');
+            });
+            
+            // Reset items
+            nombreKitItems.forEach(item => {
+                item.classList.remove('selected', 'disabled');
+            });
+            
+            // Reset progress
+            nombreKitProgressFill.style.width = '0%';
+        }
+
+        function nombreKitUpdateCompletedKits() {
+            nombreKitCompletedKitsContainer.innerHTML = '';
+            
+            nombreKitCompletedKits.forEach((kit, index) => {
+                const miniKit = document.createElement('div');
+                miniKit.className = 'nombre-kit-mini-kit';
+                
+                const itemsDiv = document.createElement('div');
+                itemsDiv.className = 'nombre-kit-mini-kit-items';
+                
+                kit.forEach(item => {
+                    const itemSpan = document.createElement('span');
+                    itemSpan.className = 'nombre-kit-mini-kit-item';
+                    itemSpan.textContent = item.emoji;
+                    itemsDiv.appendChild(itemSpan);
+                });
+                
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'nombre-kit-mini-kit-title';
+                titleDiv.textContent = `Kit ${index + 1}`;
+                
+                miniKit.appendChild(itemsDiv);
+                miniKit.appendChild(titleDiv);
+                nombreKitCompletedKitsContainer.appendChild(miniKit);
+            });
+        }
+
+        // Add some fun animations on load
+        window.addEventListener('load', () => {
+            nombreKitItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+
+        // MURO
+        let tituloMuroMemoriesData = [
+            {
+                id: 1,
+                text: "Recuerdo el primer día de cuarentena, todo parecía surreal...",
+                date: "15 Mar 2020",
+                time: "14:30",
+                likes: 12,
+                position: { x: 15, y: 20 },
+                rotation: -3
+            },
+            {
+                id: 2,
+                text: "La solidaridad que vi en mi barrio durante la pandemia me marcó para siempre",
+                date: "22 Abr 2020",
+                time: "09:15",
+                likes: 8,
+                position: { x: 70, y: 15 },
+                rotation: 2
+            },
+            {
+                id: 3,
+                text: "Aprendí a valorar las pequeñas cosas: un abrazo, una cena familiar...",
+                date: "10 Jun 2020",
+                time: "20:45",
+                likes: 15,
+                position: { x: 25, y: 60 },
+                rotation: -1
+            }
+        ];
+
+        function tituloMuroGetRandomPosition() {
+            const positions = [
+                { x: Math.random() * 60 + 10, y: Math.random() * 50 + 20 },
+                { x: Math.random() * 60 + 30, y: Math.random() * 50 + 30 },
+                { x: Math.random() * 40 + 50, y: Math.random() * 40 + 25 }
+            ];
+            return positions[Math.floor(Math.random() * positions.length)];
+        }
+
+        function tituloMuroRenderMemories() {
+            const container = document.getElementById('tituloMuroMemories');
+            container.innerHTML = '';
+
+            tituloMuroMemoriesData.forEach(memory => {
+                const memoryDiv = document.createElement('div');
+                memoryDiv.className = 'titulo-muro-memory';
+                memoryDiv.style.left = `${memory.position.x}%`;
+                memoryDiv.style.top = `${memory.position.y}%`;
+                memoryDiv.style.transform = `rotate(${memory.rotation}deg)`;
+
+                memoryDiv.innerHTML = `
+                    <p class="titulo-muro-memory-text">${memory.text}</p>
+                    <div class="titulo-muro-memory-footer">
+                        <div class="titulo-muro-memory-date">
+                            <svg class="titulo-muro-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12,6 12,12 16,14"></polyline>
+                            </svg>
+                            <span>${memory.date} - ${memory.time}</span>
+                        </div>
+                        <button class="titulo-muro-like-btn" onclick="tituloMuroLike(${memory.id})">
+                            <svg class="titulo-muro-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                            <span>${memory.likes}</span>
+                        </button>
+                    </div>
+                `;
+
+                container.appendChild(memoryDiv);
+            });
+        }
+
+        function tituloMuroShowForm() {
+            document.getElementById('tituloMuroModal').classList.add('active');
+        }
+
+        function tituloMuroHideForm() {
+            document.getElementById('tituloMuroModal').classList.remove('active');
+            document.getElementById('tituloMuroTextarea').value = '';
+        }
+
+        function tituloMuroSubmit() {
+            const textarea = document.getElementById('tituloMuroTextarea');
+            const text = textarea.value.trim();
+
+            if (text) {
+                const now = new Date();
+                const newMemory = {
+                    id: Date.now(),
+                    text: text,
+                    date: now.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' }),
+                    time: now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' }),
+                    likes: 0,
+                    position: tituloMuroGetRandomPosition(),
+                    rotation: Math.random() * 6 - 3
+                };
+
+                tituloMuroMemoriesData.push(newMemory);
+                tituloMuroRenderMemories();
+                tituloMuroHideForm();
+            }
+        }
+
+        function tituloMuroLike(id) {
+            const memory = tituloMuroMemoriesData.find(m => m.id === id);
+            if (memory) {
+                memory.likes++;
+                tituloMuroRenderMemories();
+            }
+        }
+
+        // Cerrar modal al hacer clic fuera
+        document.getElementById('tituloMuroModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                tituloMuroHideForm();
+            }
+        });
+
+        // Inicializar
+        tituloMuroRenderMemories();
