@@ -544,7 +544,7 @@
             animation: bounce 2s infinite;
         }
         .virus-main.c0vid {
-            background-image: url('virus-naranja-transparente.png');
+            background-image: url('virusnaranja.png');
         }
 
         .virus-main.house {
@@ -2945,7 +2945,8 @@ background-position: center 10%;
         .impact-card:hover {
             transform: scale(1.05);
             box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
-            border-color: #ff9845;
+            border-color: #D87B3D
+;
         }
 
         .impact-card::before {
@@ -2955,7 +2956,7 @@ background-position: center 10%;
             right: 0;
             width: 80px;
             height: 80px;
-            background-color: #ff9845;
+            background-color: #D87B3D;
             opacity: 0.1;
             border-radius: 50%;
             transform: translate(40px, -40px);
@@ -2967,7 +2968,7 @@ background-position: center 10%;
             justify-content: center;
             width: 3rem;
             height: 3rem;
-            background-color: #ff9845;
+            background-color: #000000;
             color: white;
             border-radius: 50%;
             margin-bottom: 1rem;
@@ -2985,7 +2986,7 @@ background-position: center 10%;
         .card-value {
             font-size: 1.875rem;
             font-weight: 800;
-            color: #ff9845;
+            color: #D87B3D;
             margin-bottom: 0.5rem;
         }
 
@@ -3022,7 +3023,7 @@ background-position: center 10%;
             justify-content: center;
             width: 2rem;
             height: 2rem;
-            background-color: #ff9845;
+            background-color: #D87B3D;
             color: white;
             border-radius: 50%;
             margin-bottom: 0.5rem;
@@ -3031,7 +3032,7 @@ background-position: center 10%;
         .stat-value {
             font-size: 1.125rem;
             font-weight: 800;
-            color: #ff9845;
+            color: #D87B3D;
             margin-bottom: 0.25rem;
         }
 
@@ -3097,11 +3098,11 @@ background-position: center 10%;
         }
 
         .sector-icon {
-            color: #dc2626;
+            color: #000000;
         }
 
         .sector-icon.growth {
-            color: #16a34a;
+            color: #000000;
         }
 
         .sector-name {

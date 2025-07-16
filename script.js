@@ -171,7 +171,7 @@ let currentChapter = 0;
                 currentChapter = newChapter;
                 updateChapterDisplay();
                 updateVirusState(currentChapter);
-                document.getElementById('progress').textContent = `${currentChapter}/8`;
+                document.getElementById('progress').textContent = `${currentChapter}/9`;
             }
         }
 
