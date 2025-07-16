@@ -53,6 +53,7 @@
         .scrolly-foreground {
             position: relative;
             z-index: 2;
+            pointer-events: none;
         }
 
         .scrolly-step-foto {
@@ -1362,6 +1363,7 @@
         .scrolly-foreground {
             position: relative;
             z-index: 2;
+            pointer-events: none;
         }
 
         .scrolly-step-foto {
@@ -1417,6 +1419,7 @@
         .fl-scrolly-step-foto-comparador.visible {
             opacity: 1;
             transform: translateY(0);
+            pointer-events: none;
         }
 
         .fl-scrolly-step-foto-comparador h2 {
@@ -1461,6 +1464,7 @@
         overflow: hidden;
         max-width: 1070px; /* o el valor que necesites */
         margin: 0 auto;
+        overflow: hidden;
         }
 
         .scrolly-background-comparador .comparador {
@@ -1504,7 +1508,7 @@
 
 
         .comparador {
-            position: sticky;
+            position: relative;
             width: 100%;
             max-width: none;
             height: 100vh;
